@@ -8,6 +8,7 @@ const Heading = styled.section`
   text-align: center;
   position: fixed;
   top: 0;
+  z-index: 1;
 
   background-color: var(--rosehip-color);
   color: white;

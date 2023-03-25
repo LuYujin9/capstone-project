@@ -7,6 +7,7 @@ import {
   StyledName,
   StyledCuisine,
   StyledRating,
+  StyledPicture,
 } from "./List.styles";
 
 export default function Card({ restaurants }) {
@@ -14,12 +15,14 @@ export default function Card({ restaurants }) {
     <StyledList>
       {restaurants.map((restaurant) => (
         <StyledCard key={restaurant.id}>
-          <StyledImage
-            alt="photo of the restaurant"
-            src={restaurant.photos}
-            width={320}
-            height={150}
-          />
+          <StyledPicture>
+            <StyledImage
+              alt="photo of the restaurant"
+              src={restaurant.photos}
+              fill
+              sizes="100vw"
+            />
+          </StyledPicture>
 
           <StyledName>{restaurant.name}</StyledName>
           <StyledCuisine>{restaurant.cuisine}</StyledCuisine>
@@ -34,15 +37,3 @@ export default function Card({ restaurants }) {
     </StyledList>
   );
 }
-
-/* const StyledDiv = styled.div`
-  @median only screen and (max-width: 768px) {
-    width: 100vw;
-  }
-  @median only screen and (max-width: 1200px) {
-    width: 50vw;
-  }
-  @median only screen and (min-width: 1200px) {
-    width: 33vw;
-  } ;
-`; */
