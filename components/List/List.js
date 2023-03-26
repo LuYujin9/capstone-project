@@ -1,5 +1,3 @@
-//when data bank is create, id should be changed to _id
-
 import {
   StyledImage,
   StyledList,
@@ -10,6 +8,7 @@ import {
   StyledPicture,
 } from "./List.styles";
 
+//when data bank is create, id should be changed to _id
 export default function Card({ restaurants }) {
   return (
     <StyledList>

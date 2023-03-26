@@ -1,6 +1,4 @@
 import styled from "styled-components";
-//import BackButton from "../../components/BackButton/BackButton";
-//import Menu from "../../lib/icons/menu";
 import ArrowBackIcon from "../../lib/icons/arraw_left";
 
 const StyledButton = styled.button`
@@ -10,7 +8,7 @@ const StyledButton = styled.button`
   background-color: var(--rosehip-color);
 `;
 
-const Heading = styled.header`
+const StyledHeader = styled.header`
   width: 100vw;
   height: 4rem;
   margin: 0;
@@ -27,12 +25,12 @@ const Heading = styled.header`
   color: white;
 `;
 
-export default function Head() {
+export default function Heading() {
   function handleGoBackPage() {
     window.history.back(-1);
   }
   return (
-    <Heading>
+    <StyledHeader>
       <StyledButton
         type="button"
         onClick={handleGoBackPage}
@@ -45,6 +43,6 @@ export default function Head() {
       <h1>Restaurants</h1>
 
       <StyledButton></StyledButton>
-    </Heading>
+    </StyledHeader>
   );
 }
