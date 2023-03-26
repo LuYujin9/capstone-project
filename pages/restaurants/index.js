@@ -1,7 +1,7 @@
 import List from "../../components/List/List";
 import Head from "next/head";
 import Heading from "../../components/Heading/Heading";
-import { restaurants } from "../../resource/data";
+import { restaurants } from "../../lib/data";
 
 export default function Restaurants() {
   return (

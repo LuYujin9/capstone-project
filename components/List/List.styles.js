@@ -18,7 +18,7 @@ export const StyledList = styled.ul`
   @media only screen and (min-width: 800px) {
     grid-template-columns: 1fr 1fr;
   }
-  @media only screen and (min-width: 1025px) {
+  @media only screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 `;
