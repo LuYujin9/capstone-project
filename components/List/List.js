@@ -20,6 +20,7 @@ export default function Card({ restaurants }) {
               src={restaurant.photos}
               fill
               sizes="100vw"
+              priority
             />
           </StyledPicture>
 
