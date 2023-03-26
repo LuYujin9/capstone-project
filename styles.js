@@ -15,6 +15,10 @@ export default createGlobalStyle`
     list-style-type:none;
   }
   
+  h1{
+    font-size:1.5rem;
+  }
+
   p{
     margin:5px;
   }

@@ -1,8 +1,16 @@
 import styled from "styled-components";
-import BackButton from "../../components/BackButton/BackButton";
+//import BackButton from "../../components/BackButton/BackButton";
 //import Menu from "../../lib/icons/menu";
+import ArrowBackIcon from "../../lib/icons/arraw_left";
 
-const Heading = styled.section`
+const StyledButton = styled.button`
+  border: none;
+  width: 4rem;
+
+  background-color: var(--rosehip-color);
+`;
+
+const Heading = styled.header`
   width: 100vw;
   height: 4rem;
   margin: 0;
@@ -13,18 +21,30 @@ const Heading = styled.section`
   z-index: 1;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   background-color: var(--rosehip-color);
   color: white;
 `;
 
 export default function Head() {
+  function handleGoBackPage() {
+    window.history.back(-1);
+  }
   return (
     <Heading>
-      <BackButton />
+      <StyledButton
+        type="button"
+        onClick={handleGoBackPage}
+        aria-label="go back to the last page"
+      >
+        <span aria-label="go back to the last page">
+          <ArrowBackIcon />
+        </span>
+      </StyledButton>
       <h1>Restaurants</h1>
 
-      <div></div>
+      <StyledButton></StyledButton>
     </Heading>
   );
 }
