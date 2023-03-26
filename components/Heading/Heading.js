@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BackButton from "../../components/BackButton/BackButton";
-import Menu from "../../lib/icons/menu";
+//import Menu from "../../lib/icons/menu";
 
 const Heading = styled.section`
   width: 100vw;
