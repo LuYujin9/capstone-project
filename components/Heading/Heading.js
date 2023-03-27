@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
   color: white;
 `;
 
-export default function Heading() {
+export default function Heading({ children }) {
   function handleGoBackPage() {
     window.history.back(-1);
   }
@@ -40,7 +40,7 @@ export default function Heading() {
           <ArrowBackIcon />
         </span>
       </StyledButton>
-      <h1>Restaurants</h1>
+      <h1>{children}</h1>
 
       <StyledButton></StyledButton>
     </StyledHeader>

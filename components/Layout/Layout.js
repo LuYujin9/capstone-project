@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar";
 export default function Layout({ children }) {
   return (
     <>
-      <Heading />
+      <Heading>Restaurants</Heading>
       <main>{children}</main>
       <footer>
         <NavBar />
