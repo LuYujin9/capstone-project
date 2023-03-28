@@ -11,6 +11,6 @@ test("navbar link to homepage", () => {
   render(<NavBar />);
   const navagationLinks = screen.getAllByRole("link");
 
-  expect(navagationLinks.length).toBe(1);
-  expect(navagationLinks[0]).toHaveAttribute("href", "/");
+  expect(navigationLinks.length).toBe(1);
+  expect(navigationLinks[0]).toHaveAttribute("href", "/");
 });
