@@ -9,8 +9,7 @@ jest.mock("next/router", () => ({
 
 test("navbar link to homepage", () => {
   render(<NavBar />);
-  const navagationLinks = screen.getAllByRole("link");
+  const navigationLink = screen.getByRole("link");
 
-  expect(navigationLinks.length).toBe(1);
-  expect(navigationLinks[0]).toHaveAttribute("href", "/");
+  expect(navigationLink).toHaveAttribute("href", "/");
 });

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import ArrowBackIcon from "../../lib/icons/arraw_left";
+import ArrowBackIcon from "../../public/icons/arraw_left";
+import LoginIcon from "../../public/icons/login";
 
 const StyledButton = styled.button`
   border: none;
@@ -36,13 +37,13 @@ export default function Heading({ children }) {
         onClick={handleGoBackPage}
         aria-label="go back to the last page"
       >
-        <span aria-label="go back to the last page">
-          <ArrowBackIcon />
-        </span>
+        <ArrowBackIcon />
       </StyledButton>
       <h1>{children}</h1>
 
-      <StyledButton></StyledButton>
+      <StyledButton type="button" aria-label="log in">
+        <LoginIcon />
+      </StyledButton>
     </StyledHeader>
   );
 }

@@ -30,7 +30,7 @@ export default function Card({ restaurants }) {
               ⭐️
             </span>
           </StyledRating>
-        </StyledCard>
+        </StyledLi>
       ))}
     </StyledList>
   );

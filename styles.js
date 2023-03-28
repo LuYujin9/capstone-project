@@ -10,10 +10,6 @@ export default createGlobalStyle`
     margin: 0 auto;
     font-family: system-ui;
   }
-
-  li {
-    list-style-type:none;
-  }
   
   h1{
     font-size:1.5rem;

@@ -1,4 +1,3 @@
-import React from "react";
 const Menu = ({ size = 24, color = "#f4f6f9" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

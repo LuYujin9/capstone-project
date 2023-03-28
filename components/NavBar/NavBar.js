@@ -1,7 +1,16 @@
 import styled from "styled-components";
 import Link from "next/link";
-import HomePageIcon from "../../lib/icons/home_page";
+import HomePageIcon from "../../public/icons/home_page";
 
+export default function NavBar() {
+  return (
+    <StyledNav>
+      <StyledLink href="/">
+        <HomePageIcon size="30px" />
+      </StyledLink>
+    </StyledNav>
+  );
+}
 const StyledLink = styled(Link)`
   background-color: var(--rosehip-color);
 `;
@@ -18,15 +27,3 @@ const StyledNav = styled.nav`
 
   background-color: var(--rosehip-color);
 `;
-
-export default function NavBar() {
-  return (
-    <StyledNav>
-      <StyledLink href="/">
-        <span aria-label="go back to the last page">
-          <HomePageIcon size="30px" />
-        </span>
-      </StyledLink>
-    </StyledNav>
-  );
-}
