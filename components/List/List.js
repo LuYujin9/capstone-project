@@ -3,7 +3,6 @@ import {
   StyledList,
   StyledLi,
   StyledName,
-  StyledCuisine,
   StyledRating,
   StyledPicture,
 } from "./List.styles";
@@ -24,7 +23,7 @@ export default function Card({ restaurants }) {
           </StyledPicture>
 
           <StyledName>{restaurant.name}</StyledName>
-          <StyledCuisine>{restaurant.cuisine}</StyledCuisine>
+          <p>{restaurant.cuisine}</p>
           <StyledRating>
             {restaurant.rating}{" "}
             <span role="img" aria-label="star">
