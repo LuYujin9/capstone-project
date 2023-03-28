@@ -2,7 +2,6 @@ import Image from "next/image";
 import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
 import Link from "next/link";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Heading from "../../components/Heading/Heading";
 import CommentCard from "../../components/CommentCard/CommentCard";
@@ -24,7 +23,7 @@ export default function Details() {
     <>
       <Heading>{restaurant.name}</Heading>
       <StyledSection>
-        <Link href="/">Schauen die Speisekarte</Link>
+        <StyledLink href="">Schauen die Speisekarte</StyledLink>
         <StyledPicture>
           <StyledImage
             alt="a photo of the restaurant"
@@ -34,45 +33,68 @@ export default function Details() {
             priority
           />
         </StyledPicture>
-        <ul>
+        <StyledUl>
           {comments.map((comment) => (
             <StyledLi key={comment.id} role="list">
               <CommentCard comment={comment.context} time={comment.time} />
             </StyledLi>
           ))}
-        </ul>{" "}
+        </StyledUl>{" "}
       </StyledSection>
     </>
   );
 }
 
-const StyledImage = styled(Image)`
-  object-fit: cover;
+const StyledSection = styled.section`
+  margin: 5rem auto;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 799px) {
+    width: 80vw;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: 640px;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin: 1rem;
+  text-align: center;
+
+  border: 2px solid black;
+  color: black;
+  border-radius: 5px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--antique-color);
+  }
 `;
 const StyledPicture = styled.picture`
   width: 100%;
-  height: 50vh;
+  height: 30vh;
 
   position: relative;
   display: block;
 `;
-const StyledLi = styled.li`
-  list-style-type: none;
+const StyledImage = styled(Image)`
+  object-fit: cover;
 `;
 
-const StyledSection = styled.section`
-  margin: 5rem 1vw;
+const StyledUl = styled.ul`
   padding: 0;
+`;
 
-  display: grid;
-
-  @media only screen and (max-width: 799px) {
-    gird: 80vw;
-  }
-  @media only screen and (min-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media only screen and (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+const StyledLi = styled.li`
+  margin: 0;
+  list-style-type: none;
 `;

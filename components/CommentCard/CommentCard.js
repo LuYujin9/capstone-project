@@ -1,6 +1,8 @@
 //import { View, Image } from "@tarojs/components";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import ChevronDown from "../../public/icons/chevron_down";
+import ChevronUp from "../../public/icons/chevron_up";
 
 //import BottomArrow from "@/assets/bottomArrow.png";
 //import RightArrow from "@/assets/rightArrow.png";
@@ -12,11 +14,29 @@ const StyledP = styled.p`
 
   ${({ isExpanded }) =>
     isExpanded === false
-      ? "overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4; -webkit-box-orient: vertical;"
+      ? "overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3; -webkit-box-orient: vertical;"
       : ""};
 `;
 
-const StyledCard = styled.article``;
+const StyledCard = styled.article`
+  margin: 1rem 0;
+  padding: 0.1rem;
+
+  border-radius: 2px;
+  background-color: var(--white-color);
+  box-shadow: 1px 1px 1px 1px var(--linen-color);
+`;
+
+const StyledButton = styled.button`
+  border: none;
+  padding: 0.5rem;
+
+  position: relative;
+  left: 90%;
+
+  background-color: var(--white-color);
+`;
+
 export default function ThePage({ comment, time }) {
   const descRef = useRef();
 
@@ -32,17 +52,21 @@ export default function ThePage({ comment, time }) {
   }, []);
 
   return (
-    <article>
+    <StyledCard>
       <p>{time}</p>
       <StyledP ref={descRef} isExpanded={isExpanded}>
         {comment}
       </StyledP>
       {needExpandBtn && (
-        <button onClick={() => setIsExpanded(!isExpanded)}>
-          <p>{isExpanded ? "less" : "more"}</p>
-        </button>
+        <StyledButton onClick={() => setIsExpanded(!isExpanded)}>
+          {isExpanded ? (
+            <ChevronUp color="black" />
+          ) : (
+            <ChevronDown color="black" />
+          )}
+        </StyledButton>
       )}
-    </article>
+    </StyledCard>
   );
 }
 /* 
