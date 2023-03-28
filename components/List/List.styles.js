@@ -22,7 +22,7 @@ export const StyledList = styled.ul`
     grid-template-columns: 1fr 1fr 1fr;
   }
 `;
-export const StyledCard = styled.li`
+export const StyledLi = styled.li`
   margin: 0.5rem 0.5rem;
   padding: 5%;
   border-radius: 1rem;
