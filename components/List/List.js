@@ -6,21 +6,24 @@ import {
   StyledRating,
   StyledPicture,
 } from "./List.styles";
+import Link from "next/Link";
 
 export default function Card({ restaurants }) {
   return (
     <StyledList>
       {restaurants.map((restaurant) => (
         <StyledLi key={restaurant.id}>
-          <StyledPicture>
-            <StyledImage
-              alt="photo of the restaurant"
-              src={restaurant.photos}
-              fill
-              sizes="100vw"
-              priority
-            />
-          </StyledPicture>
+          <Link href={`/restaurants/${restaurant.id}`}>
+            <StyledPicture>
+              <StyledImage
+                alt="photo of the restaurant"
+                src={restaurant.photos[0]}
+                fill
+                sizes="100vw"
+                priority
+              />
+            </StyledPicture>
+          </Link>
 
           <StyledName>{restaurant.name}</StyledName>
           <p>{restaurant.cuisine}</p>
