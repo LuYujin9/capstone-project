@@ -1,7 +1,7 @@
 import {
   StyledImage,
   StyledList,
-  StyledCard,
+  StyledLi,
   StyledName,
   StyledCuisine,
   StyledRating,
@@ -12,7 +12,7 @@ export default function Card({ restaurants }) {
   return (
     <StyledList>
       {restaurants.map((restaurant) => (
-        <StyledCard key={restaurant.id}>
+        <StyledLi key={restaurant.id}>
           <StyledPicture>
             <StyledImage
               alt="photo of the restaurant"
