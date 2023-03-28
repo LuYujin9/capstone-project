@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { restaurants } from "../../lib/data";
+import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -7,15 +7,15 @@ import { useRouter } from "next/router";
 
 export default function Details() {
   const router = useRouter();
-  const { id } = router.query;
-  /* 
-  useEffect(() => {
-    if (!router.isReady) return;
-  }, [router.isReady]); */
 
-  console.log(id);
-  const restaurant = restaurants.find((restaurant) => restaurant?.id === 3);
-  console.log(restaurant);
+  if (!router.isReady) {
+    return <h1>loading</h1>;
+  }
+
+  const { id } = router.query;
+
+  const restaurant = restaurants.find((restaurant) => restaurant.id === id);
+
   const comments = restaurant.comments;
 
   return (
