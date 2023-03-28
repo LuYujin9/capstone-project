@@ -23,7 +23,7 @@ const testRestaurant = [
   },
 ];
 
-test("renders the photos and other contents", () => {
+test("renders the photos, name, cuisine, and rating", () => {
   render(<List restaurants={testRestaurant} />);
   const photo = screen.getByRole("img", { name: /photo of the restaurant/i });
   expect(photo).toBeInTheDocument();
