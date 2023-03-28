@@ -6,7 +6,7 @@ const StyledLink = styled(Link)`
   background-color: var(--rosehip-color);
 `;
 
-const Nav = styled.nav`
+const StyledNav = styled.nav`
   height: 3rem;
   width: 100vw;
 
@@ -21,14 +21,12 @@ const Nav = styled.nav`
 
 export default function NavBar() {
   return (
-    <Nav>
+    <StyledNav>
       <StyledLink href="/">
         <span aria-label="go back to the last page">
           <HomePageIcon size="30px" />
         </span>
       </StyledLink>
-      <div></div>
-      <div></div>
-    </Nav>
+    </StyledNav>
   );
 }
