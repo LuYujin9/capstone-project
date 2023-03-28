@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Heading from "../../components/Heading/Heading";
+import CommentCard from "../../components/CommentCard/CommentCard";
 
 export default function Details() {
   const router = useRouter();
@@ -19,26 +21,28 @@ export default function Details() {
   const comments = restaurant.comments;
 
   return (
-    <StyledSection>
-      <Link href="/">Schauen die Speisekarte</Link>
-      <StyledPicture>
-        <StyledImage
-          alt="a photo of the restaurant"
-          src={restaurant.photos[0]}
-          fill
-          sizes="100vw"
-          priority
-        />
-      </StyledPicture>
-      <ul>
-        {comments.map((comment) => (
-          <li key={comment.id} role="list">
-            <p>{comment.context}</p>
-            <p>{comment.time}</p>
-          </li>
-        ))}
-      </ul>{" "}
-    </StyledSection>
+    <>
+      <Heading>{restaurant.name}</Heading>
+      <StyledSection>
+        <Link href="/">Schauen die Speisekarte</Link>
+        <StyledPicture>
+          <StyledImage
+            alt="a photo of the restaurant"
+            src={restaurant.photos[0]}
+            fill
+            sizes="100vw"
+            priority
+          />
+        </StyledPicture>
+        <ul>
+          {comments.map((comment) => (
+            <StyledLi key={comment.id} role="list">
+              <CommentCard comment={comment.context} time={comment.time} />
+            </StyledLi>
+          ))}
+        </ul>{" "}
+      </StyledSection>
+    </>
   );
 }
 
@@ -51,6 +55,9 @@ const StyledPicture = styled.picture`
 
   position: relative;
   display: block;
+`;
+const StyledLi = styled.li`
+  list-style-type: none;
 `;
 
 const StyledSection = styled.section`
