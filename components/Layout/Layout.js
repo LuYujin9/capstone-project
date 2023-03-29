@@ -3,7 +3,7 @@ import NavBar from "../NavBar/NavBar";
 export default function Layout({ children }) {
   return (
     <>
-      <div>{children}</div>
+      <main>{children}</main>
       <footer>
         <NavBar />
       </footer>
