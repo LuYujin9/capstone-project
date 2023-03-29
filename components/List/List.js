@@ -24,7 +24,6 @@ export default function Card({ restaurants }) {
               />
             </StyledPicture>
           </Link>
-
           <StyledName>{restaurant.name}</StyledName>
           <p>{restaurant.cuisine}</p>
           <StyledRating>

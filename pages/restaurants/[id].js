@@ -44,7 +44,6 @@ const StyledDiv = styled.div`
   @media only screen and (max-width: 799px) {
     width: 100vw;
   }
-
   @media only screen and (min-width: 800px) {
     width: 640px;
   }
@@ -55,12 +54,13 @@ const LinkToMenu = styled.p`
   padding: 0.3rem;
   font-size: 1.2rem;
   margin: 0 0 0.5rem 0;
+
   text-align: center;
 
-  border: 2px solid black;
   color: black;
-  border-radius: 5px;
   text-decoration: none;
+  border: 2px solid black;
+  border-radius: 5px;
 
   &:hover {
     background-color: var(--red-vine-color);

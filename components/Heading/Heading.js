@@ -24,9 +24,7 @@ export default function Heading({ children, previousLevelUrl, isShowButton }) {
       >
         <ArrowBackIcon />
       </StyledButton>
-
       <h1>{children}</h1>
-
       <StyledButton type="button" aria-label="log in" isShowButton={true}>
         <LoginIcon />
       </StyledButton>
