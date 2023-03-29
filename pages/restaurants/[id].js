@@ -23,6 +23,7 @@ export default function Details() {
       <StyledDiv>
         <StyledLink href="">Schauen die Speisekarte</StyledLink>
         <Album photos={restaurant.photos} />
+        <StyledP>{restaurant.description}</StyledP>
         <CommentsList comments={comments} />
       </StyledDiv>
     </>
@@ -39,7 +40,7 @@ const StyledDiv = styled.div`
   justify-content: center;
 
   @media only screen and (max-width: 799px) {
-    width: 80vw;
+    width: 100vw;
   }
 
   @media only screen and (min-width: 800px) {
@@ -48,10 +49,10 @@ const StyledDiv = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  width: 70%;
-  padding: 0.5rem;
+  width: 80%;
+  padding: 0.3rem;
   font-size: 1.2rem;
-  margin: 1rem;
+  margin: 0 0 0.5rem 0;
   text-align: center;
 
   border: 2px solid black;
@@ -62,4 +63,10 @@ const StyledLink = styled(Link)`
   &:hover {
     background-color: var(--red-vine-color);
   }
+`;
+
+const StyledP = styled.p`
+  padding: 1rem 0;
+  margin: 0 1.5rem;
+  text-align: justify;
 `;

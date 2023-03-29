@@ -46,8 +46,8 @@ const StyledP = styled.p`
 `;
 
 const StyledCard = styled.article`
-  margin: 1rem 0;
-  padding: 0.1rem;
+  margin: 0.5rem 1.5rem;
+  padding: 0.2rem;
 
   display: flex;
   flex-direction: column;
@@ -60,7 +60,6 @@ const StyledCard = styled.article`
 
 const StyledButton = styled.button`
   border: none;
-  padding: 0.5rem;
 
   align-self: end;
 
