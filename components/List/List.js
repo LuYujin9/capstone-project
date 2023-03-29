@@ -16,10 +16,10 @@ export default function Card({ restaurants }) {
           <Link href={`/restaurants/${restaurant.id}`}>
             <StyledPicture>
               <StyledImage
-                alt="photo of the restaurant"
+                alt="a photo of the restaurant"
                 src={restaurant.photos[0]}
                 fill
-                sizes="100vw"
+                sizes="(min-width: 768px) 100vw"
                 priority
               />
             </StyledPicture>

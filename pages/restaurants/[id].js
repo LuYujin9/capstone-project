@@ -5,6 +5,7 @@ import Link from "next/Link";
 import { useRouter } from "next/router";
 import Heading from "../../components/Heading/Heading";
 import CommentsList from "../../components/CommentsList/CommentsList";
+import Album from "../../components/Album/Album";
 
 export default function Details() {
   const router = useRouter();
@@ -20,24 +21,16 @@ export default function Details() {
   return (
     <>
       <Heading>{restaurant.name}</Heading>
-      <StyledSection>
+      <StyledDiv>
         <StyledLink href="">Schauen die Speisekarte</StyledLink>
-        <StyledPicture>
-          <StyledImage
-            alt="a photo of the restaurant"
-            src={restaurant.photos[0]}
-            fill
-            size="100vw"
-            priority
-          />
-        </StyledPicture>
+        <Album photos={restaurant.photos} />
         <CommentsList comments={comments} />
-      </StyledSection>
+      </StyledDiv>
     </>
   );
 }
 
-const StyledSection = styled.section`
+const StyledDiv = styled.div`
   margin: 5rem auto;
   padding: 0;
 
@@ -68,16 +61,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    background-color: var(--antique-color);
+    background-color: var(--red-vine-color);
   }
-`;
-const StyledPicture = styled.picture`
-  width: 100%;
-  height: 30vh;
-
-  position: relative;
-  display: block;
-`;
-const StyledImage = styled(Image)`
-  object-fit: cover;
 `;

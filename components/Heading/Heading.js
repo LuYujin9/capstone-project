@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ArrowBackIcon from "../../public/icons/arraw_left";
+import ArrowBackIcon from "../../public/icons/Chevron_left";
 import LoginIcon from "../../public/icons/login";
 
 export default function Heading({ children }) {
