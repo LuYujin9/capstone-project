@@ -22,7 +22,11 @@ export default function Album({ photos }) {
 
   return (
     <StyledSection>
-      <ToLastPhotoButton onClick={handleToLastPhoto} photoIndex={photoIndex}>
+      <ToLastPhotoButton
+        aria-label="to the last photo"
+        onClick={handleToLastPhoto}
+        photoIndex={photoIndex}
+      >
         <Chevron_left color="#BA494B" size="30" />
       </ToLastPhotoButton>
       <StyledPicture>
@@ -35,6 +39,7 @@ export default function Album({ photos }) {
         />
       </StyledPicture>
       <ToNextPhotoButton
+        aria-label="to the next photo"
         onClick={handleToNextPhoto}
         photoIndex={photoIndex}
         photos={photos}

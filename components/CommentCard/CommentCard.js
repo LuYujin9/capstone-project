@@ -21,7 +21,10 @@ export default function ThePage({ comment, time }) {
         {comment}
       </StyledP>
       {needExpandBtn && (
-        <StyledButton onClick={() => setIsExpanded(!isExpanded)}>
+        <StyledButton
+          aria-label="expand and collapse the comment button"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
           {isExpanded ? (
             <ChevronUp color="black" />
           ) : (
