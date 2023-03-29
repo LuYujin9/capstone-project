@@ -1,15 +1,15 @@
 import { Inter } from "next/font/google";
-import Link from "next/link";
+import Link from "next/Link";
+import Heading from "../components/Heading/Heading";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <>
-      <main>
-        <h1>search the restaurants</h1>
-        <Link href="/restaurants">restaurant</Link>
-      </main>
+      <Heading>Restaurants</Heading>
+      <h1>search the restaurants</h1>
+      <Link href="/restaurants">restaurant</Link>
     </>
   );
 }
