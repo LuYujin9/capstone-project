@@ -5,7 +5,9 @@ import Heading from "../../components/Heading/Heading";
 export default function Restaurants() {
   return (
     <>
-      <Heading>Restaurants</Heading>
+      <Heading previousLevelUrl="/" isShowButton={true}>
+        Restaurants
+      </Heading>
       <List restaurants={restaurants} />
     </>
   );

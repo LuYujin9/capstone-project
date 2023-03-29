@@ -7,7 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-      <Heading>Restaurants</Heading>
+      <Heading previousLevelUrl="/" isShowButton={false}>
+        Restaurants
+      </Heading>
       <h1>search the restaurants</h1>
       <Link href="/restaurants">restaurant</Link>
     </>

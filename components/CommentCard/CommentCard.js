@@ -4,22 +4,22 @@ import ChevronDown from "../../public/icons/chevron_down";
 import ChevronUp from "../../public/icons/chevron_up";
 
 export default function ThePage({ comment, time }) {
-  const descRef = useRef();
+  const commentRef = useRef();
   const [isExpanded, setIsExpanded] = useState(false);
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
 
   useEffect(() => {
     setNeedExpandBtn(
-      descRef?.current?.scrollHeight > descRef?.current?.clientHeight
+      commentRef?.current?.scrollHeight > commentRef?.current?.clientHeight
     );
   }, []);
 
   return (
     <StyledCard>
       <p>{time}</p>
-      <StyledP ref={descRef} isExpanded={isExpanded}>
+      <StyledParagraph ref={commentRef} isExpanded={isExpanded}>
         {comment}
-      </StyledP>
+      </StyledParagraph>
       {needExpandBtn && (
         <StyledButton
           aria-label="expand and collapse the comment button"
@@ -36,7 +36,7 @@ export default function ThePage({ comment, time }) {
   );
 }
 
-const StyledP = styled.p`
+const StyledParagraph = styled.p`
   margin: 0.5rem;
 
   ${({ isExpanded }) =>

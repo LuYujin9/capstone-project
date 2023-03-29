@@ -23,5 +23,5 @@ test("render every comment with key", () => {
 
   expect(comment1).toBeInTheDocument();
   expect(comment2).toBeInTheDocument();
-  expect(list[0]).toBeInTheDocument();
+  expect(list).toHaveLength(3);
 });

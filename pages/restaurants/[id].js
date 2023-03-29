@@ -19,11 +19,13 @@ export default function Details() {
 
   return (
     <>
-      <Heading>{restaurant.name}</Heading>
+      <Heading previousLevelUrl="/restaurants" isShowButton={true}>
+        {restaurant.name}
+      </Heading>
       <StyledDiv>
-        <StyledLink href="">Schauen die Speisekarte</StyledLink>
+        <LinkToMenu>Schauen die Speisekarte</LinkToMenu>
         <Album photos={restaurant.photos} />
-        <StyledP>{restaurant.description}</StyledP>
+        <StyledParagraph>{restaurant.description}</StyledParagraph>
         <CommentsList comments={comments} />
       </StyledDiv>
     </>
@@ -48,7 +50,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const LinkToMenu = styled.p`
   width: 80%;
   padding: 0.3rem;
   font-size: 1.2rem;
@@ -65,7 +67,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledP = styled.p`
+const StyledParagraph = styled.p`
   padding: 1rem 0;
   margin: 0 1.5rem;
   text-align: justify;

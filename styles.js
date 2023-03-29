@@ -15,16 +15,21 @@ export default createGlobalStyle`
     font-size:1.5rem;
   }
 
+  ul {
+     padding: 0;
+  }
+
   p{
     margin:5px;
   }
-:root{
-  --red-vine-color:#BA494B;
-  --rosehip-color:#E5CBC1;
-  --antique-color:#F0E7DA;
-  --rain-storm-color:#46B4B3;
-  --linen-color:#E3E4E0;
-  --white-color:#F5F5F5;
+
+  :root{
+    --red-vine-color:#BA494B;
+    --rosehip-color:#E5CBC1;
+    --antique-color:#F0E7DA;
+    --rain-storm-color:#46B4B3;
+    --linen-color:#E3E4E0;
+    --white-color:#F5F5F5;
   }
 }
 `;

@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import Album from "./Album";
-import userEvent from "@testing-library/user-event";
 
 const testPhotos = [
   "/images/Carolaschlösschen1.jpg",
@@ -10,13 +9,11 @@ const testPhotos = [
 
 test("Image has alt text", () => {
   render(<Album photos={testPhotos} />);
-  const photo = screen.getAllByRole("img");
-  expect(photo[0]).toHaveAttribute("alt", "a photo of the restaurant");
+  const photo = screen.getByRole("img", { name: /a photo of the restaurant/i });
+  expect(photo).toHaveAttribute("alt", "a photo of the restaurant");
 });
 
 test("renders toNextPhotoButton", () => {
-  const user = userEvent.setup();
-
   render(<Album photos={testPhotos} />);
 
   const toNextPhotoButton = screen.getByRole("button", {
