@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
-import Link from "next/Link";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Heading from "../../components/Heading/Heading";
 import CommentsList from "../../components/CommentsList/CommentsList";

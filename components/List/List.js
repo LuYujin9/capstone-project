@@ -6,7 +6,7 @@ import {
   StyledRating,
   StyledPicture,
 } from "./List.styles";
-import Link from "next/Link";
+import Link from "next/link";
 
 export default function Card({ restaurants }) {
   return (
