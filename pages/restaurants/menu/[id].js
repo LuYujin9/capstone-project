@@ -2,6 +2,8 @@ import { restaurants } from "../../../lib/data.js";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
+import FoodCard from "../../../components/FoodCard/FoodCard.js";
+import Image from "next/image.js";
 
 export default function Menu() {
   const router = useRouter();
@@ -20,24 +22,29 @@ export default function Menu() {
         {restaurant.name}
       </Heading>
       <StyledSection>
-        <ul>
+        <StyledImage
+          src="/images/menu-background.jpeg"
+          alt="photo in background"
+          fill
+          sizes="(min-width: 768px) 100vw"
+        />
+        <StyledList role="list">
           {foods.map((food) => (
-            <li key={food.id}>
-              <p>{food.name}</p>
-              <p>{food.description}</p>
-              <p>{food.price}€</p>
-            </li>
+            <StyledListItem key={food.id}>
+              <FoodCard food={food} />
+            </StyledListItem>
           ))}
-        </ul>
+        </StyledList>
       </StyledSection>
     </>
   );
 }
 
 const StyledSection = styled.section`
-  margin: 5rem auto;
+  margin: 4rem auto;
   padding: 0;
 
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,8 +52,23 @@ const StyledSection = styled.section`
 
   @media only screen and (max-width: 799px) {
     width: 100vw;
+    height: 100vh;
   }
   @media only screen and (min-width: 800px) {
     width: 640px;
   }
+`;
+
+const StyledList = styled.ul`
+  width: 100%;
+`;
+
+const StyledListItem = styled.li`
+  width: 94%;
+  list-style-type: none;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
+  z-index: -1;
 `;
