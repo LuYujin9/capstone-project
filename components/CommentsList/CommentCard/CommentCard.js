@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import ChevronDown from "../../public/icons/chevron_down";
-import ChevronUp from "../../public/icons/chevron_up";
+import ChevronDown from "../../../public/icons/chevron_down";
+import ChevronUp from "../../../public/icons/chevron_up";
 
 export default function ThePage({ comment, time }) {
   const commentRef = useRef();
