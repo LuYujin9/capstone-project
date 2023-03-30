@@ -20,7 +20,6 @@ test("doesn't render toLastPhotoButton when it shows the first photo", () => {
   expect(toLastPhotoButton).not.toBeInTheDocument();
 });
 
-//Problem 1 : how to test "doesn't render toNextPhotoButton when it shows the last photo"
 test("doesn't render toNextPhotoButton when it shows the last photo", async () => {
   const user = userEvent.setup();
   render(<Album photos={testPhotos} />);
@@ -38,7 +37,7 @@ test("doesn't render toNextPhotoButton when it shows the last photo", async () =
   expect(ToNextPhotoButtonWithLastPhoto).not.toBeInTheDocument();
 });
 
-//Problem 2: how to test "be called time", when the handle function is not a props.
+//Problem  how to test "be called time", when the handle function is not a props.
 test("renders toNextPhotoButton and toLastPhotoButton", async () => {
   const user = userEvent.setup();
   render(<Album photos={testPhotos} />);
@@ -46,6 +45,7 @@ test("renders toNextPhotoButton and toLastPhotoButton", async () => {
   const toNextPhotoButton = screen.getByRole("button", {
     name: /to the next photo/i,
   });
+  const ToNextPhoto = jest.spyOn(Album, "handleToNextPhoto");
 
   await user.click(toNextPhotoButton);
   await user.click(toNextPhotoButton);
@@ -53,10 +53,11 @@ test("renders toNextPhotoButton and toLastPhotoButton", async () => {
   const toLastPhotoButton = screen.getByRole("button", {
     name: /to the last photo/i,
   });
+  const handleToLastPhoto = jest.spyOn(Album, "handleToLastPhoto");
   await user.click(toNextPhotoButton);
 
   expect(toNextPhotoButton).toBeInTheDocument();
   expect(toLastPhotoButton).toBeInTheDocument();
-  expect(toNextPhotoButton).toBeCalledTimes(2);
-  expect(toLastPhotoButton).toBeCalledTimes(1);
+  expect(ToNextPhoto).toHaveBeenCalledTimes(2);
+  expect(handleToLastPhoto).toHaveBeenCalledTimes(1);
 });
