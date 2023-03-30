@@ -9,7 +9,7 @@ export default function Details() {
   const router = useRouter();
 
   if (!router.isReady) {
-    return <h2>loading</h2>;
+    return <h2>Loading...</h2>;
   }
 
   const { id } = router.query;
