@@ -10,7 +10,7 @@ export default function Home() {
       <Heading previousLevelUrl="/" isShowButton={false}>
         Restaurants
       </Heading>
-      <h1>search the restaurants</h1>
+      <h2>search the restaurants</h2>
       <Link href="/restaurants">restaurant</Link>
     </>
   );

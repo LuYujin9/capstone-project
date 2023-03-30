@@ -1,6 +1,5 @@
 import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Heading from "../../components/Heading/Heading";
 import CommentsList from "../../components/CommentsList/CommentsList";
@@ -10,7 +9,7 @@ export default function Details() {
   const router = useRouter();
 
   if (!router.isReady) {
-    return <h1>loading</h1>;
+    return <h2>loading</h2>;
   }
 
   const { id } = router.query;
@@ -22,17 +21,17 @@ export default function Details() {
       <Heading previousLevelUrl="/restaurants" isShowButton={true}>
         {restaurant.name}
       </Heading>
-      <StyledDiv>
-        <LinkToMenu>Schauen die Speisekarte</LinkToMenu>
+      <StyledSection>
+        <StyledArticle>Zur Speisekarte</StyledArticle>
         <Album photos={restaurant.photos} />
         <StyledParagraph>{restaurant.description}</StyledParagraph>
         <CommentsList comments={comments} />
-      </StyledDiv>
+      </StyledSection>
     </>
   );
 }
 
-const StyledDiv = styled.div`
+const StyledSection = styled.section`
   margin: 5rem auto;
   padding: 0;
 
@@ -49,7 +48,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const LinkToMenu = styled.p`
+const StyledArticle = styled.article`
   width: 80%;
   padding: 0.3rem;
   font-size: 1.2rem;

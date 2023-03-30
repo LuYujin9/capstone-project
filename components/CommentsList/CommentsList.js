@@ -2,19 +2,18 @@ import styled from "styled-components";
 import CommentCard from "../CommentCard/CommentCard";
 
 export default function CommentsList({ comments }) {
-  console.log("render me");
   return (
-    <ul>
+    <ul role="list">
       {comments.map((comment) => (
-        <StyledList key={comment.id} role="list">
+        <StyledListItem key={comment.id}>
           <CommentCard comment={comment.context} time={comment.time} />
-        </StyledList>
+        </StyledListItem>
       ))}
     </ul>
   );
 }
 
-const StyledList = styled.li`
+const StyledListItem = styled.li`
   margin: 0;
   list-style-type: none;
 `;

@@ -37,7 +37,6 @@ test("doesn't render toNextPhotoButton when it shows the last photo", async () =
   expect(ToNextPhotoButtonWithLastPhoto).not.toBeInTheDocument();
 });
 
-//Problem  how to test "be called time", when the handle function is not a props.
 test("renders toNextPhotoButton and toLastPhotoButton", async () => {
   const user = userEvent.setup();
   render(<Album photos={testPhotos} />);
