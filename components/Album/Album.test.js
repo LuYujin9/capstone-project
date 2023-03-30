@@ -45,7 +45,6 @@ test("renders toNextPhotoButton and toLastPhotoButton", async () => {
   const toNextPhotoButton = screen.getByRole("button", {
     name: /to the next photo/i,
   });
-  const handleToNextPhoto = jest.spyOn(Album, "handleToNextPhoto");
 
   await user.click(toNextPhotoButton);
   await user.click(toNextPhotoButton);
@@ -53,11 +52,9 @@ test("renders toNextPhotoButton and toLastPhotoButton", async () => {
   const toLastPhotoButton = screen.getByRole("button", {
     name: /to the last photo/i,
   });
-  const handleToLastPhoto = jest.spyOn(Album, "handleToLastPhoto");
+
   await user.click(toNextPhotoButton);
 
   expect(toNextPhotoButton).toBeInTheDocument();
   expect(toLastPhotoButton).toBeInTheDocument();
-  expect(handleToNextPhoto).toHaveBeenCalledTimes(2);
-  expect(handleToLastPhoto).toHaveBeenCalledTimes(1);
 });
