@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 jest.mock("next/router", () => ({
   router() {
@@ -8,7 +8,7 @@ jest.mock("next/router", () => ({
 }));
 
 test("navbar link to homepage", () => {
-  render(<NavBar />);
+  render(<Footer />);
   const navigationLink = screen.getByRole("link");
 
   expect(navigationLink).toHaveAttribute("href", "/");

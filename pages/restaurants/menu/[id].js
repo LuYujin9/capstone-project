@@ -1,7 +1,7 @@
 import { restaurants } from "../../../lib/data.js";
 import { useRouter } from "next/router";
-import Heading from "../../../components/Heading/Heading";
 import styled from "styled-components";
+import Heading from "../../../components/Heading/Heading";
 
 export default function Menu() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function Menu() {
 
   return (
     <>
-      <Heading previousLevelUrl={`/restaurants/{id}`} isShowButton={true}>
+      <Heading previousLevelUrl={`/restaurants/${id}`}>
         {restaurant.name}
       </Heading>
       <StyledSection>

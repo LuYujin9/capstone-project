@@ -3,30 +3,33 @@ import ArrowBackIcon from "../../public/icons/Chevron_left";
 import LoginIcon from "../../public/icons/login";
 import { useRouter } from "next/router";
 
-export default function Heading({ children, previousLevelUrl, isShowButton }) {
+export default function Heading({
+  children,
+  previousLevelUrl,
+  isHideBackButton,
+}) {
   const router = useRouter();
 
-  if (!router.isReady) {
-    return <h1>loading</h1>;
-  }
+  /* if (!router.isReady) {
+    return <p>loading</p>;
+  } */
 
   function handleGoBackPage() {
     router.push(previousLevelUrl);
   }
-
   return (
     <StyledHeader>
       <StyledButton
         type="button"
         onClick={handleGoBackPage}
         aria-label="go back to the last page"
-        isShowButton={isShowButton}
+        isHideBackButton={isHideBackButton}
       >
-        <ArrowBackIcon />
+        <ArrowBackIcon color={`var(--red-vine-color)`} />
       </StyledButton>
       <h1>{children}</h1>
       <StyledButton type="button" aria-label="log in" isShowButton={true}>
-        <LoginIcon />
+        <LoginIcon color={`var(--red-vine-color)`} />
       </StyledButton>
     </StyledHeader>
   );
@@ -37,7 +40,7 @@ const StyledButton = styled.button`
   width: 4rem;
 
   background-color: var(--rosehip-color);
-  ${({ isShowButton }) => (isShowButton === true ? null : "visibility: hidden")}
+  ${({ isHideBackButton }) => (isHideBackButton ? "visibility: hidden" : null)}
 `;
 
 const StyledHeader = styled.header`
@@ -54,5 +57,5 @@ const StyledHeader = styled.header`
   align-items: center;
 
   background-color: var(--rosehip-color);
-  color: white;
+  color: #ba494b;
 `;
