@@ -19,9 +19,9 @@ test("render every comment with key", () => {
 
   const comment1 = screen.getByText(/sehr Lecker./i);
   const comment2 = screen.getByText(/This restaurant is very picturesque./i);
-  const list = screen.getAllByRole("list");
+  const list = screen.getAllByRole("listitem");
 
   expect(comment1).toBeInTheDocument();
   expect(comment2).toBeInTheDocument();
-  expect(list).toHaveLength(3);
+  expect(list).toHaveLength(2);
 });
