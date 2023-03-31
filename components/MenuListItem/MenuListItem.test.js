@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import FoodCard from "./FoodCard";
+import MenuListItem from "./MenuListItem";
 
 const testFood = {
   id: "1",
@@ -9,7 +9,7 @@ const testFood = {
 };
 
 test("render the time and comment", () => {
-  render(<FoodCard food={testFood} />);
+  render(<MenuListItem key={testFood.id} food={testFood} />);
 
   const name = screen.getByText(/Winterlicher Blattsalat/i);
   const price = screen.getByText(/9.6/i);
