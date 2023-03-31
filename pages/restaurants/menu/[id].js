@@ -2,13 +2,11 @@ import { restaurants } from "../../../lib/data.js";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
-import FoodCard from "../../../components/FoodCard/FoodCard.js";
+import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 
 export default function Menu() {
   const router = useRouter();
-
   if (!router.isReady) return <h2>loading</h2>;
-
   const { id } = router.query;
 
   const restaurant = restaurants.find((restaurant) => restaurant.id === id);
@@ -25,11 +23,7 @@ export default function Menu() {
           {foods.length === 0 ? (
             <p>Tut mir leid! Es gibt noch keine Speisekarte.</p>
           ) : (
-            foods.map((food) => (
-              <StyledListItem key={food.id}>
-                <FoodCard food={food} />
-              </StyledListItem>
-            ))
+            foods.map((food) => <MenuListItem key={food.id} food={food} />)
           )}
         </StyledList>
       </StyledSection>
@@ -75,10 +69,4 @@ const StyledSection = styled.section`
 
 const StyledList = styled.ul`
   width: 100%;
-`;
-
-const StyledListItem = styled.li`
-  width: 94%;
-  list-style-type: none;
-  margin: 0;
 `;
