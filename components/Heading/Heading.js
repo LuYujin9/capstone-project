@@ -22,7 +22,7 @@ export default function Heading({
       >
         <ArrowBackIcon color={`var(--red-vine-color)`} />
       </StyledButton>
-      <NameOfPage>{children}</NameOfPage>
+      <HeadingLineOne>{children}</HeadingLineOne>
     </StyledHeader>
   );
 }
@@ -35,7 +35,7 @@ const StyledButton = styled.button`
   ${({ isHideBackButton }) => (isHideBackButton ? "visibility: hidden" : null)}
 `;
 
-const NameOfPage = styled.h1`
+const HeadingLineOne = styled.h1`
   width: 70vw;
 `;
 
