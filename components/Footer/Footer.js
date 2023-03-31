@@ -2,13 +2,15 @@ import styled from "styled-components";
 import Link from "next/link";
 import HomePageIcon from "../../public/icons/home_page";
 
-export default function NavBar() {
+export default function Footer() {
   return (
-    <StyledNav>
-      <StyledLink href="/">
-        <HomePageIcon size="30px" />
-      </StyledLink>
-    </StyledNav>
+    <footer>
+      <StyledNav>
+        <StyledLink href="/">
+          <HomePageIcon color={`var(--red-vine-color)`} size="30px" />
+        </StyledLink>
+      </StyledNav>
+    </footer>
   );
 }
 const StyledLink = styled(Link)`

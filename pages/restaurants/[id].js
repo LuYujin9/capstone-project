@@ -1,15 +1,16 @@
 import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import Heading from "../../components/Heading/Heading";
 import CommentsList from "../../components/CommentsList/CommentsList";
 import Album from "../../components/Album/Album";
+import Link from "next/link.js";
+import Heading from "../../components/Heading/Heading";
 
 export default function Details() {
   const router = useRouter();
 
   if (!router.isReady) {
-    return <h2>loading</h2>;
+    return <h2>Loading...</h2>;
   }
 
   const { id } = router.query;
@@ -18,11 +19,11 @@ export default function Details() {
 
   return (
     <>
-      <Heading previousLevelUrl="/restaurants" isShowButton={true}>
-        {restaurant.name}
-      </Heading>
+      <Heading previousLevelUrl="/restaurants">{restaurant.name}</Heading>
       <StyledSection>
-        <StyledArticle>Zur Speisekarte</StyledArticle>
+        <StyledLink href={`/restaurants/menu/${id}`}>
+          Zur Speisekarte
+        </StyledLink>
         <Album photos={restaurant.photos} />
         <StyledParagraph>{restaurant.description}</StyledParagraph>
         <CommentsList comments={comments} />
@@ -48,7 +49,7 @@ const StyledSection = styled.section`
   }
 `;
 
-const StyledArticle = styled.article`
+const StyledLink = styled(Link)`
   width: 80%;
   padding: 0.3rem;
   font-size: 1.2rem;

@@ -1,6 +1,6 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
-import Layout from "../components/Layout/Layout";
+import Footer from "../components/Footer/Footer";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -9,9 +9,8 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Lecker Map</title>
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
+      <Footer />
     </>
   );
 }
