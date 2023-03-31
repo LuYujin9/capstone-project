@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import ArrowBackIcon from "../../public/icons/Chevron_left";
-import LoginIcon from "../../public/icons/login";
 import { useRouter } from "next/router";
 
 export default function Heading({
@@ -9,10 +8,6 @@ export default function Heading({
   isHideBackButton,
 }) {
   const router = useRouter();
-
-  /* if (!router.isReady) {
-    return <p>loading</p>;
-  } */
 
   function handleGoBackPage() {
     router.push(previousLevelUrl);
@@ -27,10 +22,7 @@ export default function Heading({
       >
         <ArrowBackIcon color={`var(--red-vine-color)`} />
       </StyledButton>
-      <h1>{children}</h1>
-      <StyledButton type="button" aria-label="log in" isShowButton={true}>
-        <LoginIcon color={`var(--red-vine-color)`} />
-      </StyledButton>
+      <StyledH1>{children}</StyledH1>
     </StyledHeader>
   );
 }
@@ -43,6 +35,10 @@ const StyledButton = styled.button`
   ${({ isHideBackButton }) => (isHideBackButton ? "visibility: hidden" : null)}
 `;
 
+const StyledH1 = styled.h1`
+  width: 70vw;
+`;
+
 const StyledHeader = styled.header`
   width: 100vw;
   height: 4rem;
@@ -53,7 +49,6 @@ const StyledHeader = styled.header`
   top: 0;
   z-index: 1;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   background-color: var(--rosehip-color);

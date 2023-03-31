@@ -12,12 +12,12 @@ test("render the time and comment", () => {
   render(<FoodCard food={testFood} />);
 
   const name = screen.getByText(/Winterlicher Blattsalat/i);
-  const pirce = screen.getByText(/9.6/i);
+  const price = screen.getByText(/9.6/i);
   const description = screen.getByText(
     /Tomate, BlumenKohl, Karotte, Radieschen, Nüsse/i
   );
 
   expect(name).toBeInTheDocument();
-  expect(pirce).toBeInTheDocument();
+  expect(price).toBeInTheDocument();
   expect(description).toBeInTheDocument();
 });

@@ -80,4 +80,5 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   width: 94%;
   list-style-type: none;
+  margin: 0;
 `;

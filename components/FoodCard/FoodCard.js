@@ -4,7 +4,7 @@ export default function MenuCard({ food }) {
   return (
     <>
       <StyledFoodCard>
-        <p>{food.name}</p>
+        <StyledHeading>{food.name}</StyledHeading>
         <StyledParagraph>{food.description}</StyledParagraph>
         <Price>{food.price}€</Price>
       </StyledFoodCard>
@@ -13,16 +13,18 @@ export default function MenuCard({ food }) {
 }
 
 const StyledFoodCard = styled.article`
-width:100%;
-margin:0.5rem;
-padding:0.3rem;
+  width: 100%;
+  margin: 0.5rem;
+  padding: 0.3rem;
 
-display:flex;
-flex-direction:column;
+  display: flex;
+  flex-direction: column;
 
+  border-radius: 10px;
+`;
 
-border-radius:10px;
-background-color= white;
+const StyledHeading = styled.p`
+  font-size: 18px;
 `;
 
 const StyledParagraph = styled.p`
