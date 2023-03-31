@@ -8,7 +8,9 @@ import { useState, useEffect } from "react";
 
 export default function Menu() {
   const [index, setIndex] = useState(0);
-  const [FoodsInCurrentPage, setFoodsInCurrentPage] = useState([]);
+  const [FoodsInCurrentPage, setFoodsInCurrentPage] = useState([
+    { name: "Noch keine Speisekarte" },
+  ]);
 
   const router = useRouter();
   if (!router.isReady) {
@@ -19,8 +21,10 @@ export default function Menu() {
   const restaurant = restaurants.find((restaurant) => restaurant.id === id);
   const foods = restaurant.foods;
 
-  //Problem is here. 5 foods show in one page, it can't work because it re-render too many times.
-  setFoodsInCurrentPage(foods.slice(index, index + 5));
+  //Problem is here.
+  useEffect(() => {
+    setFoodsInCurrentPage(foods.slice(index, index + 5));
+  }, [index]);
 
   function handleToNextPage() {
     index < foods.length - 5 ? setIndex(index + 5) : null;
