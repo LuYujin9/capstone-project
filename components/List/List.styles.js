@@ -11,8 +11,6 @@ export const StyledList = styled.ul`
 
   display: grid;
 
-  background-color: var(--linen-color);
-
   @media only screen and (max-width: 799px) {
     gird: 80vw;
   }
