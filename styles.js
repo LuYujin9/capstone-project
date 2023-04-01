@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Link from "next/link";
 
 export default createGlobalStyle`
   *,
@@ -11,7 +12,7 @@ export default createGlobalStyle`
     font-family: system-ui;
   }
   
-  h1{
+  h1 {
     font-size:1.5rem;
   }
 
@@ -19,11 +20,16 @@ export default createGlobalStyle`
      padding: 0;
   }
 
-  p{
+  p {
     margin:5px;
   }
+  
+  a{
+     text-decoration: none;
+     color:black;
+  }
 
-  :root{
+  :root {
     --red-vine-color:#BA494B;
     --rosehip-color:#E5CBC1;
     --antique-color:#F0E7DA;

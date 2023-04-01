@@ -12,8 +12,8 @@ export default function Card({ restaurants }) {
   return (
     <StyledList>
       {restaurants.map((restaurant) => (
-        <StyledLi key={restaurant.id}>
-          <Link href={`/restaurants/${restaurant.id}`}>
+        <Link href={`/restaurants/${restaurant.id}`} key={restaurant.id}>
+          <StyledLi>
             <StyledPicture>
               <StyledImage
                 alt="a photo of the restaurant"
@@ -23,16 +23,16 @@ export default function Card({ restaurants }) {
                 priority
               />
             </StyledPicture>
-          </Link>
-          <StyledName>{restaurant.name}</StyledName>
-          <p>{restaurant.cuisine}</p>
-          <StyledRating>
-            {restaurant.rating}{" "}
-            <span role="img" aria-label="star">
-              ⭐️
-            </span>
-          </StyledRating>
-        </StyledLi>
+            <StyledName>{restaurant.name}</StyledName>
+            <p>{restaurant.cuisine}</p>
+            <StyledRating>
+              {restaurant.rating}{" "}
+              <span role="img" aria-label="star">
+                ⭐️
+              </span>
+            </StyledRating>
+          </StyledLi>
+        </Link>
       ))}
     </StyledList>
   );

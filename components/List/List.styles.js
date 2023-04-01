@@ -37,6 +37,7 @@ export const StyledLi = styled.li`
 export const StyledName = styled.p`
   width: 100%;
   font-size: 1.2rem;
+  text-decoration: none;
 `;
 
 export const StyledRating = styled.p`

@@ -37,6 +37,10 @@ const StyledButton = styled.button`
 
 const HeadingLineOne = styled.h1`
   width: 70vw;
+  position: absolute;
+left 15vw;
+  text-align: center;
+  z-index: -1;
 `;
 
 const StyledHeader = styled.header`
