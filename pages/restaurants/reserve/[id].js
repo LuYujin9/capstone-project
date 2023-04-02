@@ -8,7 +8,7 @@ import AvailableSeatsFilter from "../../../components/AvailableSeatsFilter/Avail
 import { useState } from "react";
 import { useEffect } from "react";
 
-export default function Reseve({ handleReserve }) {
+export default function Reseve({ handleReserve, reserveMessege }) {
   const [remainingSeats, setRemainingSeats] = useState();
   const [timeslot, setTimeslot] = useState();
   //const [reserve, setReserv] = useState();
@@ -53,14 +53,16 @@ export default function Reseve({ handleReserve }) {
           : `Es gibt noch ${remainingSeats}
         ${remainingSeats === 1 ? "Platz" : "Plätze"}.`}
       </p>
-
-      <ReserveForm
-        restaurant={restaurant}
-        remainingSeats={remainingSeats}
-        timeslot={timeslot}
-        handleReserve={handleReserve}
-        id={id}
-      />
+      {timeslot && (
+        <ReserveForm
+          restaurant={restaurant}
+          remainingSeats={remainingSeats}
+          timeslot={timeslot}
+          handleReserve={handleReserve}
+          id={id}
+        />
+      )}
+      <p>{reserveMessege}</p>
     </>
   );
 }

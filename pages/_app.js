@@ -3,6 +3,7 @@ import Head from "next/head";
 import Footer from "../components/Footer/Footer";
 import { useImmerLocalStorageState } from "../lib/useImmerLocalStorageState";
 import { uid } from "uid";
+import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [userInfos, updateUserInfos] = useImmerLocalStorageState(
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }) {
       defaultValue: [],
     }
   );
+  const [reserveMessege, setReservMessege] = useState("");
 
   function handleReserve(reserveData, id, timeslot) {
     // console.log("timeslot", timeslot);
@@ -57,11 +59,15 @@ export default function App({ Component, pageProps }) {
         },
       ];
     });
-
+    setReservMessege(
+      `Sie haben schon ${number_of_guests} ${
+        number_of_guests == 1 ? "Seat" : "Seats"
+      } um ${timeslot} erfolgreich reservert.`
+    );
     /*  const newUserInfo = setReserv({ id: id, timeslot: timeslot, ...data });
     console.log(reserve); */
   }
-  console.log(userInfos);
+  //console.log(userInfos);
   return (
     <>
       <GlobalStyle />
@@ -72,6 +78,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         handleReserve={handleReserve}
         userInfos={userInfos}
+        reserveMessege={reserveMessege}
       />
       <Footer />
     </>
