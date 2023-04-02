@@ -53,15 +53,14 @@ export default function Reseve({ handleReserve }) {
           : `Es gibt noch ${remainingSeats}
         ${remainingSeats === 1 ? "Platz" : "Plätze"}.`}
       </p>
-      {timeslot && (
-        <ReserveForm
-          restaurant={restaurant}
-          remainingSeats={remainingSeats}
-          timeslot={timeslot}
-          handleReserve={handleReserve}
-          id={id}
-        />
-      )}
+
+      <ReserveForm
+        restaurant={restaurant}
+        remainingSeats={remainingSeats}
+        timeslot={timeslot}
+        handleReserve={handleReserve}
+        id={id}
+      />
     </>
   );
 }
