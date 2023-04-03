@@ -56,5 +56,5 @@ const StyledHeader = styled.header`
   align-items: center;
 
   background-color: var(--rosehip-color);
-  color: #ba494b;
+  color: var(--red-vine-color);
 `;

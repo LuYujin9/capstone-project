@@ -1,24 +1,22 @@
 import styled from "styled-components";
-import { restaurants } from "../../lib/data";
-import AvailableSeatsFilter from "../AvailableSeatsFilter/AvailableSeatsFilter";
-import { useState } from "react";
 
 export default function ReserveForm({
   remainingSeats,
   handleReserve,
-  id,
-  timeslot,
+  restaurant,
+  date,
+  time,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
-    handleReserve(reserveData, id, timeslot);
+    handleReserve(reserveData, restaurant, date, time);
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <label htmlFor="number_of_guests">Seats</label>
+      <label htmlFor="number_of_guests">Personen:</label>
       <input
         type="number"
         name="number_of_guests"
@@ -33,7 +31,9 @@ export default function ReserveForm({
       <input type="email" name="email" id="email"></input>
       <label htmlFor="phone">Telefonnummber:</label>
       <input type="number" name="phone" id="phone" required></input>
-      <button type="submit"> resevieren jetzt </button>
+      <button type="submit" aria-label="button to reserve">
+        Resevieren
+      </button>
     </StyledForm>
   );
 }

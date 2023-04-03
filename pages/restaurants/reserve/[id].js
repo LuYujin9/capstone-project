@@ -2,41 +2,31 @@ import { restaurants } from "../../../lib/data.js";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
-import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 import ReserveForm from "../../../components/ReserveForm/ReserveForm.js";
 import AvailableSeatsFilter from "../../../components/AvailableSeatsFilter/AvailableSeatsFilter";
 import { useState } from "react";
-import { useEffect } from "react";
 
-export default function Reseve({ handleReserve, reserveMessege }) {
+export default function Reseve({ handleReserve }) {
   const [remainingSeats, setRemainingSeats] = useState();
-  const [timeslot, setTimeslot] = useState();
-  //const [reserve, setReserv] = useState();
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
 
   const router = useRouter();
-
   if (!router.isReady) return;
   const { id } = router.query;
   const restaurant = restaurants.find((restaurant) => restaurant.id === id);
-  // console.log(restaurant);
-  function searchRemainingSeats(timeslotForSearch) {
+
+  function searchRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(
-      (info) => info.timeslot === timeslotForSearch
+      (info) =>
+        info.date === dataForSearch.date && info.time === dataForSearch.time
     );
     setRemainingSeats(
       pairingInfo ? pairingInfo.remainingSeats : restaurant.maxSeats
     );
-
-    console.log("timeslotForSearch", timeslotForSearch);
-    setTimeslot(timeslotForSearch);
-    console.log("timeslot", timeslot);
+    setDate(dataForSearch.date);
+    setTime(dataForSearch.time);
   }
-
-  /*   function handleReserve(data, id, timeslot) {
-    console.log("timeslot", timeslot);
-    setReserv({ id: id, timeslot: timeslot, ...data });
-    console.log(reserve);
-  } */
 
   return (
     <>
@@ -53,16 +43,15 @@ export default function Reseve({ handleReserve, reserveMessege }) {
           : `Es gibt noch ${remainingSeats}
         ${remainingSeats === 1 ? "Platz" : "Plätze"}.`}
       </p>
-      {timeslot && (
+      {date && time && (
         <ReserveForm
           restaurant={restaurant}
           remainingSeats={remainingSeats}
-          timeslot={timeslot}
+          date={date}
+          time={time}
           handleReserve={handleReserve}
-          id={id}
         />
       )}
-      <p>{reserveMessege}</p>
     </>
   );
 }

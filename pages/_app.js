@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import { useImmerLocalStorageState } from "../lib/useImmerLocalStorageState";
 import { uid } from "uid";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
   const [userInfos, updateUserInfos] = useImmerLocalStorageState(
@@ -12,18 +13,20 @@ export default function App({ Component, pageProps }) {
       defaultValue: [],
     }
   );
-  const [reserveMessege, setReservMessege] = useState("");
+  const [reserveMessege, setReservMessege] = useState();
 
-  function handleReserve(reserveData, id, timeslot) {
-    // console.log("timeslot", timeslot);
+  const router = useRouter();
+
+  function handleReserve(reserveData, restaurant, date, time) {
     const { number_of_guests, name, email, phone } = reserveData;
-    const info = userInfos.find((info) => info.id === id);
+    const info = userInfos.find((info) => info.id === restaurant.id);
     updateUserInfos(() => {
       if (info) {
         return userInfos.map((info) =>
-          info.id === id
+          info.id === restaurant.id
             ? {
-                id: id,
+                id: restaurant.id,
+                name_of_restaurant: restaurant.name,
                 isReserved: true,
                 reserves: [
                   ...info.reserves,
@@ -33,7 +36,8 @@ export default function App({ Component, pageProps }) {
                     email: email,
                     number_of_guests: number_of_guests,
                     phone: phone,
-                    timeslot: timeslot,
+                    date: date,
+                    time: time,
                   },
                 ],
               }
@@ -44,7 +48,8 @@ export default function App({ Component, pageProps }) {
       return [
         ...userInfos,
         {
-          id: id,
+          id: restaurant.id,
+          name_of_restaurant: restaurant.name,
           isReserved: true,
           reserves: [
             {
@@ -53,21 +58,21 @@ export default function App({ Component, pageProps }) {
               email: "",
               number_of_guests: number_of_guests,
               phone: phone,
-              timeslot: timeslot,
+              date: date,
+              time: time,
             },
           ],
         },
       ];
     });
     setReservMessege(
-      `Sie haben schon ${number_of_guests} ${
-        number_of_guests == 1 ? "Seat" : "Seats"
-      } um ${timeslot} erfolgreich reservert.`
+      `Sie haben erfolgereich am ${date} um ${time} Uhr ${number_of_guests}  ${
+        number_of_guests == 1 ? "Platz" : "Plätze"
+      } in ${restaurant.name} reservert.`
     );
-    /*  const newUserInfo = setReserv({ id: id, timeslot: timeslot, ...data });
-    console.log(reserve); */
+    router.push("/restaurants/reserve/reserveMessage");
   }
-  //console.log(userInfos);
+
   return (
     <>
       <GlobalStyle />
@@ -84,15 +89,3 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
-/* 
-{id: "1",
-isFavorite: true;
-isReserved: true;
-reserves: [
-  {email: "",
-    name: "Jens Göldner",
-    number_of_guests: "5",
-    phone: "015255739365",
-    timeslot: "2023-04-09 11:00 Uhr",
-  },
-]}; */

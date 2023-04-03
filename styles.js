@@ -30,7 +30,7 @@ export default createGlobalStyle`
   }
 
   :root {
-    --red-vine-color:#BA494B;
+    --red-vine-color:#9C4041;
     --rosehip-color:#E5CBC1;
     --antique-color:#F0E7DA;
     --rain-storm-color:#46B4B3;
