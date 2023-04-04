@@ -1,19 +1,19 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-export default function LinkToReserveButton() {
+export default function ToReservePageButton() {
   const router = useRouter();
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
 
-  function handleGoReservePage() {
+  function handleToReservePage() {
     router.push(`/restaurants/reserve/${id}`);
   }
   return (
     <StyledButton
       type="button"
       aria-label="reserve"
-      onClick={handleGoReservePage}
+      onClick={handleToReservePage}
     >
       Reservieren
     </StyledButton>

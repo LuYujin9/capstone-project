@@ -16,7 +16,7 @@ export default function Reseve({ handleReserve }) {
   const { id } = router.query;
   const restaurant = restaurants.find((restaurant) => restaurant.id === id);
 
-  function searchRemainingSeats(dataForSearch) {
+  function getRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(
       (info) =>
         info.date === dataForSearch.date && info.time === dataForSearch.time
@@ -36,7 +36,7 @@ export default function Reseve({ handleReserve }) {
       <StyledSection>
         <RemainingSeatsFilter
           restaurant={restaurant}
-          searchRemainingSeats={searchRemainingSeats}
+          getRemainingSeats={getRemainingSeats}
         />
         <h2>
           {!remainingSeats

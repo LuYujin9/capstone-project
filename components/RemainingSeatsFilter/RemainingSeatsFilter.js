@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export default function RemainingSeatsFilter({ searchRemainingSeats }) {
+export default function RemainingSeatsFilter({ getRemainingSeats }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const dataForSearch = Object.fromEntries(formData);
-    searchRemainingSeats(dataForSearch);
+    getRemainingSeats(dataForSearch);
   }
 
   return (
@@ -43,7 +43,6 @@ const StyledForm = styled.form`
   border: 2px solid var(--red-vine-color);
   border-radius: 1rem;
 `;
-// box-shadow: 2px 2px 10px 3px var(--linen-color);
 
 const StyledLegend = styled.legend`
   text-align: center;
