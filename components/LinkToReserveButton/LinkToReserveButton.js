@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-export default function ReserveButton() {
+export default function LinkToReserveButton() {
   const router = useRouter();
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
@@ -10,26 +10,25 @@ export default function ReserveButton() {
     router.push(`/restaurants/reserve/${id}`);
   }
   return (
-    <StyledReserveButton
+    <StyledButton
       type="button"
       aria-label="reserve"
       onClick={handleGoReservePage}
     >
-      Direkt Reservieren
-    </StyledReserveButton>
+      Reservieren
+    </StyledButton>
   );
 }
 
-const StyledReserveButton = styled.button`
+const StyledButton = styled.button`
   padding: 0.5rem;
 
   position: fixed;
-  right: 0;
-  bottom: 3rem;
+  right: 0.3rem;
+  bottom: 3.3rem;
 
+  border-radius: 15px;
   border: none;
+  color: var(--white-color);
   background-color: var(--red-vine-color);
-  color: var(--linen-color);
-  border-radius: 1rem;
-  box-shadow: 2px 2px 10px 3px var(--linen-color);
 `;

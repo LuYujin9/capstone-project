@@ -16,6 +16,7 @@ export default function ReserveForm({
 
   return (
     <StyledForm onSubmit={handleSubmit}>
+      <StyledLegend>Reservieren die Plätze</StyledLegend>
       <label htmlFor="number_of_guests">Personen:</label>
       <input
         type="number"
@@ -31,14 +32,41 @@ export default function ReserveForm({
       <input type="email" name="email" id="email"></input>
       <label htmlFor="phone">Telefonnummber:</label>
       <input type="number" name="phone" id="phone" required></input>
-      <button type="submit" aria-label="button to reserve">
+      <StyledSubmitButton type="submit" aria-label="button to reserve">
         Resevieren
-      </button>
+      </StyledSubmitButton>
     </StyledForm>
   );
 }
 
 const StyledForm = styled.form`
+  width: 85%;
+  padding: 0.5rem 5%;
+
   display: flex;
   flex-direction: column;
+  gap: 0.1rem;
+
+  border-radius: 1rem;
+  border: 2px solid var(--red-vine-color);
+`;
+
+const StyledLegend = styled.legend`
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+`;
+
+const StyledSubmitButton = styled.button`
+  width: 6rem;
+  padding: 0.3rem;
+  margin: 1rem;
+
+  align-self: center;
+
+  border-radius: 15px;
+  border: none;
+  color: var(--white-color);
+  background-color: var(--red-vine-color);
+  box-shadow: 2px 2px 5px 1px var(--linen-color);
 `;
