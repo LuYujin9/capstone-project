@@ -9,8 +9,8 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <StyledLegend>Suchen verfügbare Plätze</StyledLegend>
+    <StyledForm aria-labelledby="formHeader" onSubmit={handleSubmit}>
+      <StyledLegend id="formHeader">Suchen verfügbare Plätze</StyledLegend>
       <label htmlFor="date">Tag:</label>
       <input type="date" name="date" id="date" required></input>
       <label htmlFor="time">Zeit:</label>

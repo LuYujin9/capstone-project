@@ -1,11 +1,8 @@
-import { useRouter } from "next/router";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
-export default function ToReservePageButton() {
+export default function ToReservePageButton({ id }) {
   const router = useRouter();
-  if (!router.isReady) return <h2>loading</h2>;
-  const { id } = router.query;
-
   function handleToReservePage() {
     router.push(`/restaurants/reserve/${id}`);
   }

@@ -11,12 +11,13 @@ export default function ReserveForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
+    console.log(reserveData);
     handleReserve(reserveData, restaurant, date, time);
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <StyledLegend>Reservieren die Plätze</StyledLegend>
+    <StyledForm aria-labelledby="reserveFormHeader" onSubmit={handleSubmit}>
+      <StyledLegend id="reserveFormHeader">Reservieren die Plätze</StyledLegend>
       <label htmlFor="number_of_guests">Personen:</label>
       <input
         type="number"

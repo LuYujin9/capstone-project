@@ -29,7 +29,7 @@ export default function Details() {
         <StyledParagraph>{restaurant.description}</StyledParagraph>
         <CommentsList comments={comments} />
       </StyledSection>
-      <ToReservePageButton />
+      <ToReservePageButton id={id} />
     </>
   );
 }

@@ -28,7 +28,7 @@ export default function Menu() {
           )}
         </StyledList>
       </StyledSection>
-      <ToReservePageButton />
+      <ToReservePageButton id={id} />
     </>
   );
 }
