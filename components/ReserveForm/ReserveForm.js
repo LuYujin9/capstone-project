@@ -11,7 +11,6 @@ export default function ReserveForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
-    console.log(reserveData);
     handleReserve(reserveData, restaurant, date, time);
   }
 
@@ -34,7 +33,7 @@ export default function ReserveForm({
       <label htmlFor="phone">Telefonnummber:</label>
       <input type="number" name="phone" id="phone" required></input>
       <StyledSubmitButton type="submit" aria-label="button to reserve">
-        Resevieren
+        Reservieren
       </StyledSubmitButton>
     </StyledForm>
   );

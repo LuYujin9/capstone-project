@@ -10,7 +10,7 @@ export default function Menu() {
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
 
-  const restaurant = restaurants.find((restaurant) => restaurant.id === id);
+  const restaurant = restaurants?.find((restaurant) => restaurant.id === id);
   const foods = restaurant.foods;
 
   return (

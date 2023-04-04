@@ -3,14 +3,12 @@ import { useRouter } from "next/router";
 
 export default function ToReservePageButton({ id }) {
   const router = useRouter();
-  function handleToReservePage() {
-    router.push(`/restaurants/reserve/${id}`);
-  }
+
   return (
     <StyledButton
       type="button"
       aria-label="reserve"
-      onClick={handleToReservePage}
+      onClick={() => router.push(`/restaurants/reserve/${id}`)}
     >
       Reservieren
     </StyledButton>
