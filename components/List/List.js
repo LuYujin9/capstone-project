@@ -8,7 +8,7 @@ import {
   CardContainer,
 } from "./List.styles";
 import Link from "next/link";
-import BookmarkButton from "../BookMarkButton/BookMarkButton";
+import BookmarkButton from "../BookmarkButton/BookmarkButton";
 
 export default function List({ restaurants, onToggleBookmark, userInfos }) {
   return (
