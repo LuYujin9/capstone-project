@@ -8,7 +8,7 @@ import Heading from "../../components/Heading/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
 import BookmarkButton from "../../components/BookMarkButton/BookMarkButton.js";
 
-export default function Details({ onToggleBookmark }) {
+export default function Details({ onToggleBookmark, userInfos }) {
   const router = useRouter();
 
   if (!router.isReady) {
@@ -30,6 +30,7 @@ export default function Details({ onToggleBookmark }) {
           onToggleBookmark={onToggleBookmark}
           id={id}
           restaurant={restaurant}
+          userInfos={userInfos}
         />
         <Album photos={restaurant.photos} />
         <StyledParagraph>{restaurant.description}</StyledParagraph>

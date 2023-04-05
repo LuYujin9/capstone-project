@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }) {
     }
   );
   const [reserveMessege, setReservMessege] = useState();
-
   const router = useRouter();
 
   function handleReserve(reserveData, restaurant, date, time) {
@@ -116,7 +115,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         handleReserve={handleReserve}
-        userData={userInfos}
+        userInfos={userInfos}
         reserveMessege={reserveMessege}
         onToggleBookmark={handleToggleBookmark}
       />

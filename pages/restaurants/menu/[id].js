@@ -6,7 +6,7 @@ import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
 import BookmarkButton from "../../../components/BookMarkButton/BookMarkButton.js";
 
-export default function Menu({ onToggleBookmark }) {
+export default function Menu({ onToggleBookmark, userInfos }) {
   const router = useRouter();
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
@@ -26,6 +26,7 @@ export default function Menu({ onToggleBookmark }) {
             onToggleBookmark={onToggleBookmark}
             id={id}
             restaurant={restaurant}
+            userInfos={userInfos}
           />
           <StyledList role="list">
             {foods.length === 0 ? (
@@ -71,11 +72,6 @@ const StyledSection = styled.section`
     width: 640px;
   }
 `;
-/* 
-display: flex;
-flex-direction: column;
-align-items: start;
-justify-content: center; */
 
 export const StyledContainer = styled.div`
   position: relative;

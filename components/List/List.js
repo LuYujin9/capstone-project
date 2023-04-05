@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import BookmarkButton from "../BookMarkButton/BookMarkButton";
 
-export default function Card({ restaurants, onToggleBookmark }) {
+export default function Card({ restaurants, onToggleBookmark, userInfos }) {
   return (
     <StyledList>
       {restaurants.map((restaurant) => (
@@ -19,6 +19,7 @@ export default function Card({ restaurants, onToggleBookmark }) {
             onToggleBookmark={onToggleBookmark}
             id={restaurant.id}
             restaurant={restaurant}
+            userInfos={userInfos}
           />
           <Link href={`/restaurants/${restaurant.id}`}>
             <StyledLi>

@@ -2,13 +2,19 @@ import styled from "styled-components";
 import BookmarkIcon from "../../public/icons/bookmark";
 import { useState } from "react";
 
-export default function BookmarkButton({ id, onToggleBookmark, restaurant }) {
-  const [buttonColor, setButtonColor] = useState("none");
+export default function BookmarkButton({
+  id,
+  onToggleBookmark,
+  restaurant,
+  userInfos,
+}) {
+  const matchedInfo = userInfos?.find((info) => info.id === id);
+  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  const buttonColor = isFavorite === true ? "#9C4041" : "none";
   return (
     <StyledButton
       aria-label="bookmark"
       onClick={() => {
-        setButtonColor(buttonColor === "#9C4041" ? "none" : "#9C4041");
         onToggleBookmark(id, restaurant);
       }}
     >

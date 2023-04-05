@@ -3,11 +3,15 @@ import { restaurants } from "../../lib/data";
 
 import Heading from "../../components/Heading/Heading";
 
-export default function Restaurants({ onToggleBookmark }) {
+export default function Restaurants({ onToggleBookmark, userInfos }) {
   return (
     <>
       <Heading previousLevelUrl="/">Restaurants</Heading>
-      <List restaurants={restaurants} onToggleBookmark={onToggleBookmark} />
+      <List
+        restaurants={restaurants}
+        onToggleBookmark={onToggleBookmark}
+        userInfos={userInfos}
+      />
     </>
   );
 }
