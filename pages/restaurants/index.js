@@ -5,7 +5,7 @@ import Heading from "../../components/Heading/Heading";
 export default function Restaurants({ onToggleBookmark, userInfos }) {
   return (
     <>
-      <Heading previousLevelUrl="/">Restaurants</Heading>
+      <Heading>Restaurants</Heading>
       <List
         restaurants={restaurants}
         onToggleBookmark={onToggleBookmark}

@@ -30,9 +30,7 @@ export default function Reseve({ onReserve }) {
 
   return (
     <>
-      <Heading previousLevelUrl={`/restaurants/${id}`}>
-        {restaurant.name}
-      </Heading>
+      <Heading>{restaurant.name}</Heading>
       <StyledContainer>
         <RemainingSeatsFilter
           restaurant={restaurant}

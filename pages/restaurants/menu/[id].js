@@ -17,9 +17,7 @@ export default function Menu({ onToggleBookmark, userInfos }) {
 
   return (
     <>
-      <Heading previousLevelUrl={`/restaurants/${id}`}>
-        {restaurant.name}
-      </Heading>
+      <Heading>{restaurant.name}</Heading>
       <BackgroundPhoto />
       <StyledContainer>
         <StyledSection>

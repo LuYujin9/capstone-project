@@ -21,7 +21,7 @@ export default function Details({ onToggleBookmark, userInfos }) {
 
   return (
     <>
-      <Heading previousLevelUrl="/restaurants">{restaurant.name}</Heading>
+      <Heading>{restaurant.name}</Heading>
       <StyledContainer>
         <StyledLink href={`/restaurants/menu/${id}`}>
           Zur Speisekarte

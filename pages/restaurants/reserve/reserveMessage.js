@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function reserveMessage({ reserveMessege }) {
   return (
     <>
-      <Heading previousLevelUrl="/">Reservieren</Heading>
+      <Heading>Reservieren</Heading>
       <StyledParagraph>{reserveMessege}</StyledParagraph>
     </>
   );
