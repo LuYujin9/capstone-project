@@ -65,7 +65,7 @@ const StyledLink = styled(Link)`
   border-radius: 5px;
 
   &:hover {
-    background-color: var(--red-vine-color);
+    background-color: var(--antique-color);
   }
 `;
 
