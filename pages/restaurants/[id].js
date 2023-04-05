@@ -5,7 +5,7 @@ import CommentsList from "../../components/CommentsList/CommentsList";
 import Album from "../../components/Album/Album";
 import Link from "next/link.js";
 import Heading from "../../components/Heading/Heading";
-import ToReservePageButton from "../../components/ToReservePageButton/ToReservePageButton";
+import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
 
 export default function Details() {
   const router = useRouter();
@@ -29,7 +29,7 @@ export default function Details() {
         <StyledParagraph>{restaurant.description}</StyledParagraph>
         <CommentsList comments={comments} />
       </StyledSection>
-      <ToReservePageButton id={id} />
+      <ToReservePageLink id={id} />
     </>
   );
 }

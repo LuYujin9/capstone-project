@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
 import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
-import ToReservePageButton from "../../../components/ToReservePageButton/ToReservePageButton";
+import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
 
 export default function Menu() {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function Menu() {
           )}
         </StyledList>
       </StyledSection>
-      <ToReservePageButton id={id} />
+      <ToReservePageLink id={id} />
     </>
   );
 }
