@@ -6,7 +6,7 @@ import Album from "../../components/Album/Album";
 import Link from "next/link.js";
 import Heading from "../../components/Heading/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
-import BookmarkButton from "../../components/BookMarkButton/BookMarkButton.js";
+import BookmarkButton from "../../components/BookmarkButton/BookmarkButton.js";
 
 export default function Details({ onToggleBookmark, userInfos }) {
   const router = useRouter();

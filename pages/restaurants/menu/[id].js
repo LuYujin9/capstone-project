@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
 import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
-import BookmarkButton from "../../../components/BookMarkButton/BookMarkButton.js";
+import BookmarkButton from "../../../components/BookmarkButton/BookmarkButton.js";
 import { StyledContainer } from "../../../components/styles/styles";
 
 export default function Menu({ onToggleBookmark, userInfos }) {
