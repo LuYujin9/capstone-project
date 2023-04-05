@@ -22,7 +22,7 @@ export default function Details({ onToggleBookmark, userInfos }) {
   return (
     <>
       <Heading previousLevelUrl="/restaurants">{restaurant.name}</Heading>
-      <StyledSection>
+      <StyledContainer>
         <StyledLink href={`/restaurants/menu/${id}`}>
           Zur Speisekarte
         </StyledLink>
@@ -35,13 +35,13 @@ export default function Details({ onToggleBookmark, userInfos }) {
         <Album photos={restaurant.photos} />
         <StyledParagraph>{restaurant.description}</StyledParagraph>
         <CommentsList comments={comments} />
-      </StyledSection>
+      </StyledContainer>
       <ToReservePageLink id={id} />
     </>
   );
 }
 
-const StyledSection = styled.section`
+const StyledContainer = styled.section`
   margin: 5rem auto;
   padding: 0;
 
@@ -56,14 +56,9 @@ const StyledSection = styled.section`
   }
   @media only screen and (min-width: 800px) {
     width: 640px;
-
     left: 0;
     right: 0;
   }
-`;
-export const StyledContainer = styled.div`
-  position: relative;
-  margin: auto;
 `;
 
 const StyledLink = styled(Link)`

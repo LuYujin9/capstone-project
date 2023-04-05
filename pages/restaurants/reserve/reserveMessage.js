@@ -11,7 +11,7 @@ export default function reserveMessage({ reserveMessege }) {
 }
 
 const StyledParagraph = styled.h2`
-  margin: 6rem 5%;
+  margin: 6rem 10%;
   width: 80%;
   font-size: 1.3rem;
   text-align: justify;

@@ -1,7 +1,7 @@
 import {
   StyledImage,
   StyledList,
-  StyledLi,
+  StyledListItem,
   StyledName,
   StyledRating,
   StyledPicture,
@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import BookmarkButton from "../BookMarkButton/BookMarkButton";
 
-export default function Card({ restaurants, onToggleBookmark, userInfos }) {
+export default function List({ restaurants, onToggleBookmark, userInfos }) {
   return (
     <StyledList>
       {restaurants.map((restaurant) => (
@@ -22,7 +22,7 @@ export default function Card({ restaurants, onToggleBookmark, userInfos }) {
             userInfos={userInfos}
           />
           <Link href={`/restaurants/${restaurant.id}`}>
-            <StyledLi>
+            <StyledListItem>
               <StyledName>{restaurant.name}</StyledName>
               <StyledPicture>
                 <StyledImage
@@ -40,7 +40,7 @@ export default function Card({ restaurants, onToggleBookmark, userInfos }) {
                   ⭐️
                 </span>
               </StyledRating>
-            </StyledLi>
+            </StyledListItem>
           </Link>
         </CardContainer>
       ))}

@@ -33,7 +33,7 @@ export default function Reseve({ handleReserve }) {
       <Heading previousLevelUrl={`/restaurants/${id}`}>
         {restaurant.name}
       </Heading>
-      <StyledSection>
+      <StyledContainer>
         <RemainingSeatsFilter
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
@@ -53,12 +53,12 @@ export default function Reseve({ handleReserve }) {
             handleReserve={handleReserve}
           />
         )}
-      </StyledSection>
+      </StyledContainer>
     </>
   );
 }
 
-const StyledSection = styled.section`
+const StyledContainer = styled.section`
   margin: 5rem auto;
   padding: 0;
 

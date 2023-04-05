@@ -5,6 +5,7 @@ import Heading from "../../../components/Heading/Heading";
 import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
 import BookmarkButton from "../../../components/BookMarkButton/BookMarkButton.js";
+import { StyledContainer } from "../../../components/styles/styles";
 
 export default function Menu({ onToggleBookmark, userInfos }) {
   const router = useRouter();
@@ -20,8 +21,8 @@ export default function Menu({ onToggleBookmark, userInfos }) {
         {restaurant.name}
       </Heading>
       <BackgroundPhoto />
-      <StyledSection>
-        <StyledContainer>
+      <StyledContainer>
+        <StyledSection>
           <BookmarkButton
             onToggleBookmark={onToggleBookmark}
             id={id}
@@ -35,8 +36,8 @@ export default function Menu({ onToggleBookmark, userInfos }) {
               foods.map((food) => <MenuListItem key={food.id} food={food} />)
             )}
           </StyledList>
-        </StyledContainer>
-      </StyledSection>
+        </StyledSection>
+      </StyledContainer>
       <ToReservePageLink id={id} />
     </>
   );
@@ -55,25 +56,13 @@ const BackgroundPhoto = styled.div`
   background-size: cover;
   background-position: center top;
 
-  opacity: 0.6;
+  opacity: 0.75;
   min-width: 100vw;
   min-height: 100vh;
   z-index: -1;
 `;
 
-const StyledSection = styled.section`
-  margin: 4rem auto;
-  padding: 0;
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-  }
-`;
-
-export const StyledContainer = styled.div`
+export const StyledSection = styled.section`
   position: relative;
   margin: auto;
 `;
