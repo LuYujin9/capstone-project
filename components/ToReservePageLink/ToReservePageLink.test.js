@@ -1,18 +1,8 @@
-import ToReservePageButton from "./ToReservePageButton";
+import ToReservePageLink from "./ToReservePageLink";
 import { render, screen } from "@testing-library/react";
 
-jest.mock("next/router", () => ({
-  useRouter() {
-    return {
-      push: jest.fn(),
-      asPath: "/",
-      isReady: true,
-    };
-  },
-}));
-
-test("renders the button", () => {
-  render(<ToReservePageButton id={1} />);
-  const button = screen.queryByRole("button");
-  expect(button).toBeInTheDocument();
+test("renders the link", () => {
+  render(<ToReservePageLink id={1} />);
+  const link = screen.queryByRole("link");
+  expect(link).toBeInTheDocument();
 });
