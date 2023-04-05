@@ -6,7 +6,7 @@ const Menu = ({ size = 24, color = "#f4f6f9" }) => (
     viewBox="0 0 24 24"
     fill="none"
     stroke={color}
-    strokeWidth="3"
+    strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
