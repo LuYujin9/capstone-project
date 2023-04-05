@@ -8,7 +8,7 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledPicture = styled.picture`
-  width: 94%;
+  width: 90%;
   margin: 0.5rem 0;
   height: 30vh;
   position: relative;

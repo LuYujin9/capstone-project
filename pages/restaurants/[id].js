@@ -5,6 +5,7 @@ import CommentsList from "../../components/CommentsList/CommentsList";
 import Album from "../../components/Album/Album";
 import Link from "next/link.js";
 import Heading from "../../components/Heading/Heading";
+import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
 
 export default function Details() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function Details() {
         <StyledParagraph>{restaurant.description}</StyledParagraph>
         <CommentsList comments={comments} />
       </StyledSection>
+      <ToReservePageLink id={id} />
     </>
   );
 }
@@ -57,13 +59,13 @@ const StyledLink = styled(Link)`
 
   text-align: center;
 
-  color: black;
+  color: var(--red-vine-color);
   text-decoration: none;
-  border: 2px solid black;
+  border: 2px solid var(--red-vine-color);
   border-radius: 5px;
 
   &:hover {
-    background-color: var(--red-vine-color);
+    background-color: var(--antique-color);
   }
 `;
 

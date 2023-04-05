@@ -26,7 +26,7 @@ export default function Album({ photos }) {
         onClick={handleToLastPhoto}
         photoIndex={photoIndex}
       >
-        <Chevron_left color="#BA494B" />
+        <Chevron_left color="#BA494B" size="30px" />
       </ToLastPhotoButton>
       <StyledPicture>
         <StyledImage
@@ -43,7 +43,7 @@ export default function Album({ photos }) {
         photoIndex={photoIndex}
         photos={photos}
       >
-        <Chevron_right color="#BA494B" />
+        <Chevron_right color="#BA494B" size="30px" />
       </ToNextPhotoButton>
     </StyledSection>
   );

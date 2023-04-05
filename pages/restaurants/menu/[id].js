@@ -3,13 +3,14 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
 import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
+import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
 
 export default function Menu() {
   const router = useRouter();
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
 
-  const restaurant = restaurants.find((restaurant) => restaurant.id === id);
+  const restaurant = restaurants?.find((restaurant) => restaurant.id === id);
   const foods = restaurant.foods;
 
   return (
@@ -27,6 +28,7 @@ export default function Menu() {
           )}
         </StyledList>
       </StyledSection>
+      <ToReservePageLink id={id} />
     </>
   );
 }

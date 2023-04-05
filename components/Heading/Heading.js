@@ -22,7 +22,7 @@ export default function Heading({
       >
         <ArrowBackIcon color={`var(--red-vine-color)`} />
       </StyledButton>
-      <NameOfPage>{children}</NameOfPage>
+      <HeadingLineOne>{children}</HeadingLineOne>
     </StyledHeader>
   );
 }
@@ -35,8 +35,12 @@ const StyledButton = styled.button`
   ${({ isHideBackButton }) => (isHideBackButton ? "visibility: hidden" : null)}
 `;
 
-const NameOfPage = styled.h1`
+const HeadingLineOne = styled.h1`
   width: 70vw;
+  position: absolute;
+left 15vw;
+  text-align: center;
+  z-index: -1;
 `;
 
 const StyledHeader = styled.header`
@@ -52,5 +56,5 @@ const StyledHeader = styled.header`
   align-items: center;
 
   background-color: var(--rosehip-color);
-  color: #ba494b;
+  color: var(--red-vine-color);
 `;
