@@ -56,3 +56,7 @@ export const StyledPicture = styled.picture`
   position: relative;
   display: block;
 `;
+
+export const CardContainer = styled.div`
+  position: relative;
+`;

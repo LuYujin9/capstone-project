@@ -4,8 +4,9 @@ import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
 import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
+import BookmarkButton from "../../../components/BookMarkButton/BookMarkButton.js";
 
-export default function Menu() {
+export default function Menu({ onToggleBookmark }) {
   const router = useRouter();
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
@@ -20,13 +21,20 @@ export default function Menu() {
       </Heading>
       <BackgroundPhoto />
       <StyledSection>
-        <StyledList role="list">
-          {foods.length === 0 ? (
-            <p>Tut mir leid! Es gibt noch keine Speisekarte.</p>
-          ) : (
-            foods.map((food) => <MenuListItem key={food.id} food={food} />)
-          )}
-        </StyledList>
+        <StyledContainer>
+          <BookmarkButton
+            onToggleBookmark={onToggleBookmark}
+            id={id}
+            restaurant={restaurant}
+          />
+          <StyledList role="list">
+            {foods.length === 0 ? (
+              <p>Tut mir leid! Es gibt noch keine Speisekarte.</p>
+            ) : (
+              foods.map((food) => <MenuListItem key={food.id} food={food} />)
+            )}
+          </StyledList>
+        </StyledContainer>
       </StyledSection>
       <ToReservePageLink id={id} />
     </>
@@ -56,17 +64,22 @@ const StyledSection = styled.section`
   margin: 4rem auto;
   padding: 0;
 
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-
   @media only screen and (max-width: 799px) {
     width: 100vw;
   }
   @media only screen and (min-width: 800px) {
     width: 640px;
   }
+`;
+/* 
+display: flex;
+flex-direction: column;
+align-items: start;
+justify-content: center; */
+
+export const StyledContainer = styled.div`
+  position: relative;
+  margin: auto;
 `;
 
 const StyledList = styled.ul`
