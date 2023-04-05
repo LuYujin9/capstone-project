@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import BookmarkIcon from "../../public/icons/bookmark";
-import { useState } from "react";
 
 export default function BookmarkButton({
   id,

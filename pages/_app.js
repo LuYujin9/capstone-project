@@ -114,7 +114,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Component
         {...pageProps}
-        handleReserve={handleReserve}
+        onReserve={handleReserve}
         userInfos={userInfos}
         reserveMessege={reserveMessege}
         onToggleBookmark={handleToggleBookmark}

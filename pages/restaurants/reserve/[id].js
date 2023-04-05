@@ -6,7 +6,7 @@ import ReserveForm from "../../../components/ReserveForm/ReserveForm.js";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/RemainingSeatsFilter";
 import { useState } from "react";
 
-export default function Reseve({ handleReserve }) {
+export default function Reseve({ onReserve }) {
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
@@ -50,7 +50,7 @@ export default function Reseve({ handleReserve }) {
             remainingSeats={remainingSeats}
             date={date}
             time={time}
-            handleReserve={handleReserve}
+            onReserve={onReserve}
           />
         )}
       </StyledContainer>
