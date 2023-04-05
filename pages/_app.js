@@ -27,6 +27,7 @@ export default function App({ Component, pageProps }) {
             ? {
                 id: restaurant.id,
                 name_of_restaurant: restaurant.name,
+                isFavorite: true,
                 isReserved: true,
                 reserves: [
                   ...info.reserves,
@@ -50,6 +51,7 @@ export default function App({ Component, pageProps }) {
         {
           id: restaurant.id,
           name_of_restaurant: restaurant.name,
+          isFavorite: true,
           isReserved: true,
           reserves: [
             {
