@@ -67,4 +67,5 @@ export const StyledSection = styled.section`
 
 const StyledList = styled.ul`
   width: 100%;
+  margin-bottom: 4rem;
 `;
