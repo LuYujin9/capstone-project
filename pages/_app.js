@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }) {
   const [reserveMessege, setReservMessege] = useState();
   const router = useRouter();
 
-  function handleReserve(reserveData, restaurant, date, time) {
+  function handleStoreReserveData(reserveData, restaurant, date, time) {
     const { number_of_guests, name, email, phone } = reserveData;
     const matchedInfo = userInfos.find((info) => info.id === restaurant.id);
 
@@ -113,7 +113,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Component
         {...pageProps}
-        onReserve={handleReserve}
+        onStoreReserveData={handleStoreReserveData}
         userInfos={userInfos}
         reserveMessege={reserveMessege}
         onToggleFavorite={handleToggleFavorite}
