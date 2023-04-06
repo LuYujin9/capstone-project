@@ -1,4 +1,8 @@
-const Heart = ({ size = 30, color = "#9C4041", fillColor = "none" }) => (
+const Heart = ({
+  size = 30,
+  color = "var(--red-vine-color)",
+  fillColor = "none",
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

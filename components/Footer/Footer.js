@@ -8,18 +8,10 @@ export default function Footer() {
     <footer>
       <StyledNav>
         <StyledLink href="/" aria-label="Link zum Homepage">
-          <HomePageIcon
-            alt="Homepage Icon"
-            color={`var(--red-vine-color)`}
-            size="30px"
-          />
+          <HomePageIcon alt="Homepage Icon" />
         </StyledLink>
         <StyledLink href="/my-data" aria-label="Link zum meine Daten">
-          <UserIcon
-            alt="Meschen Figur Icon"
-            color={`var(--red-vine-color)`}
-            size="30px"
-          />
+          <UserIcon alt="Meschen Figur Icon" />
         </StyledLink>
       </StyledNav>
     </footer>
