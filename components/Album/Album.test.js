@@ -24,7 +24,7 @@ test("doesn't render toNextPhotoButton when it shows the last photo", async () =
   const user = userEvent.setup();
   render(<Album photos={testPhotos} />);
   const toNextPhotoButton = screen.getByRole("button", {
-    name: /zum nächsten Foto/i,
+    name: "zum nächsten Foto",
   });
 
   await user.click(toNextPhotoButton);
