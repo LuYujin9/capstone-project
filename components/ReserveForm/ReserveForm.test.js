@@ -22,7 +22,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
   const mockReserve = jest.fn();
   render(
     <ReserveForm
-      onReserve={mockReserve}
+      onStoreReserveData={mockReserve}
       restaurant="restaurant"
       date="2023-04-08"
       time="11:00"
@@ -58,7 +58,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
 
 test("submit the form data if one of the three required input fields is left empty", async () => {
   const mockReserve = jest.fn();
-  render(<ReserveForm onReserve={mockReserve} />);
+  render(<ReserveForm onStoreReserveData={mockReserve} />);
   const user = userEvent.setup();
 
   const numberOfGuestsInput = screen.getByRole("spinbutton", {
