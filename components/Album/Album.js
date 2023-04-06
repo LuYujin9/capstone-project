@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChevronDownIcon from "../../public/icons/chevron_down";
+import ChevronLeftIcon from "../../public/icons/chevron_left";
 import ChevronRightIcon from "../../public/icons/chevron_right";
 import {
   StyledSection,
@@ -26,7 +26,7 @@ export default function Album({ photos }) {
         onClick={handleToLastPhoto}
         photoIndex={photoIndex}
       >
-        <ChevronDownIcon
+        <ChevronLeftIcon
           alt="Sparren Icon nach links"
           color="#BA494B"
           size="30px"
