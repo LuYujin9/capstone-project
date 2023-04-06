@@ -1,4 +1,4 @@
-const ChevronLeft = ({ size = 24, color = "var(--red-vine-color)" }) => (
+const ChevronLeft = ({ size = 24, color = "#9C4041" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
