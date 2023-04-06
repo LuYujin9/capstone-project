@@ -2,21 +2,14 @@ import styled from "styled-components";
 import ArrowBackIcon from "../../public/icons/Chevron_left";
 import { useRouter } from "next/router";
 
-export default function Heading({
-  children,
-  previousLevelUrl,
-  isHideBackButton,
-}) {
+export default function Heading({ children, isHideBackButton }) {
   const router = useRouter();
 
-  function handleGoBackPage() {
-    router.push(previousLevelUrl);
-  }
   return (
     <StyledHeader>
       <StyledButton
         type="button"
-        onClick={handleGoBackPage}
+        onClick={() => router.back()}
         aria-label="go back to the last page"
         isHideBackButton={isHideBackButton}
       >

@@ -22,7 +22,7 @@ export const StyledList = styled.ul`
   }
 `;
 
-export const StyledLi = styled.li`
+export const StyledListItem = styled.li`
   margin: 0.5rem 0.5rem;
   padding: 2.5%;
   width: 95%;
@@ -36,6 +36,7 @@ export const StyledLi = styled.li`
 
 export const StyledName = styled.p`
   width: 100%;
+  margin-bottom: 0.6rem;
   font-size: 1.2rem;
   text-decoration: none;
 `;
@@ -55,4 +56,8 @@ export const StyledPicture = styled.picture`
 
   position: relative;
   display: block;
+`;
+
+export const CardContainer = styled.div`
+  position: relative;
 `;

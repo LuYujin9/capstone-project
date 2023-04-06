@@ -19,10 +19,10 @@ test("renders a form with the accessible name 'Reservieren die Plätze'", () => 
 });
 
 test("submit the form data when 'number_of_guests','name','phone' inputs are filled out", async () => {
-  const handleReserve = jest.fn();
+  const mockReserve = jest.fn();
   render(
     <ReserveForm
-      handleReserve={handleReserve}
+      onStoreReserveData={mockReserve}
       restaurant="restaurant"
       date="2023-04-08"
       time="11:00"
@@ -43,7 +43,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
   await user.type(phoneInput, "20192039183");
   await user.click(button);
 
-  expect(handleReserve).toHaveBeenCalledWith(
+  expect(mockReserve).toHaveBeenCalledWith(
     {
       number_of_guests: "5",
       name: "Jane",
@@ -57,8 +57,8 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
 });
 
 test("submit the form data if one of the three required input fields is left empty", async () => {
-  const handleReserve = jest.fn();
-  render(<ReserveForm handleReserve={handleReserve} />);
+  const mockReserve = jest.fn();
+  render(<ReserveForm onStoreReserveData={mockReserve} />);
   const user = userEvent.setup();
 
   const numberOfGuestsInput = screen.getByRole("spinbutton", {
@@ -71,5 +71,5 @@ test("submit the form data if one of the three required input fields is left emp
   await user.type(nameInput, "Jane");
   await user.click(button);
 
-  expect(handleReserve).not.toHaveBeenCalledWith();
+  expect(mockReserve).not.toHaveBeenCalledWith();
 });

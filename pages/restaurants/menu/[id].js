@@ -4,8 +4,10 @@ import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
 import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
+import BookmarkButton from "../../../components/BookmarkButton/BookmarkButton.js";
+import { StyledContainer } from "../../../components/styles/styles";
 
-export default function Menu() {
+export default function Menu({ onToggleFavorite, userInfos }) {
   const router = useRouter();
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
@@ -13,21 +15,30 @@ export default function Menu() {
   const restaurant = restaurants?.find((restaurant) => restaurant.id === id);
   const foods = restaurant.foods;
 
+  const matchedInfo = userInfos?.find((info) => info.id === id);
+  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  function handleToggleBookmark() {
+    onToggleFavorite(id, restaurant);
+  }
   return (
     <>
-      <Heading previousLevelUrl={`/restaurants/${id}`}>
-        {restaurant.name}
-      </Heading>
+      <Heading>{restaurant.name}</Heading>
       <BackgroundPhoto />
-      <StyledSection>
-        <StyledList role="list">
-          {foods.length === 0 ? (
-            <p>Tut mir leid! Es gibt noch keine Speisekarte.</p>
-          ) : (
-            foods.map((food) => <MenuListItem key={food.id} food={food} />)
-          )}
-        </StyledList>
-      </StyledSection>
+      <StyledContainer>
+        <StyledSection>
+          <BookmarkButton
+            onToggleBookmark={handleToggleBookmark}
+            isFavorite={isFavorite}
+          />
+          <StyledList role="list">
+            {foods.length === 0 ? (
+              <p>Tut mir leid! Es gibt noch keine Speisekarte.</p>
+            ) : (
+              foods.map((food) => <MenuListItem key={food.id} food={food} />)
+            )}
+          </StyledList>
+        </StyledSection>
+      </StyledContainer>
       <ToReservePageLink id={id} />
     </>
   );
@@ -46,29 +57,18 @@ const BackgroundPhoto = styled.div`
   background-size: cover;
   background-position: center top;
 
-  opacity: 0.6;
+  opacity: 0.75;
   min-width: 100vw;
   min-height: 100vh;
   z-index: -1;
 `;
 
-const StyledSection = styled.section`
-  margin: 4rem auto;
-  padding: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-  }
+export const StyledSection = styled.section`
+  position: relative;
+  margin: auto;
 `;
 
 const StyledList = styled.ul`
   width: 100%;
+  margin-bottom: 4.5rem;
 `;

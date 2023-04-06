@@ -1,38 +1,16 @@
-import {
-  StyledImage,
-  StyledList,
-  StyledLi,
-  StyledName,
-  StyledRating,
-  StyledPicture,
-} from "./List.styles";
-import Link from "next/link";
+import { StyledList } from "./List.styles";
+import ListCard from "./ListCard/ListCard";
 
-export default function Card({ restaurants }) {
+export default function List({ restaurants, onToggleFavorite, userInfos }) {
   return (
     <StyledList>
       {restaurants.map((restaurant) => (
-        <Link href={`/restaurants/${restaurant.id}`} key={restaurant.id}>
-          <StyledLi>
-            <StyledPicture>
-              <StyledImage
-                alt="a photo of the restaurant"
-                src={restaurant.photos[0]}
-                fill
-                sizes="(min-width: 768px) 100vw"
-                priority
-              />
-            </StyledPicture>
-            <StyledName>{restaurant.name}</StyledName>
-            <p>{restaurant.cuisine}</p>
-            <StyledRating>
-              {restaurant.rating}{" "}
-              <span role="img" aria-label="star">
-                ⭐️
-              </span>
-            </StyledRating>
-          </StyledLi>
-        </Link>
+        <ListCard
+          onToggleFavorite={onToggleFavorite}
+          userInfos={userInfos}
+          restaurant={restaurant}
+          key={restaurant.id}
+        />
       ))}
     </StyledList>
   );

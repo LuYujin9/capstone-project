@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function ReserveForm({
   remainingSeats,
-  handleReserve,
+  onStoreReserveData,
   restaurant,
   date,
   time,
@@ -11,7 +11,7 @@ export default function ReserveForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
-    handleReserve(reserveData, restaurant, date, time);
+    onStoreReserveData(reserveData, restaurant, date, time);
   }
 
   return (
@@ -42,6 +42,7 @@ export default function ReserveForm({
 const StyledForm = styled.form`
   width: 85%;
   padding: 0.5rem 5%;
+  margin: auto;
 
   display: flex;
   flex-direction: column;

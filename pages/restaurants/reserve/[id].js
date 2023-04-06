@@ -6,7 +6,7 @@ import ReserveForm from "../../../components/ReserveForm/ReserveForm.js";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/RemainingSeatsFilter";
 import { useState } from "react";
 
-export default function Reseve({ handleReserve }) {
+export default function Reseve({ onStoreReserveData }) {
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
@@ -30,10 +30,8 @@ export default function Reseve({ handleReserve }) {
 
   return (
     <>
-      <Heading previousLevelUrl={`/restaurants/${id}`}>
-        {restaurant.name}
-      </Heading>
-      <StyledSection>
+      <Heading>{restaurant.name}</Heading>
+      <StyledContainer>
         <RemainingSeatsFilter
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
@@ -50,15 +48,15 @@ export default function Reseve({ handleReserve }) {
             remainingSeats={remainingSeats}
             date={date}
             time={time}
-            handleReserve={handleReserve}
+            onStoreReserveData={onStoreReserveData}
           />
         )}
-      </StyledSection>
+      </StyledContainer>
     </>
   );
 }
 
-const StyledSection = styled.section`
+const StyledContainer = styled.section`
   margin: 5rem auto;
   padding: 0;
 

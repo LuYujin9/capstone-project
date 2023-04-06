@@ -13,7 +13,7 @@ export default function ToReservePageLink({ id }) {
 }
 
 const StyledLink = styled(Link)`
-  padding: 0.5rem;
+  padding: 0.3rem 1rem;
 
   position: fixed;
   right: 0.3rem;

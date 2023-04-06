@@ -14,19 +14,20 @@ export default function App({ Component, pageProps }) {
     }
   );
   const [reserveMessege, setReservMessege] = useState();
-
   const router = useRouter();
 
-  function handleReserve(reserveData, restaurant, date, time) {
+  function handleStoreReserveData(reserveData, restaurant, date, time) {
     const { number_of_guests, name, email, phone } = reserveData;
-    const info = userInfos.find((info) => info.id === restaurant.id);
+    const matchedInfo = userInfos.find((info) => info.id === restaurant.id);
+
     updateUserInfos(() => {
-      if (info) {
+      if (matchedInfo) {
         return userInfos.map((info) =>
           info.id === restaurant.id
             ? {
                 id: restaurant.id,
                 name_of_restaurant: restaurant.name,
+                isFavorite: info.isFavorite,
                 isReserved: true,
                 reserves: [
                   ...info.reserves,
@@ -50,6 +51,7 @@ export default function App({ Component, pageProps }) {
         {
           id: restaurant.id,
           name_of_restaurant: restaurant.name,
+          isFavorite: false,
           isReserved: true,
           reserves: [
             {
@@ -65,6 +67,7 @@ export default function App({ Component, pageProps }) {
         },
       ];
     });
+
     setReservMessege(
       `Sie haben erfolgereich am ${date} um ${time} Uhr ${number_of_guests}  ${
         number_of_guests == 1 ? "Platz" : "Plätze"
@@ -73,6 +76,35 @@ export default function App({ Component, pageProps }) {
     router.push("/restaurants/reserve/reserveMessage");
   }
 
+  function handleToggleFavorite(id, restaurant) {
+    const matchedInfo = userInfos.find((info) => info.id === id);
+    updateUserInfos(() => {
+      if (matchedInfo) {
+        return userInfos.map((info) =>
+          info.id === id
+            ? {
+                id: info.id,
+                name_of_restaurant: info.name,
+                isFavorite: !info.isFavorite,
+                isReserved: info.isReserved,
+                reserves: info.reserves,
+              }
+            : info
+        );
+      }
+
+      return [
+        ...userInfos,
+        {
+          id: restaurant.id,
+          name_of_restaurant: restaurant.name,
+          isFavorite: true,
+          isReserved: false,
+          reserves: [],
+        },
+      ];
+    });
+  }
   return (
     <>
       <GlobalStyle />
@@ -81,9 +113,10 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Component
         {...pageProps}
-        handleReserve={handleReserve}
+        onStoreReserveData={handleStoreReserveData}
         userInfos={userInfos}
         reserveMessege={reserveMessege}
+        onToggleFavorite={handleToggleFavorite}
       />
       <Footer />
     </>
