@@ -7,10 +7,10 @@ export default function Footer() {
   return (
     <footer>
       <StyledNav>
-        <StyledLink href="/">
+        <StyledLink href="/" aria-label="to home page">
           <HomePageIcon color={`var(--red-vine-color)`} size="30px" />
         </StyledLink>
-        <StyledLink href="/my-data">
+        <StyledLink href="/my-data" aria-label="to my data">
           <UserIcon color={`var(--red-vine-color)`} size="30px" />
         </StyledLink>
       </StyledNav>
