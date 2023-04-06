@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ArrowBackIcon from "../../public/icons/chevron_left";
+import ChevronLeftIcon from "../../public/icons/chevron_left.js";
 import { useRouter } from "next/router";
 
 export default function Heading({ children, isHideBackButton }) {
@@ -13,7 +13,7 @@ export default function Heading({ children, isHideBackButton }) {
         aria-label="Knopf zur nächste Seite"
         isHideBackButton={isHideBackButton}
       >
-        <ArrowBackIcon alt="Pfeil Icon nach links" />
+        <ChevronLeftIcon alt="Pfeil Icon nach links" />
       </StyledButton>
       <HeadingLineOne>{children}</HeadingLineOne>
     </StyledHeader>

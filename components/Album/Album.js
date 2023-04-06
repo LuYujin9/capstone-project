@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Chevron_left from "../../public/icons/chevron_left";
-import Chevron_right from "../../public/icons/chevron_right";
+import ChevronLeftIcon from "../../public/icons/chevron_left.js";
+import ChevronRightIcon from "../../public/icons/chevron_right";
 import {
   StyledSection,
   StyledPicture,
@@ -26,7 +26,7 @@ export default function Album({ photos }) {
         onClick={handleToLastPhoto}
         photoIndex={photoIndex}
       >
-        <Chevron_left
+        <ChevronLeftIcon
           alt="Sparren Icon nach links"
           color="#BA494B"
           size="30px"
@@ -47,7 +47,7 @@ export default function Album({ photos }) {
         photoIndex={photoIndex}
         photos={photos}
       >
-        <Chevron_right
+        <ChevronRightIcon
           alt="Sparren Icon nach rechts"
           color="#BA494B"
           size="30px"
