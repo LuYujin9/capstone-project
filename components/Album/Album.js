@@ -27,7 +27,7 @@ export default function Album({ photos }) {
         photoIndex={photoIndex}
       >
         <ChevronLeftIcon
-          alt="Sparren Icon nach links"
+          alt="Pfeil Icon nach links"
           color="#BA494B"
           size="30px"
         />
@@ -48,7 +48,7 @@ export default function Album({ photos }) {
         photos={photos}
       >
         <ChevronRightIcon
-          alt="Sparren Icon nach rechts"
+          alt="Pfeil Icon nach rechts"
           color="#BA494B"
           size="30px"
         />

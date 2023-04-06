@@ -22,7 +22,7 @@ export default function ListCard({ onToggleFavorite, userInfos, restaurant }) {
         isFavorite={isFavorite}
       />
       <Link
-        aria-label="zur Seit von dem Restaurant "
+        aria-label="Link zur individualen Restaurant-Seite "
         href={`/restaurants/${restaurant.id}`}
       >
         <StyledListItem>
