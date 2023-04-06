@@ -11,7 +11,7 @@ const testPhotos = [
 test("Image has alt text", () => {
   render(<Album photos={testPhotos} />);
   const photo = screen.getByRole("img", { name: /Foto vom Restaurant/i });
-  expect(photo).toHaveAttribute("alt", /Foto vom Restaurant/i);
+  expect(photo).toHaveAttribute("alt", "Foto vom Restaurant");
 });
 
 test("doesn't render toLastPhotoButton when it shows the first photo", () => {
@@ -49,7 +49,7 @@ test("renders toNextPhotoButton and toLastPhotoButton", async () => {
   await user.click(toNextPhotoButton);
 
   const toLastPhotoButton = screen.getByRole("button", {
-    name: /to the last photo/i,
+    name: /zum letzten Foto/i,
   });
 
   await user.click(toNextPhotoButton);
