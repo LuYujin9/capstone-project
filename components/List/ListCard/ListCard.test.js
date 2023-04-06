@@ -12,7 +12,7 @@ const testRestaurant = {
 
 test("renders the photos, name, cuisine, bookmark button and rating", () => {
   render(<ListCard restaurant={testRestaurant} />);
-  const photo = screen.getByRole("img", { name: /photo of the restaurant/i });
+  const photo = screen.getByRole("img", { name: /Foto vom Restaurant/i });
   expect(photo).toBeInTheDocument();
 
   const name = screen.getByText(/Carolaschlösschen Dresden/i);

@@ -22,15 +22,19 @@ export default function Album({ photos }) {
   return (
     <StyledSection>
       <ToLastPhotoButton
-        aria-label="to the last photo"
+        aria-label="zum letzten Foto"
         onClick={handleToLastPhoto}
         photoIndex={photoIndex}
       >
-        <Chevron_left color="#BA494B" size="30px" />
+        <Chevron_left
+          alt="Sparren Icon nach links"
+          color="#BA494B"
+          size="30px"
+        />
       </ToLastPhotoButton>
       <StyledPicture>
         <StyledImage
-          alt="a photo of the restaurant"
+          alt="Foto vom Restaurant"
           src={photos[photoIndex]}
           fill
           sizes="(min-width: 768px) 100vw"
@@ -38,12 +42,16 @@ export default function Album({ photos }) {
         />
       </StyledPicture>
       <ToNextPhotoButton
-        aria-label="to the next photo"
+        aria-label="zum nächsten Foto"
         onClick={handleToNextPhoto}
         photoIndex={photoIndex}
         photos={photos}
       >
-        <Chevron_right color="#BA494B" size="30px" />
+        <Chevron_right
+          alt="Sparren Icon nach rechts"
+          color="#BA494B"
+          size="30px"
+        />
       </ToNextPhotoButton>
     </StyledSection>
   );

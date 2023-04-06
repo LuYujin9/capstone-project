@@ -17,7 +17,9 @@ test("render the time and comment", () => {
 test("doesn't show the button when the comment is short ", () => {
   render(<CommentCard comment={testComment} time={testTime} />);
 
-  const button = screen.queryByText(/expand and collapse the comment button/i);
+  const button = screen.queryByText(
+    /Knopf zu Kommentare erweitern und reduzieren/i
+  );
 
   expect(button).not.toBeInTheDocument();
 });

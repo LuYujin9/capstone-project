@@ -4,8 +4,8 @@ import BookmarkIcon from "../../public/icons/bookmark";
 export default function BookmarkButton({ onToggleBookmark, isFavorite }) {
   const buttonColor = isFavorite === true ? "#9C4041" : "none";
   return (
-    <StyledButton aria-label="bookmark" onClick={onToggleBookmark}>
-      <BookmarkIcon fillColor={buttonColor} />
+    <StyledButton aria-label="Bookmark Knopf" onClick={onToggleBookmark}>
+      <BookmarkIcon alt="Herz Icon" fillColor={buttonColor} />
     </StyledButton>
   );
 }

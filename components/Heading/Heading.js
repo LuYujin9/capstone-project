@@ -10,10 +10,13 @@ export default function Heading({ children, isHideBackButton }) {
       <StyledButton
         type="button"
         onClick={() => router.back()}
-        aria-label="go back to the last page"
+        aria-label="Knopf zur nächste Seite"
         isHideBackButton={isHideBackButton}
       >
-        <ArrowBackIcon color={`var(--red-vine-color)`} />
+        <ArrowBackIcon
+          alt="Pfeil Icon nach links"
+          color={`var(--red-vine-color)`}
+        />
       </StyledButton>
       <HeadingLineOne>{children}</HeadingLineOne>
     </StyledHeader>

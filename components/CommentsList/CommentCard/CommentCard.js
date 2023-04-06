@@ -22,13 +22,13 @@ export default function ThePage({ comment, time }) {
       </StyledParagraph>
       {needExpandBtn && (
         <StyledButton
-          aria-label="expand and collapse the comment button"
+          aria-label="Knopf zu Kommentare erweitern und reduzieren"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? (
-            <ChevronUp color="black" />
+            <ChevronUp alt="Sparren Icon nach oben" color="black" />
           ) : (
-            <ChevronDown color="black" />
+            <ChevronDown alt="Sparren Icon nach unter" color="black" />
           )}
         </StyledButton>
       )}

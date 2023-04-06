@@ -8,7 +8,7 @@ export default function MyData() {
       <Heading>Meine Daten</Heading>
       <StyledSection>
         <StyledLink
-          aria-label="link to favorites page"
+          aria-label="Link zur Favoriten-Seite"
           href="/my-data/favorites"
         >
           Favoriten
