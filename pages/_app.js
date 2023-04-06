@@ -76,8 +76,7 @@ export default function App({ Component, pageProps }) {
     router.push("/restaurants/reserve/reserveMessage");
   }
 
-  function handleToggleBookmark(id, restaurant) {
-    console.log("clicked");
+  function handleToggleFavorite(id, restaurant) {
     const matchedInfo = userInfos.find((info) => info.id === id);
     updateUserInfos(() => {
       if (matchedInfo) {
@@ -117,7 +116,7 @@ export default function App({ Component, pageProps }) {
         onReserve={handleReserve}
         userInfos={userInfos}
         reserveMessege={reserveMessege}
-        onToggleBookmark={handleToggleBookmark}
+        onToggleFavorite={handleToggleFavorite}
       />
       <Footer />
     </>

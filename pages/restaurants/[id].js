@@ -8,7 +8,7 @@ import Heading from "../../components/Heading/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
 import BookmarkButton from "../../components/BookmarkButton/BookmarkButton.js";
 
-export default function Details({ onToggleBookmark, userInfos }) {
+export default function Details({ onToggleFavorite, userInfos }) {
   const router = useRouter();
 
   if (!router.isReady) {
@@ -19,6 +19,12 @@ export default function Details({ onToggleBookmark, userInfos }) {
   const restaurant = restaurants.find((restaurant) => restaurant.id === id);
   const comments = restaurant.comments;
 
+  const matchedInfo = userInfos?.find((info) => info.id === id);
+  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  function handleToggleBookmark() {
+    onToggleFavorite(id, restaurant);
+  }
+
   return (
     <>
       <Heading>{restaurant.name}</Heading>
@@ -27,10 +33,8 @@ export default function Details({ onToggleBookmark, userInfos }) {
           Zur Speisekarte
         </StyledLink>
         <BookmarkButton
-          onToggleBookmark={onToggleBookmark}
-          id={id}
-          restaurant={restaurant}
-          userInfos={userInfos}
+          onToggleBookmark={handleToggleBookmark}
+          isFavorite={isFavorite}
         />
         <Album photos={restaurant.photos} />
         <StyledParagraph>{restaurant.description}</StyledParagraph>

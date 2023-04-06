@@ -1,22 +1,10 @@
 import styled from "styled-components";
 import BookmarkIcon from "../../public/icons/bookmark";
 
-export default function BookmarkButton({
-  id,
-  onToggleBookmark,
-  restaurant,
-  userInfos,
-}) {
-  const matchedInfo = userInfos?.find((info) => info.id === id);
-  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+export default function BookmarkButton({ onToggleBookmark, isFavorite }) {
   const buttonColor = isFavorite === true ? "#9C4041" : "none";
   return (
-    <StyledButton
-      aria-label="bookmark"
-      onClick={() => {
-        onToggleBookmark(id, restaurant);
-      }}
-    >
+    <StyledButton aria-label="bookmark" onClick={onToggleBookmark}>
       <BookmarkIcon fillColor={buttonColor} />
     </StyledButton>
   );

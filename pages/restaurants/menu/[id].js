@@ -7,7 +7,7 @@ import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePa
 import BookmarkButton from "../../../components/BookmarkButton/BookmarkButton.js";
 import { StyledContainer } from "../../../components/styles/styles";
 
-export default function Menu({ onToggleBookmark, userInfos }) {
+export default function Menu({ onToggleFavorite, userInfos }) {
   const router = useRouter();
   if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
@@ -15,6 +15,11 @@ export default function Menu({ onToggleBookmark, userInfos }) {
   const restaurant = restaurants?.find((restaurant) => restaurant.id === id);
   const foods = restaurant.foods;
 
+  const matchedInfo = userInfos?.find((info) => info.id === id);
+  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  function handleToggleBookmark() {
+    onToggleFavorite(id, restaurant);
+  }
   return (
     <>
       <Heading>{restaurant.name}</Heading>
@@ -22,10 +27,8 @@ export default function Menu({ onToggleBookmark, userInfos }) {
       <StyledContainer>
         <StyledSection>
           <BookmarkButton
-            onToggleBookmark={onToggleBookmark}
-            id={id}
-            restaurant={restaurant}
-            userInfos={userInfos}
+            onToggleBookmark={handleToggleBookmark}
+            isFavorite={isFavorite}
           />
           <StyledList role="list">
             {foods.length === 0 ? (
@@ -67,5 +70,5 @@ export const StyledSection = styled.section`
 
 const StyledList = styled.ul`
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: 4.5rem;
 `;
