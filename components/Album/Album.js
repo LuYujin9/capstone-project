@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Chevron_left from "../../public/icons/Chevron_left";
-import Chevron_right from "../../public/icons/chevron_right";
+import ChevronLeftIcon from "../../public/icons/chevron_left";
+import ChevronRightIcon from "../../public/icons/chevron_right";
 import {
   StyledSection,
   StyledPicture,
@@ -22,15 +22,19 @@ export default function Album({ photos }) {
   return (
     <StyledSection>
       <ToLastPhotoButton
-        aria-label="to the last photo"
+        aria-label="zum letzten Foto"
         onClick={handleToLastPhoto}
         photoIndex={photoIndex}
       >
-        <Chevron_left color="#BA494B" size="30px" />
+        <ChevronLeftIcon
+          alt="Pfeil Icon nach links"
+          color="#BA494B"
+          size="30px"
+        />
       </ToLastPhotoButton>
       <StyledPicture>
         <StyledImage
-          alt="a photo of the restaurant"
+          alt="Foto vom Restaurant"
           src={photos[photoIndex]}
           fill
           sizes="(min-width: 768px) 100vw"
@@ -38,12 +42,16 @@ export default function Album({ photos }) {
         />
       </StyledPicture>
       <ToNextPhotoButton
-        aria-label="to the next photo"
+        aria-label="zum nächsten Foto"
         onClick={handleToNextPhoto}
         photoIndex={photoIndex}
         photos={photos}
       >
-        <Chevron_right color="#BA494B" size="30px" />
+        <ChevronRightIcon
+          alt="Pfeil Icon nach rechts"
+          color="#BA494B"
+          size="30px"
+        />
       </ToNextPhotoButton>
     </StyledSection>
   );

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function ToReservePageLink({ id }) {
   return (
     <StyledLink
-      aria-label="to reserve page"
+      aria-label="Link zur Reservieren-Seite"
       href={`/restaurants/reserve/${id}`}
     >
       Reservieren

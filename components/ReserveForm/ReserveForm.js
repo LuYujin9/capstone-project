@@ -32,7 +32,7 @@ export default function ReserveForm({
       <input type="email" name="email" id="email"></input>
       <label htmlFor="phone">Telefonnummber:</label>
       <input type="number" name="phone" id="phone" required></input>
-      <StyledSubmitButton type="submit" aria-label="button to reserve">
+      <StyledSubmitButton type="submit" aria-label="Knopf um zu reservieren">
         Reservieren
       </StyledSubmitButton>
     </StyledForm>

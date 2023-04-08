@@ -1,13 +1,17 @@
 import styled from "styled-components";
 import Link from "next/link";
 import HomePageIcon from "../../public/icons/home_page";
+import UserIcon from "../../public/icons/user";
 
 export default function Footer() {
   return (
     <footer>
       <StyledNav>
-        <StyledLink href="/">
-          <HomePageIcon color={`var(--red-vine-color)`} size="30px" />
+        <StyledLink href="/" aria-label="Link zum Homepage">
+          <HomePageIcon alt="Homepage Icon" />
+        </StyledLink>
+        <StyledLink href="/my-data" aria-label="Link zum meine Daten">
+          <UserIcon alt="Meschen Figur Icon" />
         </StyledLink>
       </StyledNav>
     </footer>

@@ -1,4 +1,4 @@
-const Home2 = ({ size = 24, color = "#f4f6f9" }) => (
+const Home2 = ({ size = 30, color = "var(--red-vine-color)" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

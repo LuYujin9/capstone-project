@@ -21,12 +21,15 @@ export default function ListCard({ onToggleFavorite, userInfos, restaurant }) {
         onToggleBookmark={handleToggleBookmark}
         isFavorite={isFavorite}
       />
-      <Link href={`/restaurants/${restaurant.id}`}>
+      <Link
+        aria-label="Link zur individualen Restaurant-Seite "
+        href={`/restaurants/${restaurant.id}`}
+      >
         <StyledListItem>
           <StyledName>{restaurant.name}</StyledName>
           <StyledPicture>
             <StyledImage
-              alt="a photo of the restaurant"
+              alt="Foto vom Restaurant"
               src={restaurant.photos[0]}
               fill
               sizes="(min-width: 768px) 100vw"
@@ -36,7 +39,7 @@ export default function ListCard({ onToggleFavorite, userInfos, restaurant }) {
           <p>{restaurant.cuisine}</p>
           <StyledRating>
             {restaurant.rating}{" "}
-            <span role="img" aria-label="star">
+            <span role="img" aria-label="Stern">
               ⭐️
             </span>
           </StyledRating>

@@ -30,7 +30,7 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
       </select>
       <StyledSubmitButton
         type="submit"
-        aria-label="button to search the remaining seats"
+        aria-label="Knopf um freie Plätze anzeigen zu lassen"
       >
         Suchen
       </StyledSubmitButton>
