@@ -5,6 +5,8 @@ import { useImmerLocalStorageState } from "../lib/useImmerLocalStorageState";
 import { uid } from "uid";
 import { useState } from "react";
 import { useRouter } from "next/router";
+//backend
+import { SWRConfig } from "swr";
 
 export default function App({ Component, pageProps }) {
   const [userInfos, updateUserInfos] = useImmerLocalStorageState(
@@ -105,20 +107,23 @@ export default function App({ Component, pageProps }) {
       ];
     });
   }
+  const fetcher = (url) => fetch(url).then((response) => response.json());
   return (
     <>
       <GlobalStyle />
       <Head>
         <title>Lecker Map</title>
       </Head>
-      <Component
-        {...pageProps}
-        onStoreReserveData={handleStoreReserveData}
-        userInfos={userInfos}
-        reserveMessege={reserveMessege}
-        onToggleFavorite={handleToggleFavorite}
-      />
-      <Footer />
+      <SWRConfig value={{ fetcher }}>
+        <Component
+          {...pageProps}
+          onStoreReserveData={handleStoreReserveData}
+          userInfos={userInfos}
+          reserveMessege={reserveMessege}
+          onToggleFavorite={handleToggleFavorite}
+        />
+        <Footer />
+      </SWRConfig>
     </>
   );
 }
