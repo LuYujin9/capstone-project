@@ -9,7 +9,7 @@ export default function List({ restaurants, onToggleFavorite, userInfos }) {
           onToggleFavorite={onToggleFavorite}
           userInfos={userInfos}
           restaurant={restaurant}
-          key={restaurant.id}
+          key={restaurant._id}
         />
       ))}
     </StyledList>

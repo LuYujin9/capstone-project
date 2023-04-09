@@ -6,16 +6,22 @@ import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
 import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton/BookmarkButton.js";
 import { StyledContainer } from "../../../components/styles/styles";
+import useSWR from "swr";
 
 export default function Menu({ onToggleFavorite, userInfos }) {
   const router = useRouter();
-  if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
+  const { isReady } = router;
+  const {
+    data: restaurant,
+    isLoading,
+    error,
+  } = useSWR(`/api/restaurants/${id}`);
+  if (!isReady || isLoading || error) return <h2>Loading</h2>;
 
-  const restaurant = restaurants?.find((restaurant) => restaurant.id === id);
   const foods = restaurant.foods;
 
-  const matchedInfo = userInfos?.find((info) => info.id === id);
+  const matchedInfo = userInfos?.find((info) => info.restaurantId === id);
   const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
   function handleToggleBookmark() {
     onToggleFavorite(id, restaurant);

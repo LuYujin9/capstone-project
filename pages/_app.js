@@ -20,14 +20,16 @@ export default function App({ Component, pageProps }) {
 
   function handleStoreReserveData(reserveData, restaurant, date, time) {
     const { number_of_guests, name, email, phone } = reserveData;
-    const matchedInfo = userInfos.find((info) => info.id === restaurant.id);
+    const matchedInfo = userInfos.find(
+      (info) => info.restaurantId === restaurant._id
+    );
 
     updateUserInfos(() => {
       if (matchedInfo) {
         return userInfos.map((info) =>
-          info.id === restaurant.id
+          info.restaurantId === restaurant._id
             ? {
-                id: restaurant.id,
+                restaurantId: restaurant._id,
                 name_of_restaurant: restaurant.name,
                 isFavorite: info.isFavorite,
                 isReserved: true,
@@ -51,7 +53,7 @@ export default function App({ Component, pageProps }) {
       return [
         ...userInfos,
         {
-          id: restaurant.id,
+          restaurantId: restaurant._id,
           name_of_restaurant: restaurant.name,
           isFavorite: false,
           isReserved: true,
@@ -79,14 +81,14 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleToggleFavorite(id, restaurant) {
-    const matchedInfo = userInfos.find((info) => info.id === id);
+    const matchedInfo = userInfos.find((info) => info.restaurantId === id);
     updateUserInfos(() => {
       if (matchedInfo) {
         return userInfos.map((info) =>
-          info.id === id
+          info.restaurantId === id
             ? {
-                id: info.id,
-                name_of_restaurant: info.name,
+                restaurantId: id,
+                name_of_restaurant: restaurant.name,
                 isFavorite: !info.isFavorite,
                 isReserved: info.isReserved,
                 reserves: info.reserves,
@@ -98,7 +100,7 @@ export default function App({ Component, pageProps }) {
       return [
         ...userInfos,
         {
-          id: restaurant.id,
+          restaurantId: restaurant._id,
           name_of_restaurant: restaurant.name,
           isFavorite: true,
           isReserved: false,

@@ -5,6 +5,7 @@ import Heading from "../../../components/Heading/Heading";
 import ReserveForm from "../../../components/ReserveForm/ReserveForm.js";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/RemainingSeatsFilter";
 import { useState } from "react";
+import useSWR from "swr";
 
 export default function Reseve({ onStoreReserveData }) {
   const [remainingSeats, setRemainingSeats] = useState();
@@ -12,9 +13,14 @@ export default function Reseve({ onStoreReserveData }) {
   const [time, setTime] = useState();
 
   const router = useRouter();
-  if (!router.isReady) return;
   const { id } = router.query;
-  const restaurant = restaurants.find((restaurant) => restaurant.id === id);
+  const { isReady } = router;
+  const {
+    data: restaurant,
+    isLoading,
+    error,
+  } = useSWR(`/api/restaurants/${id}`);
+  if (!isReady || isLoading || error) return <h2>Loading</h2>;
 
   function getRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(

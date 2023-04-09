@@ -1,4 +1,4 @@
-import { restaurants } from "../../lib/data.js";
+//import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import CommentsList from "../../components/CommentsList/CommentsList";
@@ -7,19 +7,22 @@ import Link from "next/link.js";
 import Heading from "../../components/Heading/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
 import BookmarkButton from "../../components/BookmarkButton/BookmarkButton.js";
+import useSWR from "swr";
 
 export default function Details({ onToggleFavorite, userInfos }) {
   const router = useRouter();
-
-  if (!router.isReady) {
-    return <h2>Loading...</h2>;
-  }
-
   const { id } = router.query;
-  const restaurant = restaurants.find((restaurant) => restaurant.id === id);
+  const { isReady } = router;
+  const {
+    data: restaurant,
+    isLoading,
+    error,
+  } = useSWR(`/api/restaurants/${id}`);
+  if (!isReady || isLoading || error) return <h2>Loading</h2>;
+  //const restaurant = restaurants.find((restaurant) => restaurant.id === id);
   const comments = restaurant.comments;
 
-  const matchedInfo = userInfos?.find((info) => info.id === id);
+  const matchedInfo = userInfos?.find((info) => info.restaurantId === id);
   const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
   function handleToggleBookmark() {
     onToggleFavorite(id, restaurant);

@@ -10,20 +10,22 @@ import Link from "next/link";
 import BookmarkButton from "../../BookmarkButton/BookmarkButton";
 
 export default function ListCard({ onToggleFavorite, userInfos, restaurant }) {
-  const matchedInfo = userInfos?.find((info) => info.id === restaurant.id);
+  const matchedInfo = userInfos?.find(
+    (info) => info.restaurantId === restaurant._id
+  );
   const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
   function handleToggleBookmark() {
-    onToggleFavorite(restaurant.id, restaurant);
+    onToggleFavorite(restaurant._id, restaurant);
   }
   return (
-    <CardContainer key={restaurant.id}>
+    <CardContainer key={restaurant._id}>
       <BookmarkButton
         onToggleBookmark={handleToggleBookmark}
         isFavorite={isFavorite}
       />
       <Link
         aria-label="Link zur individualen Restaurant-Seite "
-        href={`/restaurants/${restaurant.id}`}
+        href={`/restaurants/${restaurant._id}`}
       >
         <StyledListItem>
           <StyledName>{restaurant.name}</StyledName>

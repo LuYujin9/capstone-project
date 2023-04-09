@@ -4,12 +4,14 @@ import Heading from "../../components/Heading/Heading";
 import useSWR from "swr";
 
 export default function Restaurants({ onToggleFavorite, userInfos }) {
-  const { data } = useSWR("/api/restaurants", { fallbackData: [] });
+  const { data: restaurants } = useSWR("/api/restaurants", {
+    fallbackData: [],
+  });
   return (
     <>
       <Heading>Restaurants</Heading>
       <List
-        restaurants={data}
+        restaurants={restaurants}
         onToggleFavorite={onToggleFavorite}
         userInfos={userInfos}
       />
