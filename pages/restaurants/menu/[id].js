@@ -8,7 +8,7 @@ import BookmarkButton from "../../../components/BookmarkButton/BookmarkButton.js
 import { StyledContainer } from "../../../components/styles/styles";
 import useSWR from "swr";
 
-export default function Menu({ onToggleFavorite, userInfos }) {
+export default function Menu({ onToggleFavorite }) {
   const router = useRouter();
   const { id } = router.query;
   const { isReady } = router;
@@ -17,12 +17,16 @@ export default function Menu({ onToggleFavorite, userInfos }) {
     isLoading,
     error,
   } = useSWR(`/api/restaurants/${id}`);
+  const { data: userInfos } = useSWR("/api/user-infos", {
+    fallbackData: [],
+  });
   if (!isReady || isLoading || error) return <h2>Loading</h2>;
 
   const foods = restaurant.foods;
 
   const matchedInfo = userInfos?.find((info) => info.restaurantId === id);
   const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+
   function handleToggleBookmark() {
     onToggleFavorite(id, restaurant);
   }

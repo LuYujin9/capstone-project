@@ -6,6 +6,7 @@ import ReserveForm from "../../../components/ReserveForm/ReserveForm.js";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/RemainingSeatsFilter";
 import { useState } from "react";
 import useSWR from "swr";
+import useSWRMutation from "swr/mutation";
 
 export default function Reseve({ onStoreReserveData }) {
   const [remainingSeats, setRemainingSeats] = useState();
@@ -20,7 +21,34 @@ export default function Reseve({ onStoreReserveData }) {
     isLoading,
     error,
   } = useSWR(`/api/restaurants/${id}`);
-  if (!isReady || isLoading || error) return <h2>Loading</h2>;
+
+  /*   async function updateRemainingSeats(url, { arg }) {
+    const response = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify(arg),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      await response.json();
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
+
+  const { trigger, isMutating } = useSWRMutation(
+    `/api/restaurants/${id}`,
+    updateRemainingSeats
+  );
+
+  async function editRemainingSeats(reserveData, restaurant, date, time){
+    const newRestaurant = restaurant
+    await trigger(restaurant)
+  } */
+
+  if (!isReady || isLoading || error || isMutating) return <h2>Loading</h2>;
 
   function getRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(

@@ -9,7 +9,7 @@ import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageL
 import BookmarkButton from "../../components/BookmarkButton/BookmarkButton.js";
 import useSWR from "swr";
 
-export default function Details({ onToggleFavorite, userInfos }) {
+export default function Details({ onToggleFavorite }) {
   const router = useRouter();
   const { id } = router.query;
   const { isReady } = router;
@@ -18,12 +18,16 @@ export default function Details({ onToggleFavorite, userInfos }) {
     isLoading,
     error,
   } = useSWR(`/api/restaurants/${id}`);
+  const { data: userInfos } = useSWR("/api/user-infos", {
+    fallbackData: [],
+  });
   if (!isReady || isLoading || error) return <h2>Loading</h2>;
-  //const restaurant = restaurants.find((restaurant) => restaurant.id === id);
+
   const comments = restaurant.comments;
 
   const matchedInfo = userInfos?.find((info) => info.restaurantId === id);
   const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+
   function handleToggleBookmark() {
     onToggleFavorite(id, restaurant);
   }

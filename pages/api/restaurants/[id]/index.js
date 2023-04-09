@@ -12,4 +12,11 @@ export default async function handler(request, response) {
     }
     response.status(200).json(restaurant);
   }
+
+  if (request.method === "PUT") {
+    const restaurantUpdate = await Restaurant.findByIdAndUpdate(id, {
+      $set: request.body,
+    });
+    response.status(200).json(restaurantUpdate);
+  }
 }
