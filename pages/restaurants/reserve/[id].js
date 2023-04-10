@@ -7,11 +7,13 @@ import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/Remai
 import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
+import { uid } from "uid";
 
 export default function Reseve({ onStoreReserveData }) {
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
+  const [reserveMessege, setReservMessege] = useState("");
 
   const router = useRouter();
   const { id } = router.query;
@@ -22,7 +24,7 @@ export default function Reseve({ onStoreReserveData }) {
     error,
   } = useSWR(`/api/restaurants/${id}`);
 
-  /*   async function updateRemainingSeats(url, { arg }) {
+  async function updateRemainingSeats(url, { arg }) {
     const response = await fetch(url, {
       method: "PUT",
       body: JSON.stringify(arg),
@@ -38,17 +40,75 @@ export default function Reseve({ onStoreReserveData }) {
     }
   }
 
-  const { trigger, isMutating } = useSWRMutation(
+  const { trigger } = useSWRMutation(
     `/api/restaurants/${id}`,
     updateRemainingSeats
   );
 
-  async function editRemainingSeats(reserveData, restaurant, date, time){
-    const newRestaurant = restaurant
-    await trigger(restaurant)
-  } */
+  async function editRemainingSeats(reserveData, restaurant, date, time) {
+    const reserveInfos = restaurant.reserveInfos;
+    const matchedReserveInfo = reserveInfos.find(
+      (info) => info.date === date && info.time === time
+    );
+    if (matchedReserveInfo) {
+      const newRemainingSeats =
+        matchedReserveInfo.remainingSeats - reserveData.number_of_guests;
+      const newReservInfos = reserveInfos.map((info) =>
+        info === matchedReserveInfo
+          ? { ...info, remainingSeats: newRemainingSeats }
+          : info
+      );
+      console.log(newReservInfos);
+      await trigger({ reserveInfos: newReservInfos });
+      return;
+    }
+    const newRemainingSeats = {
+      date: date,
+      time: time,
+      remainingSeats: restaurant.maxSeats - reserveData.number_of_guests,
+    };
+    const newReservInfos = [...reserveInfos, newRemainingSeats];
+    console.log(newReservInfos);
+    await trigger({ reserveInfos: newReservInfos });
+  }
 
-  if (!isReady || isLoading || error || isMutating) return <h2>Loading</h2>;
+  if (!isReady || isLoading || error) return <h2>Loading</h2>;
+
+  async function addUserInfo(reserveData, restaurant, date, time) {
+    const { number_of_guests, name, email, phone } = reserveData;
+    const newUserInfo = {
+      restaurantId: restaurant._id,
+      name_of_restaurant: restaurant.name,
+      isFavorite: false,
+      isReserved: true,
+      reserves: [
+        {
+          reserveId: uid(),
+          name: name,
+          email: email,
+          number_of_guests: number_of_guests,
+          phone: phone,
+          date: date,
+          time: time,
+        },
+      ],
+    };
+    const response = await fetch("/api/user-infos", {
+      method: "POST",
+      body: JSON.stringify(newUserInfo),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      await response.json();
+      setReservMessege(
+        `Sie haben erfolgereich am ${date} um ${time} Uhr ${number_of_guests}  ${
+          number_of_guests == 1 ? "Platz" : "Plätze"
+        } in ${restaurant.name} reservert.`
+      );
+    } else {
+      console.error(response.status);
+    }
+  }
 
   function getRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(
@@ -82,9 +142,11 @@ export default function Reseve({ onStoreReserveData }) {
             remainingSeats={remainingSeats}
             date={date}
             time={time}
-            onStoreReserveData={onStoreReserveData}
+            onStoreReserveData={addUserInfo}
+            editRemainingSeats={editRemainingSeats}
           />
         )}
+        <p>{reserveMessege}</p>
       </StyledContainer>
     </>
   );

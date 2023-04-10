@@ -6,6 +6,7 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
     const formData = new FormData(event.target);
     const dataForSearch = Object.fromEntries(formData);
     getRemainingSeats(dataForSearch);
+    event.target.reset();
   }
 
   const timeNow = new Date();

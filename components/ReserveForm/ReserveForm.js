@@ -6,12 +6,15 @@ export default function ReserveForm({
   restaurant,
   date,
   time,
+  editRemainingSeats,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
     onStoreReserveData(reserveData, restaurant, date, time);
+    editRemainingSeats(reserveData, restaurant, date, time);
+    event.target.reset();
   }
 
   return (
