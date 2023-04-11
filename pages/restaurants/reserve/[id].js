@@ -97,6 +97,8 @@ export default function Reseve() {
       phone: phone,
       date: date,
       time: time,
+      restaurantName: restaurant.name,
+      restaurantId: restaurant._id,
     };
 
     const response = await fetch("/api/reserves", {

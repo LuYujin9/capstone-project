@@ -6,17 +6,6 @@ const userSchema = new Schema({
   name_of_restaurant: { type: String, required: true },
   isFavorite: { type: Boolean, required: true },
   isReserved: { type: Boolean, required: true },
-  reserves: [
-    {
-      reserveId: String,
-      name: String,
-      email: String,
-      number_of_guests: Number,
-      phone: Number,
-      date: String,
-      time: String,
-    },
-  ],
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
