@@ -10,13 +10,16 @@ import Link from "next/link";
 import BookmarkButton from "../../BookmarkButton/BookmarkButton";
 
 export default function ListCard({ onToggleFavorite, userInfos, restaurant }) {
-  const matchedInfo = userInfos?.find(
+  const matchedUserInfo = userInfos?.find(
     (info) => info.restaurantId === restaurant._id
   );
-  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
+
   function handleToggleBookmark() {
-    onToggleFavorite(restaurant._id, restaurant);
+    const newIsFavorite = !isFavorite;
+    onToggleFavorite(matchedUserInfo, newIsFavorite, restaurant);
   }
+
   return (
     <CardContainer key={restaurant._id}>
       <BookmarkButton

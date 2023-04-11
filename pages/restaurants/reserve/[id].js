@@ -1,4 +1,3 @@
-import { restaurants } from "../../../lib/data.js";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
@@ -7,7 +6,6 @@ import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/Remai
 import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { uid } from "uid";
 
 export default function Reseve() {
   const [remainingSeats, setRemainingSeats] = useState();
@@ -23,7 +21,6 @@ export default function Reseve() {
     isLoading,
     error,
   } = useSWR(`/api/restaurants/${id}`);
-  const { data: userInfos } = useSWR("/api/user-infos");
 
   function getRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(

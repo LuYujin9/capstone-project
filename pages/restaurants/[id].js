@@ -21,15 +21,16 @@ export default function Details({ onToggleFavorite }) {
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
-  if (!isReady || isLoading || error) return <h2>Loading</h2>;
+  const matchedUserInfo = userInfos?.find((info) => info.restaurantId === id);
+  if (!isReady || !userInfos || !restaurant || isLoading || error)
+    return <h2>Loading</h2>;
 
   const comments = restaurant.comments;
-
-  const matchedInfo = userInfos?.find((info) => info.restaurantId === id);
-  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
 
   function handleToggleBookmark() {
-    onToggleFavorite(id, restaurant);
+    const newIsFavorite = !isFavorite;
+    onToggleFavorite(matchedUserInfo, newIsFavorite, restaurant);
   }
 
   return (

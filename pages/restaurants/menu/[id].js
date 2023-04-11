@@ -1,4 +1,3 @@
-import { restaurants } from "../../../lib/data.js";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
@@ -20,15 +19,16 @@ export default function Menu({ onToggleFavorite }) {
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
-  if (!isReady || isLoading || error) return <h2>Loading</h2>;
+  const matchedUserInfo = userInfos.find((info) => info.restaurantId === id);
+  if (!isReady || !userInfos || !restaurant || isLoading || error)
+    return <h2>Loading</h2>;
 
   const foods = restaurant.foods;
-
-  const matchedInfo = userInfos?.find((info) => info.restaurantId === id);
-  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
 
   function handleToggleBookmark() {
-    onToggleFavorite(id, restaurant);
+    const newIsFavorite = !isFavorite;
+    onToggleFavorite(matchedUserInfo, newIsFavorite, restaurant);
   }
   return (
     <>

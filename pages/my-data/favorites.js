@@ -1,4 +1,3 @@
-import { restaurants } from "../../lib/data";
 import Heading from "../../components/Heading/Heading";
 import List from "../../components/List/List";
 import useSWR from "swr";
