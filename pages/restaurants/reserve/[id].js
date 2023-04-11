@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Heading from "../../../components/Heading/Heading";
 import ReserveForm from "../../../components/ReserveForm/ReserveForm.js";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/RemainingSeatsFilter";
+import MessageModal from "../../../components/MessageModal/MessageModal";
 import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
@@ -12,6 +13,7 @@ export default function Reseve() {
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [reserveMessage, setReserveMessage] = useState("");
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -116,6 +118,7 @@ export default function Reseve() {
       console.error(response.status);
     }
     setRemainingSeats(undefined);
+    setIsMessageModalOpen(true);
   }
 
   return (
@@ -126,12 +129,19 @@ export default function Reseve() {
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
         />
-        <Message>
+        <h2>
+          {" "}
           {!remainingSeats
-            ? reserveMessage
+            ? ""
             : `Es gibt noch ${remainingSeats}
         ${remainingSeats === 1 ? "Platz" : "Plätze"}.`}
-        </Message>
+        </h2>
+        <MessageModal
+          isOpen={isMessageModalOpen}
+          onClose={() => setIsMessageModalOpen(false)}
+        >
+          {reserveMessage}
+        </MessageModal>
         {date && time && (
           <ReserveForm
             restaurant={restaurant}
@@ -162,14 +172,4 @@ const StyledContainer = styled.section`
   @media only screen and (min-width: 800px) {
     width: 640px;
   }
-`;
-
-const Message = styled.p`
-  margin: 7%;
-  padding: 0.5rem;
-  text-align: justify;
-  font-weight: bold;
-
-  border-radius: 1rem;
-  border: 2px solid var(--red-vine-color);
 `;
