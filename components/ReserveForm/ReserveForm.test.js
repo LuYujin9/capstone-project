@@ -19,10 +19,12 @@ test("renders a form with the accessible name 'Reservieren die Plätze'", () => 
 });
 
 test("submit the form data when 'number_of_guests','name','phone' inputs are filled out", async () => {
-  const mockReserve = jest.fn();
+  const mockOnPostNewReserve = jest.fn();
+  const mockEditRemainingSeats = jest.fn();
   render(
     <ReserveForm
-      onStoreReserveData={mockReserve}
+      onPostNewReserve={mockOnPostNewReserve}
+      editRemainingSeats={mockEditRemainingSeats}
       restaurant="restaurant"
       date="2023-04-08"
       time="11:00"
@@ -43,7 +45,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
   await user.type(phoneInput, "20192039183");
   await user.click(button);
 
-  expect(mockReserve).toHaveBeenCalledWith(
+  expect(mockOnPostNewReserve).toHaveBeenCalledWith(
     {
       number_of_guests: "5",
       name: "Jane",

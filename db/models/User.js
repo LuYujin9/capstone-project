@@ -10,15 +10,3 @@ const userSchema = new Schema({
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 export default User;
-/* 
-const placeSchema = new Schema({
-  name: { type: String, required: true },
-  location: { type: String, required: true },
-  image: String,
-  mapURL: String,
-  description: String,
-});
-
-const Place = mongoose.models.Place || mongoose.model("Place", placeSchema);
-
-export default Place; */
