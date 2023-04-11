@@ -9,11 +9,11 @@ import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { uid } from "uid";
 
-export default function Reseve({ onStoreReserveData }) {
+export default function Reseve() {
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
-  const [reserveMessege, setReservMessege] = useState("");
+  const [reserveMessage, setReserveMessage] = useState("");
 
   const router = useRouter();
   const { id } = router.query;
@@ -23,6 +23,20 @@ export default function Reseve({ onStoreReserveData }) {
     isLoading,
     error,
   } = useSWR(`/api/restaurants/${id}`);
+  const { data: userInfos } = useSWR("/api/user-infos");
+
+  function getRemainingSeats(dataForSearch) {
+    const pairingInfo = restaurant.reserveInfos.find(
+      (info) =>
+        info.date === dataForSearch.date && info.time === dataForSearch.time
+    );
+    setRemainingSeats(
+      pairingInfo ? pairingInfo.remainingSeats : restaurant.maxSeats
+    );
+    setDate(dataForSearch.date);
+    setTime(dataForSearch.time);
+    setReserveMessage(undefined);
+  }
 
   async function updateRemainingSeats(url, { arg }) {
     const response = await fetch(url, {
@@ -50,6 +64,7 @@ export default function Reseve({ onStoreReserveData }) {
     const matchedReserveInfo = reserveInfos.find(
       (info) => info.date === date && info.time === time
     );
+
     if (matchedReserveInfo) {
       const newRemainingSeats =
         matchedReserveInfo.remainingSeats - reserveData.number_of_guests;
@@ -58,68 +73,52 @@ export default function Reseve({ onStoreReserveData }) {
           ? { ...info, remainingSeats: newRemainingSeats }
           : info
       );
-      console.log(newReservInfos);
       await trigger({ reserveInfos: newReservInfos });
       return;
     }
+
     const newRemainingSeats = {
       date: date,
       time: time,
       remainingSeats: restaurant.maxSeats - reserveData.number_of_guests,
     };
     const newReservInfos = [...reserveInfos, newRemainingSeats];
-    console.log(newReservInfos);
     await trigger({ reserveInfos: newReservInfos });
   }
 
   if (!isReady || isLoading || error) return <h2>Loading</h2>;
 
-  async function addUserInfo(reserveData, restaurant, date, time) {
+  async function postNewReserve(reserveData, restaurant, date, time) {
     const { number_of_guests, name, email, phone } = reserveData;
-    const newUserInfo = {
-      restaurantId: restaurant._id,
-      name_of_restaurant: restaurant.name,
-      isFavorite: false,
-      isReserved: true,
-      reserves: [
-        {
-          reserveId: uid(),
-          name: name,
-          email: email,
-          number_of_guests: number_of_guests,
-          phone: phone,
-          date: date,
-          time: time,
-        },
-      ],
+
+    const newReserve = {
+      name: name,
+      email: email,
+      number_of_guests: number_of_guests,
+      phone: phone,
+      date: date,
+      time: time,
     };
-    const response = await fetch("/api/user-infos", {
+
+    const response = await fetch("/api/reserves", {
       method: "POST",
-      body: JSON.stringify(newUserInfo),
+      body: JSON.stringify(newReserve),
       headers: { "Content-Type": "application/json" },
     });
+
     if (response.ok) {
       await response.json();
-      setReservMessege(
-        `Sie haben erfolgereich am ${date} um ${time} Uhr ${number_of_guests}  ${
-          number_of_guests == 1 ? "Platz" : "Plätze"
-        } in ${restaurant.name} reservert.`
-      );
+      const reserveMessage = `Sie haben erfolgereich am ${date} um ${time} Uhr ${number_of_guests}  ${
+        number_of_guests == 1 ? "Platz" : "Plätze"
+      } in ${restaurant.name} reservert.`;
+      setReserveMessage(reserveMessage);
     } else {
+      const reserveMessage =
+        "Es gibt einen Fehler, bitten versuchen Sie später.";
+      setReserveMessage(reserveMessage);
       console.error(response.status);
     }
-  }
-
-  function getRemainingSeats(dataForSearch) {
-    const pairingInfo = restaurant.reserveInfos.find(
-      (info) =>
-        info.date === dataForSearch.date && info.time === dataForSearch.time
-    );
-    setRemainingSeats(
-      pairingInfo ? pairingInfo.remainingSeats : restaurant.maxSeats
-    );
-    setDate(dataForSearch.date);
-    setTime(dataForSearch.time);
+    setRemainingSeats(undefined);
   }
 
   return (
@@ -130,23 +129,22 @@ export default function Reseve({ onStoreReserveData }) {
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
         />
-        <h2>
+        <Message>
           {!remainingSeats
-            ? ""
+            ? reserveMessage
             : `Es gibt noch ${remainingSeats}
         ${remainingSeats === 1 ? "Platz" : "Plätze"}.`}
-        </h2>
+        </Message>
         {date && time && (
           <ReserveForm
             restaurant={restaurant}
             remainingSeats={remainingSeats}
             date={date}
             time={time}
-            onStoreReserveData={addUserInfo}
+            onPostNewReserve={postNewReserve}
             editRemainingSeats={editRemainingSeats}
           />
         )}
-        <p>{reserveMessege}</p>
       </StyledContainer>
     </>
   );
@@ -167,4 +165,14 @@ const StyledContainer = styled.section`
   @media only screen and (min-width: 800px) {
     width: 640px;
   }
+`;
+
+const Message = styled.p`
+  margin: 7%;
+  padding: 0.5rem;
+  text-align: justify;
+  font-weight: bold;
+
+  border-radius: 1rem;
+  border: 2px solid var(--red-vine-color);
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function ReserveForm({
   remainingSeats,
-  onStoreReserveData,
+  onPostNewReserve,
   restaurant,
   date,
   time,
@@ -12,7 +12,7 @@ export default function ReserveForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
-    onStoreReserveData(reserveData, restaurant, date, time);
+    onPostNewReserve(reserveData, restaurant, date, time);
     editRemainingSeats(reserveData, restaurant, date, time);
     event.target.reset();
   }
