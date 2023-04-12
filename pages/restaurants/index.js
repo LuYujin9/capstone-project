@@ -9,6 +9,7 @@ export default function Restaurants({ onToggleFavorite }) {
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
+  console.log(restaurants);
 
   return (
     <>
