@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CommentCard from "./CommentCard/CommentCard";
+import CommentCard from "./CommentCard";
 
 export default function CommentsList({ comments }) {
   return (

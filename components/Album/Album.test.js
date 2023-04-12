@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Album from "./Album";
+import Album from ".";
 import userEvent from "@testing-library/user-event";
 
 const testPhotos = [

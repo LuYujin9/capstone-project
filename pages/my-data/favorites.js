@@ -1,5 +1,5 @@
-import Heading from "../../components/Heading/Heading";
-import List from "../../components/List/List";
+import Heading from "../../components/Heading";
+import List from "../../components/List";
 import useSWR from "swr";
 
 export default function Favorites({ onToggleFavorite }) {

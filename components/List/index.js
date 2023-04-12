@@ -1,5 +1,5 @@
 import { StyledList } from "./List.styles";
-import ListCard from "./ListCard/ListCard";
+import ListCard from "./ListCard";
 
 export default function List({ restaurants, onToggleFavorite, userInfos }) {
   return (

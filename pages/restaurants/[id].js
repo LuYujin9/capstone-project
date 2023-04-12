@@ -1,12 +1,11 @@
-//import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import CommentsList from "../../components/CommentsList/CommentsList";
-import Album from "../../components/Album/Album";
+import CommentsList from "../../components/CommentsList";
+import Album from "../../components/Album";
 import Link from "next/link.js";
-import Heading from "../../components/Heading/Heading";
-import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
-import BookmarkButton from "../../components/BookmarkButton/BookmarkButton.js";
+import Heading from "../../components/Heading";
+import ToReservePageLink from "../../components/ToReservePageLink";
+import BookmarkButton from "../../components/BookmarkButton";
 import useSWR from "swr";
 
 export default function Details({ onToggleFavorite }) {

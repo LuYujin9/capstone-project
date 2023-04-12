@@ -1,6 +1,6 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
-import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer";
 import { useSWRConfig, SWRConfig } from "swr";
 
 export default function App({ Component, pageProps }) {

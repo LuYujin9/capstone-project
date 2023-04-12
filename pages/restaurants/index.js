@@ -1,5 +1,5 @@
-import List from "../../components/List/List";
-import Heading from "../../components/Heading/Heading";
+import List from "../../components/List";
+import Heading from "../../components/Heading";
 import useSWR from "swr";
 
 export default function Restaurants({ onToggleFavorite }) {
@@ -9,7 +9,6 @@ export default function Restaurants({ onToggleFavorite }) {
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
-  console.log(restaurants);
 
   return (
     <>

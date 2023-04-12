@@ -34,7 +34,14 @@ export default function ReserveForm({
       <label htmlFor="email">Email Adresse:</label>
       <input type="email" name="email" id="email"></input>
       <label htmlFor="phone">Telefonnummber:</label>
-      <input type="number" name="phone" id="phone" required></input>
+      <input
+        maxLength="11"
+        minLength="6"
+        type="tel"
+        name="phone"
+        id="phone"
+        required
+      ></input>
       <StyledSubmitButton type="submit" aria-label="Knopf um zu reservieren">
         Reservieren
       </StyledSubmitButton>

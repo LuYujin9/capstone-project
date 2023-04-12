@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import Heading from "../../../components/Heading/Heading";
-import ReserveForm from "../../../components/ReserveForm/ReserveForm.js";
-import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter/RemainingSeatsFilter";
-import MessageModal from "../../../components/MessageModal/MessageModal";
+import Heading from "../../../components/Heading";
+import ReserveForm from "../../../components/ReserveForm";
+import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter";
+import MessageModal from "../../../components/MessageModal";
 import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";

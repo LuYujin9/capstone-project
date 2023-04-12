@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import Heading from "../../../components/Heading/Heading";
-import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
-import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
-import BookmarkButton from "../../../components/BookmarkButton/BookmarkButton.js";
+import Heading from "../../../components/Heading";
+import MenuListItem from "../../../components/MenuListItem";
+import ToReservePageLink from "../../../components/ToReservePageLink";
+import BookmarkButton from "../../../components/BookmarkButton";
 import { StyledContainer } from "../../../components/styles/styles";
 import useSWR from "swr";
 

@@ -7,7 +7,7 @@ import {
   CardContainer,
 } from "../List.styles";
 import Link from "next/link";
-import BookmarkButton from "../../BookmarkButton/BookmarkButton";
+import BookmarkButton from "../../BookmarkButton";
 
 export default function ListCard({ onToggleFavorite, userInfos, restaurant }) {
   const matchedUserInfo = userInfos?.find(
