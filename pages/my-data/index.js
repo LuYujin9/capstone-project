@@ -13,6 +13,12 @@ export default function MyData() {
         >
           Favoriten
         </StyledLink>
+        <StyledLink
+          aria-label="Link zur Meine-Reservierungen-Seite"
+          href="/my-data/reserves"
+        >
+          Reservierungen
+        </StyledLink>
       </StyledSection>
     </>
   );

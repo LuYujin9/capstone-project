@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function MessageModal({ isOpen, onClose, children }) {
   return (
@@ -13,6 +14,12 @@ export default function MessageModal({ isOpen, onClose, children }) {
             >
               Schließen
             </StyledButton>
+            <Link
+              aria-label="Link zur Meine-Reservierungen-Seite"
+              href="/my-data/reserves"
+            >
+              Meine Reservierungen
+            </Link>
           </Container>
         </Background>
       )}
