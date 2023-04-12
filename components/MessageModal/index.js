@@ -1,18 +1,17 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 export default function MessageModal({ isOpen, onClose, children }) {
   return (
     <>
       {isOpen && (
-        <Background onClick={onClose}>
+        <Background>
           <Container className="modal">
             <Message>{children}</Message>
             <StyledButton
               aria-label="schließen die Nachricht"
               onClick={onClose}
             >
-              Close
+              Schließen
             </StyledButton>
           </Container>
         </Background>

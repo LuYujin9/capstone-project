@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CommentsList from "./CommentsList";
+import CommentsList from ".";
 
 const testComments = [
   {

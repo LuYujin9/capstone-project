@@ -1,4 +1,4 @@
-import Heading from "./Heading";
+import Heading from ".";
 import { render, screen } from "@testing-library/react";
 
 jest.mock("next/router", () => ({

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import RemainingSeatsFilter from "./RemainingSeatsFilter";
+import RemainingSeatsFilter from ".";
 import userEvent from "@testing-library/user-event";
 
 test("renders one input, six options, one select and a button ", () => {

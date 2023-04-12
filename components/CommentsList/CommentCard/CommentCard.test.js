@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CommentCard from "./CommentCard";
+import CommentCard from ".";
 
 const testComment = "sehr Lecker.";
 const testTime = "Tue Jun 07 2023";

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ListCard from "./ListCard";
+import ListCard from ".";
 const testRestaurant = {
   id: "1",
   name: "Carolaschlösschen Dresden",

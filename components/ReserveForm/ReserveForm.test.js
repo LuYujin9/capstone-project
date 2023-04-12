@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ReserveForm from "./ReserveForm";
+import ReserveForm from ".";
 import userEvent from "@testing-library/user-event";
 
 test("renders two text inputs, two number iputs and a button ", () => {
@@ -7,8 +7,8 @@ test("renders two text inputs, two number iputs and a button ", () => {
   const textInputs = screen.getAllByRole("textbox");
   const numberInputs = screen.getAllByRole("spinbutton");
   const button = screen.getByRole("button");
-  expect(textInputs).toHaveLength(2);
-  expect(numberInputs).toHaveLength(2);
+  expect(textInputs).toHaveLength(3);
+  expect(numberInputs).toHaveLength(1);
   expect(button).toBeInTheDocument();
 });
 
@@ -35,7 +35,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
     name: "Personen:",
   });
   const nameInput = screen.getByRole("textbox", { name: "Name:" });
-  const phoneInput = screen.getByRole("spinbutton", {
+  const phoneInput = screen.getByRole("textbox", {
     name: "Telefonnummber:",
   });
   const button = screen.getByRole("button");
