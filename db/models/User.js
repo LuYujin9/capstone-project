@@ -1,0 +1,12 @@
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
+const userSchema = new Schema({
+  restaurantId: { type: String, required: true },
+  name_of_restaurant: { type: String, required: true },
+  isFavorite: { type: Boolean, required: true },
+  isReserved: { type: Boolean, required: true },
+});
+
+const User = mongoose.models.User || mongoose.model("User", userSchema);
+export default User;

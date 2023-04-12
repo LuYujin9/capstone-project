@@ -1,5 +1,5 @@
 import { StyledList } from "./List.styles";
-import ListCard from "./ListCard/ListCard";
+import ListCard from "./ListCard";
 
 export default function List({ restaurants, onToggleFavorite, userInfos }) {
   return (
@@ -9,7 +9,7 @@ export default function List({ restaurants, onToggleFavorite, userInfos }) {
           onToggleFavorite={onToggleFavorite}
           userInfos={userInfos}
           restaurant={restaurant}
-          key={restaurant.id}
+          key={restaurant._id}
         />
       ))}
     </StyledList>

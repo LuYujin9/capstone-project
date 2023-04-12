@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import BookmarkButton from "./BookmarkButton";
+import BookmarkButton from ".";
 import userEvent from "@testing-library/user-event";
 
 test("renders the button", () => {

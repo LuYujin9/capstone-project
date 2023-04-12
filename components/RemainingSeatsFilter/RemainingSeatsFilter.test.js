@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import RemainingSeatsFilter from "./RemainingSeatsFilter";
+import RemainingSeatsFilter from ".";
 import userEvent from "@testing-library/user-event";
 
 test("renders one input, six options, one select and a button ", () => {
@@ -21,17 +21,17 @@ test("renders a form with the accessible name 'Suchen verfügbare Plätze'", () 
 });
 
 test("submit the form data when every field is filled out", async () => {
-  const getRemainingSeats = jest.fn();
-  render(<RemainingSeatsFilter getRemainingSeats={getRemainingSeats} />);
+  const mokeGetRemainingSeats = jest.fn();
+  render(<RemainingSeatsFilter getRemainingSeats={mokeGetRemainingSeats} />);
   const user = userEvent.setup();
   const input = screen.getByText(/Tag:/i);
   const select = screen.getByRole("combobox");
   const button = screen.getByRole("button");
-  await user.type(input, "2023-04-08");
+  await user.type(input, "2050-05-08");
   await user.type(select, "11:00");
   await user.click(button);
-  expect(getRemainingSeats).toHaveBeenCalledWith({
-    date: "2023-04-08",
+  expect(mokeGetRemainingSeats).toHaveBeenCalledWith({
+    date: "2050-05-08",
     time: "11:00",
   });
 });

@@ -2,16 +2,19 @@ import styled from "styled-components";
 
 export default function ReserveForm({
   remainingSeats,
-  onStoreReserveData,
+  onPostNewReserve,
   restaurant,
   date,
   time,
+  editRemainingSeats,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
-    onStoreReserveData(reserveData, restaurant, date, time);
+    onPostNewReserve(reserveData, restaurant, date, time);
+    editRemainingSeats(reserveData, restaurant, date, time);
+    event.target.reset();
   }
 
   return (
@@ -31,7 +34,14 @@ export default function ReserveForm({
       <label htmlFor="email">Email Adresse:</label>
       <input type="email" name="email" id="email"></input>
       <label htmlFor="phone">Telefonnummber:</label>
-      <input type="number" name="phone" id="phone" required></input>
+      <input
+        maxLength="11"
+        minLength="6"
+        type="tel"
+        name="phone"
+        id="phone"
+        required
+      ></input>
       <StyledSubmitButton type="submit" aria-label="Knopf um zu reservieren">
         Reservieren
       </StyledSubmitButton>

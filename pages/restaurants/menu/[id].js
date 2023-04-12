@@ -1,24 +1,34 @@
-import { restaurants } from "../../../lib/data.js";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import Heading from "../../../components/Heading/Heading";
-import MenuListItem from "../../../components/MenuListItem/MenuListItem.js";
-import ToReservePageLink from "../../../components/ToReservePageLink/ToReservePageLink";
-import BookmarkButton from "../../../components/BookmarkButton/BookmarkButton.js";
+import Heading from "../../../components/Heading";
+import MenuListItem from "../../../components/MenuListItem";
+import ToReservePageLink from "../../../components/ToReservePageLink";
+import BookmarkButton from "../../../components/BookmarkButton";
 import { StyledContainer } from "../../../components/styles/styles";
+import useSWR from "swr";
 
-export default function Menu({ onToggleFavorite, userInfos }) {
+export default function Menu({ onToggleFavorite }) {
   const router = useRouter();
-  if (!router.isReady) return <h2>loading</h2>;
   const { id } = router.query;
+  const { isReady } = router;
+  const {
+    data: restaurant,
+    isLoading,
+    error,
+  } = useSWR(`/api/restaurants/${id}`);
+  const { data: userInfos } = useSWR("/api/user-infos", {
+    fallbackData: [],
+  });
+  const matchedUserInfo = userInfos.find((info) => info.restaurantId === id);
+  if (!isReady || !userInfos || !restaurant || isLoading || error)
+    return <h2>Loading</h2>;
 
-  const restaurant = restaurants?.find((restaurant) => restaurant.id === id);
   const foods = restaurant.foods;
+  const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
 
-  const matchedInfo = userInfos?.find((info) => info.id === id);
-  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
   function handleToggleBookmark() {
-    onToggleFavorite(id, restaurant);
+    const newIsFavorite = !isFavorite;
+    onToggleFavorite(matchedUserInfo, newIsFavorite, restaurant);
   }
   return (
     <>

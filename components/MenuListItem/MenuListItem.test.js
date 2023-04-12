@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MenuListItem from "./MenuListItem";
+import MenuListItem from ".";
 
 const testFood = {
   id: "1",

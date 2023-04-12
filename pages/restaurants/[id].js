@@ -1,28 +1,35 @@
-import { restaurants } from "../../lib/data.js";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import CommentsList from "../../components/CommentsList/CommentsList";
-import Album from "../../components/Album/Album";
+import CommentsList from "../../components/CommentsList";
+import Album from "../../components/Album";
 import Link from "next/link.js";
-import Heading from "../../components/Heading/Heading";
-import ToReservePageLink from "../../components/ToReservePageLink/ToReservePageLink";
-import BookmarkButton from "../../components/BookmarkButton/BookmarkButton.js";
+import Heading from "../../components/Heading";
+import ToReservePageLink from "../../components/ToReservePageLink";
+import BookmarkButton from "../../components/BookmarkButton";
+import useSWR from "swr";
 
-export default function Details({ onToggleFavorite, userInfos }) {
+export default function Details({ onToggleFavorite }) {
   const router = useRouter();
-
-  if (!router.isReady) {
-    return <h2>Loading...</h2>;
-  }
-
   const { id } = router.query;
-  const restaurant = restaurants.find((restaurant) => restaurant.id === id);
-  const comments = restaurant.comments;
+  const { isReady } = router;
+  const {
+    data: restaurant,
+    isLoading,
+    error,
+  } = useSWR(`/api/restaurants/${id}`);
+  const { data: userInfos } = useSWR("/api/user-infos", {
+    fallbackData: [],
+  });
+  const matchedUserInfo = userInfos?.find((info) => info.restaurantId === id);
+  if (!isReady || !userInfos || !restaurant || isLoading || error)
+    return <h2>Loading</h2>;
 
-  const matchedInfo = userInfos?.find((info) => info.id === id);
-  const isFavorite = matchedInfo ? matchedInfo.isFavorite : false;
+  const comments = restaurant.comments;
+  const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
+
   function handleToggleBookmark() {
-    onToggleFavorite(id, restaurant);
+    const newIsFavorite = !isFavorite;
+    onToggleFavorite(matchedUserInfo, newIsFavorite, restaurant);
   }
 
   return (

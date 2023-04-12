@@ -1,4 +1,4 @@
-import ToReservePageLink from "./ToReservePageLink";
+import ToReservePageLink from ".";
 import { render, screen } from "@testing-library/react";
 
 test("renders the link", () => {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Heading from "../../components/Heading/Heading";
+import Heading from "../../components/Heading";
 
 export default function MyData() {
   return (
