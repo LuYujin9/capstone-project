@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ChevronLeftIcon from "../../public/icons/chevron_left";
+import { ChevronLeftIcon } from "../../public/icons";
 import { useRouter } from "next/router";
 
 export default function Heading({ children, isHideBackButton }) {

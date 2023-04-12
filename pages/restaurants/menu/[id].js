@@ -4,7 +4,7 @@ import Heading from "../../../components/Heading";
 import MenuListItem from "../../../components/MenuListItem";
 import ToReservePageLink from "../../../components/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton";
-import { StyledContainer } from "../../../components/styles/styles";
+import { StyledContainer } from "../../../components/styles";
 import useSWR from "swr";
 
 export default function Menu({ onToggleFavorite }) {

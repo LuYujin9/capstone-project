@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import BookmarkIcon from "../../public/icons/bookmark";
+import { HeartIcon } from "../../public/icons";
 
 export default function BookmarkButton({ onToggleBookmark, isFavorite }) {
   const buttonColor = isFavorite === true ? "var(--red-vine-color)" : "none";
   return (
     <StyledButton aria-label="Bookmark Knopf" onClick={onToggleBookmark}>
-      <BookmarkIcon alt="Herz Icon" fillColor={buttonColor} />
+      <HeartIcon alt="Herz Icon" fillColor={buttonColor} />
     </StyledButton>
   );
 }

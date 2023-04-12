@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledButton } from "../styles";
 
 export default function RemainingSeatsFilter({ getRemainingSeats }) {
   function handleSubmit(event) {
@@ -29,12 +30,12 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
         <option value="19:00">19:00</option>
         <option value="20:00">20:00</option>
       </select>
-      <StyledSubmitButton
+      <StyledButton
         type="submit"
         aria-label="Knopf um freie Plätze anzeigen zu lassen"
       >
         Suchen
-      </StyledSubmitButton>
+      </StyledButton>
     </StyledForm>
   );
 }
@@ -56,18 +57,4 @@ const StyledLegend = styled.legend`
   text-align: center;
   font-weight: bold;
   font-size: 1.3rem;
-`;
-
-const StyledSubmitButton = styled.button`
-  width: 6rem;
-  padding: 0.3rem;
-  margin: 0.5rem;
-
-  align-self: center;
-
-  border-radius: 15px;
-  border: none;
-  color: var(--white-color);
-  background-color: var(--red-vine-color);
-  box-shadow: 2px 2px 5px 1px var(--linen-color);
 `;

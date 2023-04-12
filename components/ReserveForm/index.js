@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledButton } from "../styles";
 
 export default function ReserveForm({
   remainingSeats,
@@ -42,9 +43,9 @@ export default function ReserveForm({
         id="phone"
         required
       ></input>
-      <StyledSubmitButton type="submit" aria-label="Knopf um zu reservieren">
+      <StyledButton type="submit" aria-label="Knopf um zu reservieren">
         Reservieren
-      </StyledSubmitButton>
+      </StyledButton>
     </StyledForm>
   );
 }
@@ -66,18 +67,4 @@ const StyledLegend = styled.legend`
   text-align: center;
   font-weight: bold;
   font-size: 1.3rem;
-`;
-
-const StyledSubmitButton = styled.button`
-  width: 6rem;
-  padding: 0.3rem;
-  margin: 1rem;
-
-  align-self: center;
-
-  border-radius: 15px;
-  border: none;
-  color: var(--white-color);
-  background-color: var(--red-vine-color);
-  box-shadow: 2px 2px 5px 1px var(--linen-color);
 `;
