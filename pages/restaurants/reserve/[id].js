@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { StyledMain } from "../../../components/styles";
 import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter";
@@ -126,7 +127,7 @@ export default function Reseve() {
   return (
     <>
       <Heading>{restaurant.name}</Heading>
-      <StyledContainer>
+      <StyledMain>
         <RemainingSeatsFilter
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
@@ -154,24 +155,7 @@ export default function Reseve() {
             editRemainingSeats={editRemainingSeats}
           />
         )}
-      </StyledContainer>
+      </StyledMain>
     </>
   );
 }
-
-const StyledContainer = styled.section`
-  margin: 5rem auto;
-  padding: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-  }
-`;

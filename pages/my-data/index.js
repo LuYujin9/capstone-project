@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Heading from "../../components/Heading";
 import { StyledLink } from "../../components/styles";
-import { ArrowUpRight } from "../../public/icons";
+import { ArrowUpRightIcon } from "../../public/icons";
 
 export default function MyData() {
   return (
@@ -13,14 +13,14 @@ export default function MyData() {
           href="/my-data/favorites"
         >
           Favoriten &nbsp;
-          <ArrowUpRight />
+          <ArrowUpRightIcon />
         </StyledLink>
         <StyledLink
           aria-label="Link zur Meine-Reservierungen-Seite"
           href="/my-data/reserves"
         >
           Reservierungen &nbsp;
-          <ArrowUpRight />
+          <ArrowUpRightIcon />
         </StyledLink>
       </StyledSection>
     </>

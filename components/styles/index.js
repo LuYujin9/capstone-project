@@ -1,15 +1,23 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export const StyledContainer = styled.div`
+export const StyledMain = styled.main`
   margin: 4rem auto;
   padding: 0;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   @media only screen and (max-width: 799px) {
     width: 100vw;
   }
   @media only screen and (min-width: 800px) {
     width: 640px;
+    left: 0;
+    right: 0;
   }
 `;
 

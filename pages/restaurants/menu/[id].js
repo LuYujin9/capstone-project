@@ -4,7 +4,7 @@ import Heading from "../../../components/Heading";
 import MenuListItem from "../../../components/MenuListItem";
 import ToReservePageLink from "../../../components/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton";
-import { StyledContainer } from "../../../components/styles";
+import { StyledMain } from "../../../components/styles";
 import useSWR from "swr";
 
 export default function Menu({ onToggleFavorite }) {
@@ -33,8 +33,8 @@ export default function Menu({ onToggleFavorite }) {
   return (
     <>
       <Heading>{restaurant.name}</Heading>
-      <BackgroundPhoto />
-      <StyledContainer>
+      <StyledMain>
+        <BackgroundPhoto />
         <StyledSection>
           <BookmarkButton
             onToggleBookmark={handleToggleBookmark}
@@ -48,8 +48,8 @@ export default function Menu({ onToggleFavorite }) {
             )}
           </StyledList>
         </StyledSection>
-      </StyledContainer>
-      <ToReservePageLink id={id} />
+        <ToReservePageLink id={id} />
+      </StyledMain>
     </>
   );
 }
@@ -60,6 +60,7 @@ const BackgroundPhoto = styled.div`
   align-items: center;
 
   position: fixed;
+  top: 0;
 
   background-color: lightgrey;
   background-image: url(/images/menu-background.jpeg);

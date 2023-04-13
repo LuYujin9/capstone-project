@@ -1,5 +1,5 @@
 import Heading from "../../components/Heading";
-import List from "../../components/List";
+import RestaurantsList from "../../components/RestaurantsList";
 import useSWR from "swr";
 
 export default function Favorites({ onToggleFavorite }) {
@@ -19,7 +19,7 @@ export default function Favorites({ onToggleFavorite }) {
   return (
     <>
       <Heading>Favoriten</Heading>
-      <List
+      <RestaurantsList
         restaurants={favoriteRestaurants}
         userInfos={userInfos}
         onToggleFavorite={onToggleFavorite}

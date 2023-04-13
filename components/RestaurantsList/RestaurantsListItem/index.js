@@ -5,11 +5,15 @@ import {
   StyledRating,
   StyledPicture,
   CardContainer,
-} from "../List.styles";
+} from "../RestaurantsList.styles";
 import Link from "next/link";
 import BookmarkButton from "../../BookmarkButton";
 
-export default function ListCard({ onToggleFavorite, userInfos, restaurant }) {
+export default function RestaurantsListItem({
+  onToggleFavorite,
+  userInfos,
+  restaurant,
+}) {
   const matchedUserInfo = userInfos?.find(
     (info) => info.restaurantId === restaurant._id
   );
