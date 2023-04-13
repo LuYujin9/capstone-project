@@ -23,7 +23,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
   const mockEditRemainingSeats = jest.fn();
   render(
     <ReserveForm
-      onPostNewReserve={mockOnPostNewReserve}
+      onReserve={mockOnPostNewReserve}
       editRemainingSeats={mockEditRemainingSeats}
       restaurant="restaurant"
       date="2023-04-08"

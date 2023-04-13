@@ -22,14 +22,14 @@ test("doesn't display MessageModal when value of 'isOpen' is false ", () => {
 });
 
 test("calls callback on click ", async () => {
-  const mokeClose = jest.fn();
+  const mockClose = jest.fn();
   const user = userEvent.setup();
   render(
-    <MessageModal isOpen={true} onClose={mokeClose}>
+    <MessageModal isOpen={true} onClose={mockClose}>
       test
     </MessageModal>
   );
   const button = screen.getByRole("button");
   await user.click(button);
-  expect(mokeClose).toBeCalled();
+  expect(mockClose).toBeCalled();
 });
