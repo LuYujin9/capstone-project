@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import useSWR from "swr";
-import ReservesListItem from "../../components/ReservesListItem";
-import Heading from "../../components/Heading";
-import { StyledMain } from "../../components/styles";
+import ReservesListItem from "../../../components/ReservesListItem";
+import Heading from "../../../components/Heading";
+import { StyledMain } from "../../../components/styles";
 
 export default function Reserves() {
   const { data: reserves } = useSWR("/api/reserves", {

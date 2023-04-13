@@ -151,7 +151,7 @@ export default function Reseve() {
             remainingSeats={remainingSeats}
             date={date}
             time={time}
-            onPostNewReserve={postNewReserve}
+            onReserve={postNewReserve}
             editRemainingSeats={editRemainingSeats}
           />
         )}
