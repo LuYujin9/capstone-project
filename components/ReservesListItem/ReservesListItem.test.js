@@ -8,6 +8,7 @@ const testReserve = {
   number_of_guests: 3,
   name: "Jane",
   phone: "123456789",
+  email: "aefaefa@gmail.com",
 };
 
 test("renders the date, time, number of guests,restaurantName, name of guest and phone of guest", () => {
@@ -16,6 +17,8 @@ test("renders the date, time, number of guests,restaurantName, name of guest and
   expect(paragraphOne).toBeInTheDocument();
   const paragraphTwo = screen.getByText(/Jane 123456789/i);
   expect(paragraphTwo).toBeInTheDocument();
+  const paragraphThree = screen.getByText(/aefaefa@gmail.com/i);
+  expect(paragraphThree).toBeInTheDocument();
 
   const link = screen.getByRole("link", { name: "Lecker" });
   expect(link).toBeInTheDocument();

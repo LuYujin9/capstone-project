@@ -12,6 +12,7 @@ export default function ReservesListItem({ reserve }) {
     number_of_guests,
     name,
     phone,
+    email,
   } = reserve;
   return (
     <StyleListItem>
@@ -26,6 +27,7 @@ export default function ReservesListItem({ reserve }) {
       <p>
         {name}&emsp;{phone}
       </p>
+      <p>{email}</p>
     </StyleListItem>
   );
 }
