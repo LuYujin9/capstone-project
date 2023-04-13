@@ -26,6 +26,7 @@ export default function Reserves() {
 
 const StyledList = styled.ul`
   width: 100%;
+  min-height: 100vh;
   margin: 0;
   background-color: var(--linen-color);
 `;
