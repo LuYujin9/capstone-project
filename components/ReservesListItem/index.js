@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { StyledLink } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
 import styled from "styled-components";
@@ -22,7 +21,7 @@ export default function ReservesListItem({ reserve }) {
       </p>
       <StyledLink href={`/restaurants/${restaurantId}`}>
         {restaurantName}&nbsp;
-        <ArrowUpRightIcon />
+        <ArrowUpRightIcon alt="Pfeil Icon nach oben richts" />
       </StyledLink>
       <p>
         {name}&emsp;{phone}

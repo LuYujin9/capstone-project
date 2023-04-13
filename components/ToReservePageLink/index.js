@@ -9,7 +9,7 @@ export default function ToReservePageLink({ id }) {
       href={`/restaurants/reserve/${id}`}
     >
       Reservieren &nbsp;
-      <ArrowUpRightIcon />
+      <ArrowUpRightIcon alt="Pfeil Icon nach oben richts" />
     </ReservierenLink>
   );
 }
