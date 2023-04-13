@@ -1,26 +1,21 @@
 import styled from "styled-components";
-import Link from "next/link";
+import { ArrowUpRightIcon } from "../../public/icons";
+import { StyledLink } from "../styles";
 
 export default function ToReservePageLink({ id }) {
   return (
-    <StyledLink
+    <ReservierenLink
       aria-label="Link zur Reservieren-Seite"
       href={`/restaurants/reserve/${id}`}
     >
-      Reservieren
-    </StyledLink>
+      Reservieren &nbsp;
+      <ArrowUpRightIcon alt="Pfeil Icon nach oben richts" />
+    </ReservierenLink>
   );
 }
 
-const StyledLink = styled(Link)`
-  padding: 0.3rem 1rem;
-
-  position: fixed;
+const ReservierenLink = styled(StyledLink)`
+position: fixed;
   right: 0.3rem;
-  bottom: 3.3rem;
-
-  border-radius: 15px;
-  border: none;
-  color: var(--white-color);
-  background-color: var(--red-vine-color);
+  bottom: 3.3rem;)
 `;

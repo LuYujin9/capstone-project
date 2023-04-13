@@ -1,6 +1,5 @@
 import { useState } from "react";
-import ChevronLeftIcon from "../../public/icons/chevron_left";
-import ChevronRightIcon from "../../public/icons/chevron_right";
+import { ChevronRightIcon, ChevronLeftIcon } from "../../public/icons";
 import {
   StyledSection,
   StyledPicture,

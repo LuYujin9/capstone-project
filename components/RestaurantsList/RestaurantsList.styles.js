@@ -5,7 +5,7 @@ export const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-export const StyledList = styled.ul`
+export const StyledMain = styled.main`
   margin: 5rem 1vw;
   padding: 0;
 

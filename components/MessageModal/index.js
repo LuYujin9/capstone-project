@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { StyledLink } from "../../components/styles";
+import { XIcon, ArrowUpRightIcon } from "../../public/icons";
 
 export default function MessageModal({ isOpen, onClose, children }) {
   return (
@@ -6,13 +8,20 @@ export default function MessageModal({ isOpen, onClose, children }) {
       {isOpen && (
         <Background>
           <Container className="modal">
-            <Message>{children}</Message>
             <StyledButton
               aria-label="schließen die Nachricht"
               onClick={onClose}
             >
-              Schließen
+              <XIcon color={`var(--red-vine-color)`} />
             </StyledButton>
+            <Message>{children}</Message>
+            <StyledLink
+              aria-label="Link zur Meine-Reservierungen-Seite"
+              href="/my-data/reserves"
+            >
+              Meine Reservierungen &nbsp;
+              <ArrowUpRightIcon alt="Pfeil Icon nach oben richts" />
+            </StyledLink>
           </Container>
         </Background>
       )}
@@ -36,10 +45,8 @@ const Container = styled.div`
   margin: 35vh 1rem;
   padding: 1rem;
 
-  position: absolute;
-  top: auto;
-  left: auto;
-  z-index: 3;
+  display: flex;
+  flex-direction: column;
 
   background-color: var(--rosehip-color);
   border-radius: 15px;
@@ -49,20 +56,26 @@ const Message = styled.p`
   padding: 0.2rem;
   text-align: justify;
   font-weight: bold;
+  margin-bottom: 2rem;
 
   background-color: var(--rosehip-color);
   z-index: 3;
 `;
 
 const StyledButton = styled.button`
-  width: 6rem;
-  padding: 0.3rem;
-  margin: 1rem;
+  width: 3rem;
+  padding: 0 0.3rem;
+  font-weight: bold;
 
-  align-self: center;
+  align-self: end;
 
   border-radius: 15px;
   border: none;
-  color: var(--white-color);
-  background-color: var(--red-vine-color);
+  color: var(--red-vine-color);
+  background-color: var(--rosehip-color);
 `;
+
+/* position: absolute;
+top: auto;
+left: auto;
+z-index: 3; */

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import ChevronDown from "../../../public/icons/chevron_down";
-import ChevronUp from "../../../public/icons/chevron_up";
+import { ChevronDownIcon, ChevronUpIcon } from "../../../public/icons";
 
 export default function ThePage({ comment, time }) {
   const commentRef = useRef();
@@ -26,9 +25,9 @@ export default function ThePage({ comment, time }) {
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? (
-            <ChevronUp alt="Pfeil Icon nach oben" color="black" />
+            <ChevronUpIcon alt="Pfeil Icon nach oben" color="black" />
           ) : (
-            <ChevronDown alt="Pfeil Icon nach unter" color="black" />
+            <ChevronDownIcon alt="Pfeil Icon nach unter" color="black" />
           )}
         </StyledButton>
       )}

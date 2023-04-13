@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ListCard from ".";
+import RestaurantsListItem from ".";
 const testRestaurant = {
   id: "1",
   name: "Carolaschlösschen Dresden",
@@ -11,7 +11,7 @@ const testRestaurant = {
 };
 
 test("renders the photos, name, cuisine, bookmark button and rating", () => {
-  render(<ListCard restaurant={testRestaurant} />);
+  render(<RestaurantsListItem restaurant={testRestaurant} />);
   const photo = screen.getByRole("img", { name: /Foto vom Restaurant/i });
   expect(photo).toBeInTheDocument();
 

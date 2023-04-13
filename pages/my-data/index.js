@@ -1,6 +1,7 @@
-import Link from "next/link";
 import styled from "styled-components";
 import Heading from "../../components/Heading";
+import { StyledLink } from "../../components/styles";
+import { ArrowUpRightIcon } from "../../public/icons";
 
 export default function MyData() {
   return (
@@ -11,21 +12,20 @@ export default function MyData() {
           aria-label="Link zur Favoriten-Seite"
           href="/my-data/favorites"
         >
-          Favoriten
+          Favoriten &nbsp;
+          <ArrowUpRightIcon />
+        </StyledLink>
+        <StyledLink
+          aria-label="Link zur Meine-Reservierungen-Seite"
+          href="/my-data/reserves"
+        >
+          Reservierungen &nbsp;
+          <ArrowUpRightIcon />
         </StyledLink>
       </StyledSection>
     </>
   );
 }
-
-const StyledLink = styled(Link)`
-  padding: 0.5rem 3rem;
-
-  border-radius: 15px;
-  border: none;
-  color: var(--white-color);
-  background-color: var(--red-vine-color);
-`;
 
 const StyledSection = styled.section`
   margin: 5rem auto;
@@ -34,6 +34,7 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
   justify-content: center;
 
   @media only screen and (max-width: 799px) {
