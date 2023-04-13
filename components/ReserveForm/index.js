@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { StyledButton } from "../styles";
 
 export default function ReserveForm({
-  remainingSeats,
+  availableSeats,
   onReserve,
   restaurant,
   date,
@@ -28,7 +28,7 @@ export default function ReserveForm({
         name="number_of_guests"
         id="number_of_guests"
         min="1"
-        max={remainingSeats}
+        max={availableSeats}
         defaultValue={defaultData?.number_of_guests}
         required
       ></input>

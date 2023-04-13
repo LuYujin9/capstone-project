@@ -19,4 +19,9 @@ export default async function handler(request, response) {
     });
     response.status(200).json(reserveUpdate);
   }
+
+  if (request.method === "DELETE") {
+    const reserveDelete = await Reserve.findByIdAndDelete(id);
+    response.status(200).json({ status: "Reserve successfully deleted." });
+  }
 }

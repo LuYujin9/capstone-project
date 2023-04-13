@@ -2,15 +2,15 @@ import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import MessageModal from "../../../components/MessageModal";
 import { StyledMain } from "../../../components/styles";
-import { updateRemainingSeats } from "../../../utils/handleRemainingSeatsUtils";
-import { updateReserve } from "../../../utils/handleReserveUtils";
+import { updateData } from "../../../utils/handleDataUtils";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import styled from "styled-components";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
 export default function EditReserve() {
-  const [reserveMessage, setReserveMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   const router = useRouter();
@@ -22,11 +22,11 @@ export default function EditReserve() {
   );
   const { trigger: triggerRestaurant } = useSWRMutation(
     `/api/restaurants/${reserve?.restaurantId}`,
-    updateRemainingSeats
+    updateData
   );
   const { trigger: triggerReserve } = useSWRMutation(
     `/api/reserves/${id}`,
-    updateReserve
+    updateData
   );
   if (!isReady || !restaurant || isLoading || error) return <h2>Loading</h2>;
 
@@ -36,7 +36,9 @@ export default function EditReserve() {
     );
     return pairingInfo.remainingSeats;
   }
+
   const remainingSeats = getRemainingSeats(reserve, restaurant);
+  const availableSeats = remainingSeats + reserve.number_of_guests;
 
   async function editRemainingSeats(reserveData, restaurant, date, time) {
     const reserveInfos = restaurant.reserveInfos;
@@ -64,11 +66,11 @@ export default function EditReserve() {
       number_of_guests: number_of_guests,
       phone: phone,
     });
-    const reserveMessage = `Weee! Sie haben erfolgereich Ihre Reservierung geändert.
+    const message = `Weee! Sie haben erfolgereich Ihre Reservierung geändert.
     Die erneuerte Reservierung: am ${date} um ${time} Uhr ${number_of_guests}  ${
       number_of_guests == 1 ? "Platz" : "Plätze"
     } in ${restaurant.name}.`;
-    setReserveMessage(reserveMessage);
+    setMessage(message);
     setIsMessageModalOpen(true);
   }
 
@@ -76,15 +78,15 @@ export default function EditReserve() {
     <>
       <Heading>Ändern die Reservierung</Heading>
       <StyledMain>
-        <p>
+        <StyledParagraph>
           Falls Sie die Zeit verändern möchten, bitte stornieren Sie and neu
-          reservieren. In dem Zeitraum gibt es noch {remainingSeats} frei
-          Plätze. Bitte schreiben Sie nicht mehr als{" "}
-          {remainingSeats + reserve.number_of_guests} Personen.
-        </p>
+          reservieren.{<br />} In dem Zeitraum gibt es noch {remainingSeats}{" "}
+          frei Plätze. Bitte schreiben Sie nicht mehr als {availableSeats}{" "}
+          Personen.
+        </StyledParagraph>
         <ReserveForm
           restaurant={restaurant}
-          remainingSeats={remainingSeats}
+          availableSeats={availableSeats}
           date={reserve.date}
           time={reserve.time}
           editRemainingSeats={editRemainingSeats}
@@ -96,9 +98,14 @@ export default function EditReserve() {
           isOpen={isMessageModalOpen}
           onClose={() => setIsMessageModalOpen(false)}
         >
-          {reserveMessage}
+          {message}
         </MessageModal>
       </StyledMain>
     </>
   );
 }
+
+const StyledParagraph = styled.p`
+  margin: 2rem;
+  font-weight: bold;
+`;

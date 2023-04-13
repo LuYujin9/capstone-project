@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { StyledLink, StyledButton } from "../../components/styles";
+import { StyledButton } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
+import { handleDelete } from "../../utils/handleDataUtils";
 import styled from "styled-components";
 
-export default function ReservesListItem({ reserve }) {
+export default function ReservesListItem({ reserve, mutateReserves }) {
   const {
     _id,
     date,
@@ -16,6 +17,11 @@ export default function ReservesListItem({ reserve }) {
     email,
   } = reserve;
 
+  async function handleDeleteReserve(id) {
+    await handleDelete(`/api/reserves/${id}`);
+    mutateReserves();
+  }
+
   return (
     <StyleListItem>
       <p>
@@ -23,11 +29,14 @@ export default function ReservesListItem({ reserve }) {
         {number_of_guests === 1 ? "Person" : "Personen"}
       </p>
       <StyledLink href={`/restaurants/${restaurantId}`}>
-        {restaurantName}&nbsp;
-        <ArrowUpRightIcon alt="Pfeil Icon nach oben richts" />
+        Restaurant: {restaurantName}&nbsp;
+        <ArrowUpRightIcon
+          alt="Pfeil Icon nach oben richts"
+          color={`var(--red-vine-color)`}
+        />
       </StyledLink>
       <p>
-        {name}&emsp;{phone}
+        {name}&emsp;Phone:{phone}
       </p>
       <p>{email}</p>
       <LinkToEdit
@@ -36,7 +45,10 @@ export default function ReservesListItem({ reserve }) {
       >
         Änderen
       </LinkToEdit>
-      <StyledButton aria-label="Stornieren die Reservierung">
+      <StyledButton
+        aria-label="Stornieren die Reservierung"
+        onClick={() => handleDeleteReserve(_id)}
+      >
         Stornieren
       </StyledButton>
     </StyleListItem>
@@ -47,10 +59,11 @@ const StyleListItem = styled.li`
   width: 95%;
   padding: 0.3rem;
   margin: 0.4rem auto;
-  border-radius: 5px;
+  border-radius: 10px;
 
   list-style-type: none;
-  background-color: var(--white-color);
+  background-color: white;
+  box-shadow: 1px 1px 5px 2px var(--antique-color);
 `;
 
 const LinkToEdit = styled(Link)`
@@ -64,5 +77,10 @@ const LinkToEdit = styled(Link)`
   border: none;
   color: var(--white-color);
   background-color: var(--red-vine-color);
-  box-shadow: 2px 2px 5px 1px var(--linen-color);
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  text-decoration: underline;
+  margin: 0 0.2rem;
 `;

@@ -148,7 +148,7 @@ export default function Reseve() {
         {date && time && (
           <ReserveForm
             restaurant={restaurant}
-            remainingSeats={remainingSeats}
+            availableSeats={remainingSeats}
             date={date}
             time={time}
             onReserve={postNewReserve}
