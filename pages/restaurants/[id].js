@@ -12,7 +12,6 @@ import useSWR from "swr";
 export default function Details({ onToggleFavorite }) {
   const router = useRouter();
   const { id } = router.query;
-  //const { isReady } = router;
   const {
     data: restaurant,
     isLoading,

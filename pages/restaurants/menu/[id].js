@@ -10,15 +10,14 @@ import useSWR from "swr";
 export default function Menu({ onToggleFavorite }) {
   const router = useRouter();
   const { id } = router.query;
-  //const { isReady } = router;
+  const { data: userInfos } = useSWR("/api/user-infos", {
+    fallbackData: [],
+  });
   const {
     data: restaurant,
     isLoading,
     error,
   } = useSWR(id ? `/api/restaurants/${id}` : null);
-  const { data: userInfos } = useSWR("/api/user-infos", {
-    fallbackData: [],
-  });
   if (!userInfos || !restaurant || isLoading || error) return <h2>Loading</h2>;
 
   const matchedUserInfo = userInfos.find((info) => info.restaurantId === id);

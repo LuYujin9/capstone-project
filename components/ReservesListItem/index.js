@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { StyledButton } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
-import { handleDelete } from "../../utils/handleDataUtils";
+import { deleteData } from "../../utils/handleDataUtils";
 import styled from "styled-components";
 
 export default function ReservesListItem({ reserve, mutateReserves }) {
@@ -18,7 +18,7 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
   } = reserve;
 
   async function handleDeleteReserve(id) {
-    await handleDelete(`/api/reserves/${id}`);
+    await deleteData(`/api/reserves/${id}`);
     mutateReserves();
   }
 

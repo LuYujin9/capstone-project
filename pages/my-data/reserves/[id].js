@@ -15,7 +15,6 @@ export default function EditReserve() {
 
   const router = useRouter();
   const { id } = router.query;
-  const { isReady } = router;
   const {
     data: reserve,
     isLoading,
@@ -32,7 +31,7 @@ export default function EditReserve() {
     id ? `/api/reserves/${id}` : null,
     updateData
   );
-  if (!isReady || !restaurant || isLoading || error) return <h2>Loading</h2>;
+  if (!restaurant || isLoading || error) return <h2>Loading</h2>;
 
   function getRemainingSeats(reserve, restaurant) {
     const pairingInfo = restaurant.reserveInfos.find(
