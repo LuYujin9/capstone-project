@@ -5,6 +5,7 @@ import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter";
 import MessageModal from "../../../components/MessageModal";
+import { updateData } from "../../../utils/handleDataUtils";
 import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
@@ -13,17 +14,21 @@ export default function Reseve() {
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
-  const [reserveMessage, setReserveMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
-  const { isReady } = router;
   const {
     data: restaurant,
     isLoading,
     error,
-  } = useSWR(`/api/restaurants/${id}`);
+  } = useSWR(id ? `/api/restaurants/${id}` : null);
+  const { trigger: triggerRestaurant } = useSWRMutation(
+    id ? `/api/restaurants/${id}` : null,
+    updateData
+  );
+  if (!restaurant || isLoading || error) return <h2>Loading</h2>;
 
   function getRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(
@@ -35,29 +40,8 @@ export default function Reseve() {
     );
     setDate(dataForSearch.date);
     setTime(dataForSearch.time);
-    setReserveMessage(undefined);
+    setMessage(undefined);
   }
-
-  async function updateRemainingSeats(url, { arg }) {
-    const response = await fetch(url, {
-      method: "PUT",
-      body: JSON.stringify(arg),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-      await response.json();
-    } else {
-      console.error(`Error: ${response.status}`);
-    }
-  }
-
-  const { trigger } = useSWRMutation(
-    `/api/restaurants/${id}`,
-    updateRemainingSeats
-  );
 
   async function editRemainingSeats(reserveData, restaurant, date, time) {
     const reserveInfos = restaurant.reserveInfos;
@@ -73,7 +57,7 @@ export default function Reseve() {
           ? { ...info, remainingSeats: newRemainingSeats }
           : info
       );
-      await trigger({ reserveInfos: newReservInfos });
+      await triggerRestaurant({ reserveInfos: newReservInfos });
       return;
     }
 
@@ -83,10 +67,8 @@ export default function Reseve() {
       remainingSeats: restaurant.maxSeats - reserveData.number_of_guests,
     };
     const newReservInfos = [...reserveInfos, newRemainingSeats];
-    await trigger({ reserveInfos: newReservInfos });
+    await triggerRestaurant({ reserveInfos: newReservInfos });
   }
-
-  if (!isReady || isLoading || error) return <h2>Loading</h2>;
 
   async function postNewReserve(reserveData, restaurant, date, time) {
     const { number_of_guests, name, email, phone } = reserveData;
@@ -110,18 +92,17 @@ export default function Reseve() {
 
     if (response.ok) {
       await response.json();
-      const reserveMessage = `Sie haben erfolgereich am ${date} um ${time} Uhr ${number_of_guests}  ${
+      const message = `Sie haben erfolgereich am ${date} um ${time} Uhr ${number_of_guests}  ${
         number_of_guests == 1 ? "Platz" : "Plätze"
       } in ${restaurant.name} reservert.`;
-      setReserveMessage(reserveMessage);
+      setMessage(message);
+      setIsMessageModalOpen(true);
     } else {
-      const reserveMessage =
-        "Es gibt einen Fehler, bitten versuchen Sie später.";
-      setReserveMessage(reserveMessage);
       console.error(response.status);
+      return <h2> Es gibt einen Fehler, bitten versuchen Sie später.</h2>;
     }
+
     setRemainingSeats(undefined);
-    setIsMessageModalOpen(true);
   }
 
   return (
@@ -143,15 +124,15 @@ export default function Reseve() {
           isOpen={isMessageModalOpen}
           onClose={() => setIsMessageModalOpen(false)}
         >
-          {reserveMessage}
+          {message}
         </MessageModal>
         {date && time && (
           <ReserveForm
             restaurant={restaurant}
-            remainingSeats={remainingSeats}
+            availableSeats={remainingSeats}
             date={date}
             time={time}
-            onPostNewReserve={postNewReserve}
+            onReserve={postNewReserve}
             editRemainingSeats={editRemainingSeats}
           />
         )}

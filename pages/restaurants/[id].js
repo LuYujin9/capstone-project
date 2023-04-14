@@ -12,19 +12,17 @@ import useSWR from "swr";
 export default function Details({ onToggleFavorite }) {
   const router = useRouter();
   const { id } = router.query;
-  const { isReady } = router;
   const {
     data: restaurant,
     isLoading,
     error,
-  } = useSWR(`/api/restaurants/${id}`);
+  } = useSWR(id ? `/api/restaurants/${id}` : null);
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
-  const matchedUserInfo = userInfos?.find((info) => info.restaurantId === id);
-  if (!isReady || !userInfos || !restaurant || isLoading || error)
-    return <h2>Loading</h2>;
+  if (!userInfos || !restaurant || isLoading || error) return <h2>Loading</h2>;
 
+  const matchedUserInfo = userInfos?.find((info) => info.restaurantId === id);
   const comments = restaurant.comments;
   const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
 

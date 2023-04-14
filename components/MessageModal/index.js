@@ -20,7 +20,7 @@ export default function MessageModal({ isOpen, onClose, children }) {
               href="/my-data/reserves"
             >
               Meine Reservierungen &nbsp;
-              <ArrowUpRightIcon alt="Pfeil Icon nach oben richts" />
+              <ArrowUpRightIcon alt="Pfeil Icon nach oben rechts" />
             </StyledLink>
           </Container>
         </Background>
