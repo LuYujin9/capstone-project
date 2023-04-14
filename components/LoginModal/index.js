@@ -19,7 +19,10 @@ export default function LoginModal({
             </CloseButton>
 
             {isHomepage ? (
-              <Message>Bitten geben Sie einen Username </Message>
+              <Message>
+                Bitten geben Sie einen Username order schließen dieses Fenster
+                und benutzen “Gast” als username.
+              </Message>
             ) : (
               <Message>
                 Der Username ist jetzt {username}. Möchten Sie ändern?

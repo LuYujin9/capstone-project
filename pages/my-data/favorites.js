@@ -12,7 +12,9 @@ export default function Favorites({ onToggleFavorite, username, onLogin }) {
   });
   if (!restaurants || !userInfos) <h2>Loading</h2>;
 
-  const favorites = userInfos.filter((info) => info.isFavorite === true);
+  const favorites = userInfos.filter(
+    (info) => info.isFavorite === true && info.username === username
+  );
   const favoriteRestaurants = restaurants.filter((restaurant) =>
     favorites.find((favorite) => favorite.restaurantId === restaurant._id)
   );
@@ -27,6 +29,7 @@ export default function Favorites({ onToggleFavorite, username, onLogin }) {
           restaurants={favoriteRestaurants}
           userInfos={userInfos}
           onToggleFavorite={onToggleFavorite}
+          username={username}
         />
       </StyledMain>
     </>

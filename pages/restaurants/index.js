@@ -21,6 +21,7 @@ export default function Restaurants({ onToggleFavorite, username, onLogin }) {
           restaurants={restaurants}
           onToggleFavorite={onToggleFavorite}
           userInfos={userInfos}
+          username={username}
         />
       </StyledMain>
     </>

@@ -5,6 +5,7 @@ export default function RestaurantsList({
   restaurants,
   onToggleFavorite,
   userInfos,
+  username,
 }) {
   return (
     <StyledList>
@@ -14,6 +15,7 @@ export default function RestaurantsList({
           userInfos={userInfos}
           restaurant={restaurant}
           key={restaurant._id}
+          username={username}
         />
       ))}
     </StyledList>
