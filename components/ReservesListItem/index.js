@@ -36,7 +36,8 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
         />
       </StyledLink>
       <p>
-        <b>Name:</b> {name} &emsp;<b>Phone:</b> {phone}
+        <b>Name: </b>
+        {name} &emsp; <b>Phone: </b> {phone}
       </p>
       <p>{email}</p>
       <div>

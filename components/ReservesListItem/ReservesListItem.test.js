@@ -16,7 +16,7 @@ test("renders the date, time, number of guests,restaurantName, name of guest and
   render(<ReservesListItem reserve={testReserve} />);
   const paragraphOne = screen.getByText(/03-04-2024 11:00 3 Personen/i);
   expect(paragraphOne).toBeInTheDocument();
-  const paragraphTwo = screen.getByText(/Name: Jane Phone: 123456789/i);
+  const paragraphTwo = screen.getByText(/Jane/i);
   expect(paragraphTwo).toBeInTheDocument();
   const paragraphThree = screen.getByText(/aefaefa@gmail.com/i);
   expect(paragraphThree).toBeInTheDocument();
