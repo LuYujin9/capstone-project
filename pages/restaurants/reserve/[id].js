@@ -5,12 +5,14 @@ import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter";
 import MessageModal from "../../../components/MessageModal";
+import LoginModal from "../../../components/LoginModal";
 import { updateData } from "../../../utils/handleDataUtils";
 import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
-export default function Reseve() {
+export default function Reseve({ username }) {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
@@ -108,6 +110,12 @@ export default function Reseve() {
   return (
     <>
       <Heading>{restaurant.name}</Heading>
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        username={username}
+        isHomepage={false}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
       <StyledMain>
         <RemainingSeatsFilter
           restaurant={restaurant}

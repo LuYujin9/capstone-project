@@ -74,8 +74,3 @@ const StyledButton = styled.button`
   color: var(--red-vine-color);
   background-color: var(--rosehip-color);
 `;
-
-/* position: absolute;
-top: auto;
-left: auto;
-z-index: 3; */

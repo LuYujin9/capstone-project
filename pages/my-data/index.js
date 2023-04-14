@@ -1,28 +1,41 @@
 import styled from "styled-components";
 import Heading from "../../components/Heading";
+import LoginModal from "../../components/LoginModal";
+import { StyledMain } from "../../components/styles";
 import { StyledLink } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
+import { useState } from "react";
 
-export default function MyData() {
+export default function MyData({ username }) {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+
   return (
     <>
       <Heading>Meine Daten</Heading>
-      <StyledSection>
-        <StyledLink
-          aria-label="Link zur Favoriten-Seite"
-          href="/my-data/favorites"
-        >
-          Favoriten &nbsp;
-          <ArrowUpRightIcon />
-        </StyledLink>
-        <StyledLink
-          aria-label="Link zur Meine-Reservierungen-Seite"
-          href="/my-data/reserves"
-        >
-          Reservierungen &nbsp;
-          <ArrowUpRightIcon />
-        </StyledLink>
-      </StyledSection>
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        username={username}
+        isHomepage={false}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
+      <StyledMain>
+        <StyledSection>
+          <StyledLink
+            aria-label="Link zur Favoriten-Seite"
+            href="/my-data/favorites"
+          >
+            Favoriten &nbsp;
+            <ArrowUpRightIcon />
+          </StyledLink>
+          <StyledLink
+            aria-label="Link zur Meine-Reservierungen-Seite"
+            href="/my-data/reserves"
+          >
+            Reservierungen &nbsp;
+            <ArrowUpRightIcon />
+          </StyledLink>
+        </StyledSection>
+      </StyledMain>
     </>
   );
 }

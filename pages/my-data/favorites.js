@@ -1,8 +1,12 @@
 import Heading from "../../components/Heading";
 import RestaurantsList from "../../components/RestaurantsList";
+import LoginModal from "../../components/LoginModal";
 import useSWR from "swr";
+import { useState } from "react";
 
-export default function Favorites({ onToggleFavorite }) {
+export default function Favorites({ onToggleFavorite, username }) {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+
   const { data: restaurants } = useSWR("/api/restaurants", {
     fallbackData: [],
   });
@@ -19,6 +23,12 @@ export default function Favorites({ onToggleFavorite }) {
   return (
     <>
       <Heading>Favoriten</Heading>
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        username={username}
+        isHomepage={false}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
       <RestaurantsList
         restaurants={favoriteRestaurants}
         userInfos={userInfos}

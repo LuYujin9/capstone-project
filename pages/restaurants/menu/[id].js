@@ -4,10 +4,13 @@ import Heading from "../../../components/Heading";
 import MenuListItem from "../../../components/MenuListItem";
 import ToReservePageLink from "../../../components/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton";
+import LoginModal from "../../../components/LoginModal";
 import { StyledMain } from "../../../components/styles";
+import { useState } from "react";
 import useSWR from "swr";
 
-export default function Menu({ onToggleFavorite }) {
+export default function Menu({ onToggleFavorite, username }) {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
   const router = useRouter();
   const { id } = router.query;
   const { data: userInfos } = useSWR("/api/user-infos", {
@@ -31,6 +34,12 @@ export default function Menu({ onToggleFavorite }) {
   return (
     <>
       <Heading>{restaurant.name}</Heading>
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        username={username}
+        isHomepage={false}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
       <StyledMain>
         <BackgroundPhoto />
         <StyledSection>

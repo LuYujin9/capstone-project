@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import { useSWRConfig, SWRConfig } from "swr";
 
 export default function App({ Component, pageProps }) {
+  //test
+  const username = "Jin";
   const fetcher = (url) => fetch(url).then((response) => response.json());
 
   const { mutate } = useSWRConfig();
@@ -67,7 +69,11 @@ export default function App({ Component, pageProps }) {
         <title>Lecker Map</title>
       </Head>
       <SWRConfig value={{ fetcher }}>
-        <Component {...pageProps} onToggleFavorite={handleToggleFavorite} />
+        <Component
+          {...pageProps}
+          onToggleFavorite={handleToggleFavorite}
+          username={username}
+        />
         <Footer />
       </SWRConfig>
     </>
