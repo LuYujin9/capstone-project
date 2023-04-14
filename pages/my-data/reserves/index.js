@@ -8,7 +8,10 @@ export default function Reserves({ username, onLogin }) {
   const { data: reserves, mutate } = useSWR("/api/reserves", {
     fallbackData: [],
   });
-  const reversedReserves = reserves.slice().reverse();
+  const matchedReserves = reserves.filter(
+    (reserve) => reserve.username === username
+  );
+  const reversedReserves = matchedReserves.slice().reverse();
 
   return (
     <>

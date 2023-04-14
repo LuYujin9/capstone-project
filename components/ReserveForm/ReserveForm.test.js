@@ -28,6 +28,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
       restaurant="restaurant"
       date="2023-04-08"
       time="11:00"
+      username="Jane"
     />
   );
   const user = userEvent.setup();
@@ -54,7 +55,8 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
     },
     "restaurant",
     "2023-04-08",
-    "11:00"
+    "11:00",
+    "Jane"
   );
 });
 

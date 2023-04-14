@@ -69,10 +69,11 @@ export default function Reseve({ username, onLogin }) {
     await triggerRestaurant({ reserveInfos: newReservInfos });
   }
 
-  async function postNewReserve(reserveData, restaurant, date, time) {
+  async function postNewReserve(reserveData, restaurant, date, time, username) {
     const { number_of_guests, name, email, phone } = reserveData;
 
     const newReserve = {
+      username: username,
       name: name,
       email: email,
       number_of_guests: number_of_guests,
@@ -135,6 +136,7 @@ export default function Reseve({ username, onLogin }) {
             time={time}
             onReserve={postNewReserve}
             editRemainingSeats={editRemainingSeats}
+            username={username}
           />
         )}
       </StyledMain>
