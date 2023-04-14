@@ -18,7 +18,6 @@ export default function RestaurantsListItem({
   const matchedUserInfo = userInfos?.find(
     (info) => info.restaurantId === restaurant._id && info.username === username
   );
-  console.log(username);
   const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
 
   function handleToggleBookmark() {
