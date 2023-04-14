@@ -47,7 +47,7 @@ export default function ReserveForm({
         id="email"
         defaultValue={defaultData?.email}
       ></input>
-      <label htmlFor="phone">Telefonnummber:</label>
+      <label htmlFor="phone">Telefonummber:</label>
       <input
         maxLength="11"
         minLength="6"
@@ -57,8 +57,8 @@ export default function ReserveForm({
         defaultValue={defaultData?.phone}
         required
       ></input>
-      <StyledButton type="submit" aria-label="Knopf um zu einreichen">
-        Einreichen
+      <StyledButton type="submit" aria-label="Button um abzuschicken">
+        Abschicken
       </StyledButton>
     </StyledForm>
   );

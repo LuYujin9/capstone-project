@@ -18,7 +18,7 @@ test("doesn't show the button when the comment is short ", () => {
   render(<CommentCard comment={testComment} time={testTime} />);
 
   const button = screen.queryByText(
-    /Knopf zu Kommentare erweitern und reduzieren/i
+    /Button zu Kommentare erweitern und reduzieren/i
   );
 
   expect(button).not.toBeInTheDocument();

@@ -10,7 +10,7 @@ export default function Heading({ children, isHideBackButton }) {
       <StyledButton
         type="button"
         onClick={() => router.back()}
-        aria-label="Knopf zur nächste Seite"
+        aria-label="Button zur nächste Seite"
         isHideBackButton={isHideBackButton}
       >
         <ChevronLeftIcon alt="Pfeil Icon nach links" />

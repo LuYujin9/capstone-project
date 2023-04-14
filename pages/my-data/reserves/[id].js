@@ -79,10 +79,10 @@ export default function EditReserve() {
       <Heading>Ändern die Reservierung</Heading>
       <StyledMain>
         <StyledParagraph>
-          Falls Sie die Zeit verändern möchten, bitte stornieren Sie and neu
-          reservieren.{<br />} In dem Zeitraum gibt es noch {remainingSeats}{" "}
-          frei Plätze. Bitte schreiben Sie nicht mehr als {availableSeats}{" "}
-          Personen.
+          Falls Sie die Zeit verändern möchten, bitte stornieren Sie and
+          reservieren Sie neu.{<br />} In dem Zeitraum gibt es noch{" "}
+          {remainingSeats} frei Plätze. Bitte schreiben Sie nicht mehr als{" "}
+          {availableSeats} Personen.
         </StyledParagraph>
         <ReserveForm
           restaurant={restaurant}

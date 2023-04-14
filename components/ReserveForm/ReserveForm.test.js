@@ -36,7 +36,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
   });
   const nameInput = screen.getByRole("textbox", { name: "Name:" });
   const phoneInput = screen.getByRole("textbox", {
-    name: "Telefonnummber:",
+    name: "Telefonummber:",
   });
   const button = screen.getByRole("button");
 

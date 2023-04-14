@@ -31,7 +31,7 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
       <StyledLink href={`/restaurants/${restaurantId}`}>
         Restaurant: {restaurantName}&nbsp;
         <ArrowUpRightIcon
-          alt="Pfeil Icon nach oben richts"
+          alt="Pfeil Icon nach oben rechts"
           color={`var(--red-vine-color)`}
         />
       </StyledLink>
@@ -41,12 +41,12 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
       <p>{email}</p>
       <LinkToEdit
         href={`/my-data/reserves/${_id}`}
-        aria-label="Zur Reservierung Änderen"
+        aria-label="Zur Änderung der Reservierung"
       >
-        Änderen
+        Ändern
       </LinkToEdit>
       <StyledButton
-        aria-label="Stornieren die Reservierung"
+        aria-label="Reservierung stornieren"
         onClick={() => handleDeleteReserve(_id)}
       >
         Stornieren

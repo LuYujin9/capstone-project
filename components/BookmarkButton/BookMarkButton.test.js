@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 
 test("renders the button", () => {
   render(<BookmarkButton />);
-  const button = screen.getByRole("button", { name: /Bookmark Knopf/ });
+  const button = screen.getByRole("button", { name: /Bookmark Button/ });
   expect(button).toBeInTheDocument();
 });
 
