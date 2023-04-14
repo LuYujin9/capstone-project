@@ -16,16 +16,20 @@ export default function EditReserve() {
   const router = useRouter();
   const { id } = router.query;
   const { isReady } = router;
-  const { data: reserve, isLoading, error } = useSWR(`/api/reserves/${id}`);
+  const {
+    data: reserve,
+    isLoading,
+    error,
+  } = useSWR(id ? `/api/reserves/${id}` : null);
   const { data: restaurant } = useSWR(
-    `/api/restaurants/${reserve?.restaurantId}`
+    reserve ? `/api/restaurants/${reserve.restaurantId}` : null
   );
   const { trigger: triggerRestaurant } = useSWRMutation(
-    `/api/restaurants/${reserve?.restaurantId}`,
+    reserve ? `/api/restaurants/${reserve.restaurantId}` : null,
     updateData
   );
   const { trigger: triggerReserve } = useSWRMutation(
-    `/api/reserves/${id}`,
+    id ? `/api/reserves/${id}` : null,
     updateData
   );
   if (!isReady || !restaurant || isLoading || error) return <h2>Loading</h2>;
