@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     setUsername(data.username);
+    event.target.reset();
   }
 
   async function updateIsFavorite(isFavorite, id) {

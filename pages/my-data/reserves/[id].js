@@ -79,16 +79,19 @@ export default function EditReserve({ username, onLogin }) {
 
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         Ändern die Reservierung
       </Heading>
 
       <StyledMain>
         <StyledParagraph>
           Falls Sie die Zeit verändern möchten, bitte stornieren Sie and
-          reservieren Sie neu.{<br />} In dem Zeitraum gibt es noch{" "}
-          {remainingSeats} frei Plätze. Bitte schreiben Sie nicht mehr als{" "}
-          {availableSeats} Personen.
+          reservieren Sie neu.
+          <br />
+          <br />
+          In dem Zeitraum gibt es noch {remainingSeats} frei Plätze. Bitte
+          schreiben Sie
+          <b> nicht mehr als {availableSeats} Personen</b>.
         </StyledParagraph>
         <ReserveForm
           restaurant={restaurant}
@@ -112,6 +115,7 @@ export default function EditReserve({ username, onLogin }) {
 }
 
 const StyledParagraph = styled.p`
+  width: 82%;
   margin: 2rem;
-  font-weight: bold;
+  line-height: 25px;
 `;

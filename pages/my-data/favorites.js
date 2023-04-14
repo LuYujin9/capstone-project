@@ -21,7 +21,7 @@ export default function Favorites({ onToggleFavorite, username, onLogin }) {
 
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         Favoriten
       </Heading>
       <StyledMain>

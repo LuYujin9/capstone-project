@@ -35,7 +35,7 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
 
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         {restaurant.name}
       </Heading>
       <StyledMain>
@@ -59,7 +59,7 @@ const StyledLink = styled(Link)`
   width: 60%;
   padding: 0.3rem;
   font-size: 1.2rem;
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.8rem 0 0.5rem 0;
 
   text-align: center;
 

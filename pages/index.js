@@ -5,14 +5,14 @@ import { StyledMain } from "../components/styles";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ username }) {
+export default function Home({ username, onLogin }) {
   return (
     <>
       <Heading
         isHideBackButton={true}
         username={username}
         isHomepage={true}
-        isLoginWindowOpen={true}
+        onLogin={onLogin}
       >
         Lecker Map
       </Heading>

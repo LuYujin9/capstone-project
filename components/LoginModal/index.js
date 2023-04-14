@@ -21,21 +21,27 @@ export default function LoginModal({
             {isHomepage ? (
               <Message>
                 Bitten geben Sie einen Username order schließen dieses Fenster
-                und benutzen “Gast” als username.
+                und benutzen <b>Gast</b> als username.
               </Message>
             ) : (
               <Message>
-                Der Username ist jetzt {username}. Möchten Sie ändern?
+                Der Username ist jetzt <b>{username}</b>. Möchten Sie ändern?
               </Message>
             )}
 
-            <form aria-labelledby="Login" onSubmit={(event) => onLogin(event)}>
+            <StyledForm
+              aria-labelledby="Login"
+              onSubmit={(event) => {
+                onLogin(event);
+                onClose();
+              }}
+            >
               <label htmlFor="username">Schreiben Sie hier den Username:</label>
               <input type="text" name="username" id="username" required></input>
               <StyledButton type="submit" aria-label="Button um abzuschicken">
                 Abschicken
               </StyledButton>
-            </form>
+            </StyledForm>
           </Container>
         </Background>
       )}
@@ -57,7 +63,9 @@ const Background = styled.div`
 `;
 
 const Container = styled.div`
-  margin: 35vh 1rem;
+  width: 90%;
+  max-width: 30rem;
+  margin: 30vh auto;
   padding: 1rem;
 
   display: flex;
@@ -70,7 +78,6 @@ const Container = styled.div`
 const Message = styled.p`
   padding: 0.2rem;
   text-align: justify;
-  font-weight: bold;
   margin-bottom: 2rem;
 
   background-color: var(--rosehip-color);
@@ -88,4 +95,9 @@ const CloseButton = styled.button`
   border: none;
   color: var(--red-vine-color);
   background-color: var(--rosehip-color);
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
 `;

@@ -8,12 +8,11 @@ export default function Heading({
   children,
   isHideBackButton,
   username,
-  isLoginWindowOpen,
   isHomepage,
   onLogin,
 }) {
   const router = useRouter();
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(isLoginWindowOpen);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   return (
     <>
       <StyledHeader>

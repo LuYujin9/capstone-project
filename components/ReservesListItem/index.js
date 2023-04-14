@@ -29,37 +29,44 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
         {number_of_guests === 1 ? "Person" : "Personen"}
       </p>
       <StyledLink href={`/restaurants/${restaurantId}`}>
-        Restaurant: {restaurantName}&nbsp;
+        <b>Restaurant: </b>&nbsp;{restaurantName}
         <ArrowUpRightIcon
           alt="Pfeil Icon nach oben rechts"
           color={`var(--red-vine-color)`}
         />
       </StyledLink>
       <p>
-        Name: {name} Phone: {phone}
+        <b>Name:</b> {name} &emsp;<b>Phone:</b> {phone}
       </p>
       <p>{email}</p>
-      <LinkToEdit
-        href={`/my-data/reserves/${_id}`}
-        aria-label="Zur Änderung der Reservierung"
-      >
-        Ändern
-      </LinkToEdit>
-      <StyledButton
-        aria-label="Reservierung stornieren"
-        onClick={() => handleDeleteReserve(_id)}
-      >
-        Stornieren
-      </StyledButton>
+      <div>
+        <LinkToEdit
+          href={`/my-data/reserves/${_id}`}
+          aria-label="Zur Änderung der Reservierung"
+        >
+          Ändern
+        </LinkToEdit>
+        <StyledButton
+          aria-label="Reservierung stornieren"
+          onClick={() => handleDeleteReserve(_id)}
+        >
+          Stornieren
+        </StyledButton>
+      </div>
     </StyleListItem>
   );
 }
 
 const StyleListItem = styled.li`
-  width: 95%;
-  padding: 0.3rem;
+  width: 90%;
+  padding: 0.5rem 2rem;
   margin: 0.4rem auto;
   border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-content: end;
+  align-items: space-around;
 
   list-style-type: none;
   background-color: white;
@@ -67,8 +74,8 @@ const StyleListItem = styled.li`
 `;
 
 const LinkToEdit = styled(Link)`
-  padding: 0.3rem 1.3rem;
-  margin: 1rem;
+  padding: 0.3rem 1.7rem;
+  margin: 1.2rem;
   font-size: 0.8rem;
 
   align-self: center;
@@ -81,6 +88,5 @@ const LinkToEdit = styled(Link)`
 
 const StyledLink = styled(Link)`
   display: flex;
-  text-decoration: underline;
   margin: 0 0.2rem;
 `;

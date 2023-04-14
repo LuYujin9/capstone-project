@@ -15,7 +15,7 @@ export default function Reserves({ username, onLogin }) {
 
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         Meine Reservierungen
       </Heading>
       <StyledMain>

@@ -107,7 +107,7 @@ export default function Reseve({ username, onLogin }) {
 
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         {restaurant.name}
       </Heading>
       <StyledMain>
@@ -116,7 +116,6 @@ export default function Reseve({ username, onLogin }) {
           getRemainingSeats={getRemainingSeats}
         />
         <h2>
-          {" "}
           {!remainingSeats
             ? ""
             : `Es gibt noch ${remainingSeats}

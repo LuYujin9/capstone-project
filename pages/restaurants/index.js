@@ -13,7 +13,7 @@ export default function Restaurants({ onToggleFavorite, username, onLogin }) {
 
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         Restaurants
       </Heading>
       <StyledMain>

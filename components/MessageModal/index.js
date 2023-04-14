@@ -42,7 +42,9 @@ const Background = styled.div`
 `;
 
 const Container = styled.div`
-  margin: 35vh 1rem;
+  max-width: 30rem;
+  width: 90%;
+  margin: 35vh auto;
   padding: 1rem;
 
   display: flex;

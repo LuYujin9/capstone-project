@@ -7,7 +7,7 @@ import { ArrowUpRightIcon } from "../../public/icons";
 export default function MyData({ username, onLogin }) {
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         Meine Daten
       </Heading>
       <StyledMain>

@@ -32,7 +32,7 @@ export default function Menu({ onToggleFavorite, username, onLogin }) {
   }
   return (
     <>
-      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         {restaurant.name}
       </Heading>
       <StyledMain>

@@ -25,7 +25,7 @@ const Price = styled.p`
 
 const StyledListItem = styled.li`
   width: 94%;
-  margin: 0;
+  margin: 0 auto;
   padding: 0.3rem;
 
   display: flex;
