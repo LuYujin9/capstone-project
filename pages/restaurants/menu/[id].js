@@ -4,13 +4,10 @@ import Heading from "../../../components/Heading";
 import MenuListItem from "../../../components/MenuListItem";
 import ToReservePageLink from "../../../components/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton";
-import LoginModal from "../../../components/LoginModal";
 import { StyledMain } from "../../../components/styles";
-import { useState } from "react";
 import useSWR from "swr";
 
-export default function Menu({ onToggleFavorite, username }) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+export default function Menu({ onToggleFavorite, username, onLogin }) {
   const router = useRouter();
   const { id } = router.query;
   const { data: userInfos } = useSWR("/api/user-infos", {
@@ -33,13 +30,9 @@ export default function Menu({ onToggleFavorite, username }) {
   }
   return (
     <>
-      <Heading>{restaurant.name}</Heading>
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        username={username}
-        isHomepage={false}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
+      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+        {restaurant.name}
+      </Heading>
       <StyledMain>
         <BackgroundPhoto />
         <StyledSection>
@@ -49,7 +42,9 @@ export default function Menu({ onToggleFavorite, username }) {
           />
           <StyledList role="list">
             {foods.length === 0 ? (
-              <p>Tut mir leid! Es gibt noch keine Speisekarte.</p>
+              <StyledParagraph>
+                Tut mir leid! Es gibt noch keine Speisekarte.
+              </StyledParagraph>
             ) : (
               foods.map((food) => <MenuListItem key={food.id} food={food} />)
             )}
@@ -81,7 +76,7 @@ const BackgroundPhoto = styled.div`
   z-index: -1;
 `;
 
-export const StyledSection = styled.section`
+const StyledSection = styled.section`
   position: relative;
   margin: auto;
 `;
@@ -89,4 +84,10 @@ export const StyledSection = styled.section`
 const StyledList = styled.ul`
   width: 100%;
   margin-bottom: 4.5rem;
+`;
+
+const StyledParagraph = styled.p`
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 4rem 1.6rem;
 `;

@@ -1,18 +1,15 @@
 import { useRouter } from "next/router";
-import styled from "styled-components";
 import { StyledMain } from "../../../components/styles";
 import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter";
 import MessageModal from "../../../components/MessageModal";
-import LoginModal from "../../../components/LoginModal";
 import { updateData } from "../../../utils/handleDataUtils";
 import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
-export default function Reseve({ username }) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+export default function Reseve({ username, onLogin }) {
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
@@ -109,13 +106,9 @@ export default function Reseve({ username }) {
 
   return (
     <>
-      <Heading>{restaurant.name}</Heading>
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        username={username}
-        isHomepage={false}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
+      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+        {restaurant.name}
+      </Heading>
       <StyledMain>
         <RemainingSeatsFilter
           restaurant={restaurant}

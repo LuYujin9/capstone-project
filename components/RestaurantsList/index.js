@@ -1,4 +1,4 @@
-import { StyledList, StyledMain } from "./RestaurantsList.styles";
+import { StyledList } from "./RestaurantsList.styles";
 import RestaurantsListItem from "./RestaurantsListItem";
 
 export default function RestaurantsList({

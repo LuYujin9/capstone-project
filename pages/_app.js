@@ -2,13 +2,19 @@ import GlobalStyle from "../styles";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import { useSWRConfig, SWRConfig } from "swr";
+import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
-  //test
-  const username = "Jin";
   const fetcher = (url) => fetch(url).then((response) => response.json());
-
   const { mutate } = useSWRConfig();
+
+  const [username, setUsername] = useState();
+  function handleLogin(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    setUsername(data.username);
+  }
 
   async function updateIsFavorite(isFavorite, id) {
     const response = await fetch(`/api/user-infos/${id}`, {
@@ -73,6 +79,7 @@ export default function App({ Component, pageProps }) {
           {...pageProps}
           onToggleFavorite={handleToggleFavorite}
           username={username}
+          onLogin={handleLogin}
         />
         <Footer />
       </SWRConfig>

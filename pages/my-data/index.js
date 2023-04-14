@@ -1,23 +1,15 @@
 import styled from "styled-components";
 import Heading from "../../components/Heading";
-import LoginModal from "../../components/LoginModal";
 import { StyledMain } from "../../components/styles";
 import { StyledLink } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
-import { useState } from "react";
 
-export default function MyData({ username }) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
-
+export default function MyData({ username, onLogin }) {
   return (
     <>
-      <Heading>Meine Daten</Heading>
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        username={username}
-        isHomepage={false}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
+      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+        Meine Daten
+      </Heading>
       <StyledMain>
         <StyledSection>
           <StyledLink

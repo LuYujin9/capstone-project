@@ -6,13 +6,10 @@ import Link from "next/link.js";
 import Heading from "../../components/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink";
 import BookmarkButton from "../../components/BookmarkButton";
-import LoginModal from "../../components/LoginModal";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import useSWR from "swr";
 
-export default function Details({ onToggleFavorite, username }) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+export default function Details({ onToggleFavorite, username, onLogin }) {
   const router = useRouter();
   const { id } = router.query;
   const {
@@ -36,14 +33,9 @@ export default function Details({ onToggleFavorite, username }) {
 
   return (
     <>
-      <Heading>{restaurant.name}</Heading>
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        username={username}
-        isHomepage={false}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
-
+      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+        {restaurant.name}
+      </Heading>
       <StyledMain>
         <StyledLink href={`/restaurants/menu/${id}`}>
           Zur Speisekarte

@@ -2,29 +2,32 @@ import styled from "styled-components";
 import { StyledButton } from "../../components/styles";
 import { XIcon } from "../../public/icons";
 
-export default function LoginModal({ isOpen, onClose, username, isHomepage }) {
-  function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    console.log(data);
-  }
+export default function LoginModal({
+  isOpen,
+  onClose,
+  username,
+  onLogin,
+  isHomepage,
+}) {
   return (
     <>
       {isOpen && (
         <Background>
           <Container className="modal">
-            {!isHomepage && (
-              <CloseButton
-                aria-label="schließen die Nachricht"
-                onClick={onClose}
-              >
-                <XIcon color={`var(--red-vine-color)`} />
-              </CloseButton>
+            <CloseButton aria-label="schließen die Nachricht" onClick={onClose}>
+              <XIcon color={`var(--red-vine-color)`} />
+            </CloseButton>
+
+            {isHomepage ? (
+              <Message>Bitten geben Sie einen Username </Message>
+            ) : (
+              <Message>
+                Der Username ist jetzt {username}. Möchten Sie ändern?
+              </Message>
             )}
-            <Message>Der Username ist jetzt {username} </Message>
-            <form aria-labelledby="Login" onSubmit={handleSubmit}>
-              <label htmlFor="username">Geben Sie bitte einen Username:</label>
+
+            <form aria-labelledby="Login" onSubmit={(event) => onLogin(event)}>
+              <label htmlFor="username">Schreiben Sie hier den Username:</label>
               <input type="text" name="username" id="username" required></input>
               <StyledButton type="submit" aria-label="Button um abzuschicken">
                 Abschicken
@@ -83,8 +86,3 @@ const CloseButton = styled.button`
   color: var(--red-vine-color);
   background-color: var(--rosehip-color);
 `;
-
-/* position: absolute;
-top: auto;
-left: auto;
-z-index: 3; */

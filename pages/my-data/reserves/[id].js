@@ -1,7 +1,6 @@
 import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import MessageModal from "../../../components/MessageModal";
-import LoginModal from "../../../components/LoginModal";
 import { StyledMain } from "../../../components/styles";
 import { updateData } from "../../../utils/handleDataUtils";
 import { useRouter } from "next/router";
@@ -10,8 +9,7 @@ import styled from "styled-components";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
-export default function EditReserve({ username }) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+export default function EditReserve({ username, onLogin }) {
   const [message, setMessage] = useState("");
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
@@ -81,13 +79,10 @@ export default function EditReserve({ username }) {
 
   return (
     <>
-      <Heading>Ändern die Reservierung</Heading>
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        username={username}
-        isHomepage={false}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
+      <Heading isLoginWindowOpen={false} username={username} onLogin={onLogin}>
+        Ändern die Reservierung
+      </Heading>
+
       <StyledMain>
         <StyledParagraph>
           Falls Sie die Zeit verändern möchten, bitte stornieren Sie and
