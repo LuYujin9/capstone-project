@@ -28,7 +28,7 @@ export default function Reseve() {
     id ? `/api/restaurants/${id}` : null,
     updateData
   );
-  if (isLoading || error) return <h2>Loading</h2>;
+  if (!restaurant || isLoading || error) return <h2>Loading</h2>;
 
   function getRemainingSeats(dataForSearch) {
     const pairingInfo = restaurant.reserveInfos.find(
