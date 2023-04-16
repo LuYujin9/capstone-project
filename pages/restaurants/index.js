@@ -3,6 +3,7 @@ import Heading from "../../components/Heading";
 import { StyledMain } from "../../components/styles";
 import { AlertMessage } from "../../components/styles";
 import { ChevronsDownIcon } from "../../public/icons";
+import styled from "styled-components";
 import useSWR from "swr";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -50,16 +51,17 @@ export default function Restaurants({
   }
 
   function handleFilterCondition(condition) {
-    function compareFn(a, b) {
-      if (a[condition] > b[condition]) return -1;
-      if (a[condition] < b[condition]) return 1;
+    function compareFunction(a, b) {
+      if (a[condition.english] > b[condition.english]) return -1;
+      if (a[condition.english] < b[condition.english]) return 1;
       return 0;
     }
-    setCurrentFilterCondition(condition);
-    const filteredRestaurants = matchedRestaurants.slice().sort(compareFn);
-    console.log(filteredRestaurants);
+    setCurrentFilterCondition(condition.german);
+    const filteredRestaurants = matchedRestaurants
+      .slice()
+      .sort(compareFunction);
     setMatchedRestaurants(filteredRestaurants);
-    console.log(matchedRestaurants);
+    setIsShowFilterConditions(!isShowFilterConditions);
   }
 
   return (
@@ -68,21 +70,26 @@ export default function Restaurants({
         Restaurants
       </Heading>
       <StyledMain>
-        <button onClick={handleOpenFilterList}>
-          Sortieren nach: {currentFilterCondition}
+        <FilterButton
+          aria-label="öffen die Wahllist von Filter"
+          onClick={handleOpenFilterList}
+        >
+          <b>Sortieren nach:</b> {currentFilterCondition}
           <ChevronsDownIcon alt="PfilesUnter" />
-        </button>
+        </FilterButton>
         {isShowFilterConditions && (
-          <ul>
+          <FilterList role="list">
             {filterConditions.map((condition) => (
-              <button
-                key={condition.english}
-                onClick={() => handleFilterCondition(condition.english)}
-              >
-                {condition.german}
-              </button>
+              <FilterListItem key={condition.english}>
+                <FilterOption
+                  aria-label="die Wahl von Filter"
+                  onClick={() => handleFilterCondition(condition)}
+                >
+                  {condition.german}
+                </FilterOption>
+              </FilterListItem>
             ))}
-          </ul>
+          </FilterList>
         )}
         {matchedRestaurants.length === 0 ? (
           <AlertMessage>
@@ -101,5 +108,46 @@ export default function Restaurants({
   );
 }
 
-{
-}
+const FilterButton = styled.button`
+  width: 90%;
+  max-width: 30rem;
+  margin-top: 1rem;
+  border: 2px solid var(--red-vine-color);
+  border-radius: 10px;
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: var(--antique-color);
+`;
+
+const FilterList = styled.ul`
+  width: 100%;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+`;
+const FilterListItem = styled.li`
+  width: 90%;
+  max-width: 30rem;
+  margin: 0 auto;
+  list-style-type: none;
+
+  background-color: var(--antique-color);
+`;
+const FilterOption = styled.button`
+  width: 100%;
+  height: 2rem;
+  border: none;
+  margin: 0 auto;
+  font-size: 0.9rem;
+
+  background-color: var(--antique-color);
+
+  &:hover {
+    background-color: var(--rain-storm-color);
+  }
+`;
