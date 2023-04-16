@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { StyledMain } from "../../../components/styles";
+import styled from "styled-components";
+import { StyledMain, AlertMessage } from "../../../components/styles";
 import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter";
@@ -10,7 +11,7 @@ import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
 export default function Reseve({ username, onLogin }) {
-  const [remainingSeats, setRemainingSeats] = useState();
+  const [remainingSeats, setRemainingSeats] = useState("");
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [message, setMessage] = useState("");
@@ -115,12 +116,16 @@ export default function Reseve({ username, onLogin }) {
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
         />
-        <h2>
-          {!remainingSeats
-            ? ""
-            : `Es gibt noch ${remainingSeats}
+
+        {date && time && (
+          <StyledAlertMessage>
+            {remainingSeats === 0
+              ? "Leider gibt es keinen Platz mehr. Bitte probieren Sie einen anderen Zeitraum."
+              : `Es gibt noch ${remainingSeats}
         ${remainingSeats === 1 ? "Platz" : "Plätze"}.`}
-        </h2>
+          </StyledAlertMessage>
+        )}
+
         <MessageModal
           isOpen={isMessageModalOpen}
           onClose={() => setIsMessageModalOpen(false)}
@@ -142,3 +147,7 @@ export default function Reseve({ username, onLogin }) {
     </>
   );
 }
+
+const StyledAlertMessage = styled(AlertMessage)`
+  margin: 0.3rem 2rem;
+`;

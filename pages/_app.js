@@ -11,7 +11,11 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   const [username, setUsername] = useState();
-  const [dataForRestaurantsSearch, setDataForRestaurantsSearch] = useState();
+  const [dataForRestaurantsSearch, setDataForRestaurantsSearch] = useState({
+    restaurantName: "",
+    cuisine: "",
+    city: "",
+  });
 
   function handleLogin(event) {
     event.preventDefault();

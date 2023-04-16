@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { StyledButton } from "../styles";
+import { StyledButton, StyledForm, StyledLegend } from "../styles";
 
 export default function SearchRestaurantsForm({ onSearchRestaurants }) {
   return (
@@ -27,22 +26,3 @@ export default function SearchRestaurantsForm({ onSearchRestaurants }) {
     </StyledForm>
   );
 }
-
-const StyledLegend = styled.legend`
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.3rem;
-`;
-
-const StyledForm = styled.form`
-  width: 85%;
-  padding: 1.5rem 5%;
-  margin: 0.4rem auto;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-
-  border: 2px solid var(--red-vine-color);
-  border-radius: 1rem;
-`;

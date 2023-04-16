@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { StyledButton } from "../styles";
+import { StyledButton, StyledForm, StyledLegend } from "../styles";
 
 export default function ReserveForm({
   availableSeats,
@@ -64,22 +63,3 @@ export default function ReserveForm({
     </StyledForm>
   );
 }
-
-const StyledForm = styled.form`
-  width: 85%;
-  padding: 0.5rem 5%;
-  margin: auto;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-
-  border-radius: 1rem;
-  border: 2px solid var(--red-vine-color);
-`;
-
-const StyledLegend = styled.legend`
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.3rem;
-`;

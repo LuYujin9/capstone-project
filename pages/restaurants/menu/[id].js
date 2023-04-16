@@ -4,7 +4,7 @@ import Heading from "../../../components/Heading";
 import MenuListItem from "../../../components/MenuListItem";
 import ToReservePageLink from "../../../components/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton";
-import { StyledMain } from "../../../components/styles";
+import { StyledMain, AlertMessage } from "../../../components/styles";
 import useSWR from "swr";
 
 export default function Menu({ onToggleFavorite, username, onLogin }) {
@@ -44,9 +44,9 @@ export default function Menu({ onToggleFavorite, username, onLogin }) {
           />
           <StyledList role="list">
             {foods.length === 0 ? (
-              <StyledParagraph>
+              <AlertMessage>
                 Tut mir leid! Es gibt noch keine Speisekarte.
-              </StyledParagraph>
+              </AlertMessage>
             ) : (
               foods.map((food) => <MenuListItem key={food.id} food={food} />)
             )}
@@ -86,10 +86,4 @@ const StyledSection = styled.section`
 
 const StyledList = styled.ul`
   margin-bottom: 4.5rem;
-`;
-
-const StyledParagraph = styled.p`
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 4rem 1.6rem;
 `;

@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { StyledButton } from "../styles";
+import { StyledButton, StyledLegend, StyledForm } from "../styles";
 
 export default function RemainingSeatsFilter({ getRemainingSeats }) {
   function handleSubmit(event) {
@@ -7,7 +6,6 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
     const formData = new FormData(event.target);
     const dataForSearch = Object.fromEntries(formData);
     getRemainingSeats(dataForSearch);
-    event.target.reset();
   }
 
   const timeNow = new Date();
@@ -39,22 +37,3 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
     </StyledForm>
   );
 }
-
-const StyledForm = styled.form`
-  width: 85%;
-  padding: 0.5rem 5%;
-  margin: 0.4rem auto;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-
-  border: 2px solid var(--red-vine-color);
-  border-radius: 1rem;
-`;
-
-const StyledLegend = styled.legend`
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.3rem;
-`;
