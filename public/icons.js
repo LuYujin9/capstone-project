@@ -170,7 +170,7 @@ export const LoginIcon = ({ size = 24, color = "#9C4041" }) => (
   </svg>
 );
 
-export const ChevronsDownIcon = ({ size = 24, color = "#9C4041" }) => (
+export const ChevronsDownIcon = ({ size = 24, color = "white" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

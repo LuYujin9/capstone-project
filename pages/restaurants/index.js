@@ -18,6 +18,7 @@ export default function Restaurants({
     useState("Ohne Auswahl");
   const [isShowFilterConditions, setIsShowFilterConditions] = useState(false);
   const [matchedRestaurants, setMatchedRestaurants] = useState([]);
+  const [isShowAlertMessage, setIsShowAlertMessage] = useState(false);
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
@@ -44,6 +45,11 @@ export default function Restaurants({
           restaurant.city.toUpperCase() === city.toUpperCase() || city === ""
       );
     setMatchedRestaurants(matchedSearchConditionsRestaurants);
+    setTimeout(
+      () =>
+        setIsShowAlertMessage(matchedSearchConditionsRestaurants.length === 0),
+      3000
+    );
   }, [dataForRestaurantsSearch, restaurants]);
 
   function handleOpenFilterList() {
@@ -92,7 +98,7 @@ export default function Restaurants({
             ))}
           </FilterList>
         )}
-        {matchedRestaurants.length === 0 ? (
+        {isShowAlertMessage ? (
           <AlertMessage>
             Opps! Kein entsprechendes Restaurant gefunden. Bitte gehen Sie
             zurück und probieren es noch ein mal.
@@ -121,7 +127,8 @@ const FilterButton = styled.button`
   align-items: center;
   justify-content: space-around;
 
-  background-color: var(--antique-color);
+  color: white;
+  background-color: var(--red-vine-color);
 `;
 
 const FilterList = styled.ul`
