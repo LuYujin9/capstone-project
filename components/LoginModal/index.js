@@ -7,26 +7,28 @@ export default function LoginModal({
   onClose,
   username,
   onLogin,
-  isHomepage,
+  isLogin,
 }) {
   return (
     <>
       {isOpen && (
         <Background>
           <Container className="modal">
-            <CloseButton aria-label="schließen die Nachricht" onClick={onClose}>
-              <XIcon color={`var(--red-vine-color)`} />
-            </CloseButton>
+            {isLogin && (
+              <CloseButton
+                aria-label="schließen die Nachricht"
+                onClick={onClose}
+              >
+                <XIcon color={`var(--red-vine-color)`} />
+              </CloseButton>
+            )}
 
-            {isHomepage ? (
-              <Message>
-                Bitten geben Sie einen Username order schließen dieses Fenster
-                und benutzen <b>Gast</b> als username.
-              </Message>
-            ) : (
+            {isLogin ? (
               <Message>
                 Der Username ist jetzt <b>{username}</b>. Möchten Sie ändern?
               </Message>
+            ) : (
+              <Message>Bitten geben Sie einen Username.</Message>
             )}
 
             <StyledForm

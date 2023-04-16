@@ -8,7 +8,7 @@ const fetcher = (url) => fetch(url).then((response) => response.json());
 export default function App({ Component, pageProps }) {
   const { mutate } = useSWRConfig();
 
-  const [username, setUsername] = useState("Gast");
+  const [username, setUsername] = useState();
   function handleLogin(event) {
     event.preventDefault();
     const formData = new FormData(event.target);

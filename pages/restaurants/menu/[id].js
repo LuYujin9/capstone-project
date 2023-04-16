@@ -79,12 +79,12 @@ const BackgroundPhoto = styled.div`
 `;
 
 const StyledSection = styled.section`
+  width: 94%;
   position: relative;
   margin: auto;
 `;
 
 const StyledList = styled.ul`
-  width: 100%;
   margin-bottom: 4.5rem;
 `;
 

@@ -8,11 +8,11 @@ export default function Heading({
   children,
   isHideBackButton,
   username,
-  isHomepage,
   onLogin,
 }) {
   const router = useRouter();
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const isLogin = username ? true : false;
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(!isLogin);
   return (
     <>
       <StyledHeader>
@@ -38,7 +38,7 @@ export default function Heading({
       <LoginModal
         isOpen={isLoginModalOpen}
         username={username}
-        isHomepage={isHomepage}
+        isLogin={isLogin}
         onClose={() => setIsLoginModalOpen(false)}
         onLogin={onLogin}
       />

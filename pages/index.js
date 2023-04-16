@@ -8,12 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home({ username, onLogin }) {
   return (
     <>
-      <Heading
-        isHideBackButton={true}
-        username={username}
-        isHomepage={true}
-        onLogin={onLogin}
-      >
+      <Heading isHideBackButton={true} username={username} onLogin={onLogin}>
         Lecker Map
       </Heading>
       <StyledMain>
