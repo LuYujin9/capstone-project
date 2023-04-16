@@ -1,19 +1,22 @@
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import Heading from "../components/Heading";
-import { StyledMain } from "../components/styles";
+import SearchRestaurantsForm from "../components/SearchRestaurantsForm";
+import { StyledMain, AlertMessage } from "../components/styles";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ username, onLogin }) {
+export default function Home({ username, onLogin, onSearchRestaurants }) {
   return (
     <>
       <Heading isHideBackButton={true} username={username} onLogin={onLogin}>
         Lecker Map
       </Heading>
       <StyledMain>
-        <h2>search the restaurants</h2>
-        <Link href="/restaurants">restaurant</Link>
+        <AlertMessage>
+          Geben Sie bitte die "input" und suchen. Wenn Sie alle Restaurants
+          anschauten, bitte "drücken" Sie den Button direkt.
+        </AlertMessage>
+        <SearchRestaurantsForm onSearchRestaurants={onSearchRestaurants} />
       </StyledMain>
     </>
   );

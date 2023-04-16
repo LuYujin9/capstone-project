@@ -3,18 +3,30 @@ import Head from "next/head";
 import Footer from "../components/Footer";
 import { useSWRConfig, SWRConfig } from "swr";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 export default function App({ Component, pageProps }) {
   const { mutate } = useSWRConfig();
+  const router = useRouter();
 
   const [username, setUsername] = useState();
+  const [dataForRestaurantsSearch, setDataForRestaurantsSearch] = useState();
+
   function handleLogin(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     setUsername(data.username);
     event.target.reset();
+  }
+
+  function handleSearchRestaurants(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const dataForRestaurantsSearch = Object.fromEntries(formData);
+    setDataForRestaurantsSearch(dataForRestaurantsSearch);
+    router.push("/restaurants");
   }
 
   async function updateIsFavorite(isFavorite, id) {
@@ -83,6 +95,8 @@ export default function App({ Component, pageProps }) {
           onToggleFavorite={handleToggleFavorite}
           username={username}
           onLogin={handleLogin}
+          onSearchRestaurants={handleSearchRestaurants}
+          dataForRestaurantsSearch={dataForRestaurantsSearch}
         />
         <Footer />
       </SWRConfig>

@@ -48,3 +48,9 @@ export const StyledButton = styled.button`
   background-color: var(--red-vine-color);
   box-shadow: 2px 2px 5px 1px var(--linen-color);
 `;
+
+export const AlertMessage = styled.p`
+  width: 82%;
+  margin: 2rem;
+  line-height: 25px;
+`;
