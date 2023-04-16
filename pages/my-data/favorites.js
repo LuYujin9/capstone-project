@@ -10,7 +10,7 @@ export default function Favorites({ onToggleFavorite, username, onLogin }) {
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
-  if (!restaurants || !userInfos) <h2>Loading</h2>;
+  if (!restaurants || !userInfos) return <h2>Loading</h2>;
 
   const favorites = userInfos.filter(
     (info) => info.isFavorite === true && info.username === username

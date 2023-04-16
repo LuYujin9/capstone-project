@@ -64,6 +64,7 @@ export default function Restaurants({
     setIsShowFilterConditions(!isShowFilterConditions);
   }
 
+  if (!restaurants) return <h2>Loading</h2>;
   return (
     <>
       <Heading username={username} onLogin={onLogin}>
