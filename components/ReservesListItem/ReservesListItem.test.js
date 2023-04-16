@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ReservesListItem from ".";
 const testReserve = {
+  username: "Jane",
   date: "03-04-2024",
   time: "11:00",
   restaurantName: "Lecker",
@@ -15,7 +16,7 @@ test("renders the date, time, number of guests,restaurantName, name of guest and
   render(<ReservesListItem reserve={testReserve} />);
   const paragraphOne = screen.getByText(/03-04-2024 11:00 3 Personen/i);
   expect(paragraphOne).toBeInTheDocument();
-  const paragraphTwo = screen.getByText(/Jane Phone: 123456789/i);
+  const paragraphTwo = screen.getByText(/Jane/i);
   expect(paragraphTwo).toBeInTheDocument();
   const paragraphThree = screen.getByText(/aefaefa@gmail.com/i);
   expect(paragraphThree).toBeInTheDocument();

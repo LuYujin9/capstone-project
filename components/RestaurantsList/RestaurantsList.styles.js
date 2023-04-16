@@ -6,19 +6,18 @@ export const StyledImage = styled(Image)`
 `;
 
 export const StyledList = styled.ul`
-  margin: 5rem 1vw;
+  margin: 0.8rem auto;
   padding: 0;
 
   display: grid;
 
   @media only screen and (max-width: 799px) {
+    width: 95%;
     gird: 80vw;
   }
   @media only screen and (min-width: 800px) {
     grid-template-columns: 1fr 1fr;
-  }
-  @media only screen and (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
   }
 `;
 

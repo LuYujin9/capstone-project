@@ -43,7 +43,7 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
 const StyledForm = styled.form`
   width: 85%;
   padding: 0.5rem 5%;
-  margin: 0.3rem auto;
+  margin: 0.4rem auto;
 
   display: flex;
   flex-direction: column;

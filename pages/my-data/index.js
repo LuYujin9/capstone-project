@@ -1,28 +1,33 @@
 import styled from "styled-components";
 import Heading from "../../components/Heading";
+import { StyledMain } from "../../components/styles";
 import { StyledLink } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
 
-export default function MyData() {
+export default function MyData({ username, onLogin }) {
   return (
     <>
-      <Heading>Meine Daten</Heading>
-      <StyledSection>
-        <StyledLink
-          aria-label="Link zur Favoriten-Seite"
-          href="/my-data/favorites"
-        >
-          Favoriten &nbsp;
-          <ArrowUpRightIcon />
-        </StyledLink>
-        <StyledLink
-          aria-label="Link zur Meine-Reservierungen-Seite"
-          href="/my-data/reserves"
-        >
-          Reservierungen &nbsp;
-          <ArrowUpRightIcon />
-        </StyledLink>
-      </StyledSection>
+      <Heading username={username} onLogin={onLogin}>
+        Meine Daten
+      </Heading>
+      <StyledMain>
+        <StyledSection>
+          <StyledLink
+            aria-label="Link zur Favoriten-Seite"
+            href="/my-data/favorites"
+          >
+            Favoriten &nbsp;
+            <ArrowUpRightIcon />
+          </StyledLink>
+          <StyledLink
+            aria-label="Link zur Meine-Reservierungen-Seite"
+            href="/my-data/reserves"
+          >
+            Reservierungen &nbsp;
+            <ArrowUpRightIcon />
+          </StyledLink>
+        </StyledSection>
+      </StyledMain>
     </>
   );
 }

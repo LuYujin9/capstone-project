@@ -9,12 +9,13 @@ export default function ReserveForm({
   time,
   editRemainingSeats,
   defaultData,
+  username,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const reserveData = Object.fromEntries(formData);
-    onReserve(reserveData, restaurant, date, time);
+    onReserve(reserveData, restaurant, date, time, username);
     editRemainingSeats(reserveData, restaurant, date, time);
     event.target.reset();
   }

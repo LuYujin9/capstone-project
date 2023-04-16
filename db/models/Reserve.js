@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 const reserveSchema = new Schema({
+  username: { type: String, required: true },
   name: { type: String, required: true },
   email: String,
   number_of_guests: { type: Number, required: true },

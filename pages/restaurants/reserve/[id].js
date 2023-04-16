@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import styled from "styled-components";
 import { StyledMain } from "../../../components/styles";
 import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
@@ -10,7 +9,7 @@ import { useState } from "react";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
-export default function Reseve() {
+export default function Reseve({ username, onLogin }) {
   const [remainingSeats, setRemainingSeats] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
@@ -70,10 +69,11 @@ export default function Reseve() {
     await triggerRestaurant({ reserveInfos: newReservInfos });
   }
 
-  async function postNewReserve(reserveData, restaurant, date, time) {
+  async function postNewReserve(reserveData, restaurant, date, time, username) {
     const { number_of_guests, name, email, phone } = reserveData;
 
     const newReserve = {
+      username: username,
       name: name,
       email: email,
       number_of_guests: number_of_guests,
@@ -107,14 +107,15 @@ export default function Reseve() {
 
   return (
     <>
-      <Heading>{restaurant.name}</Heading>
+      <Heading username={username} onLogin={onLogin}>
+        {restaurant.name}
+      </Heading>
       <StyledMain>
         <RemainingSeatsFilter
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
         />
         <h2>
-          {" "}
           {!remainingSeats
             ? ""
             : `Es gibt noch ${remainingSeats}
@@ -134,6 +135,7 @@ export default function Reseve() {
             time={time}
             onReserve={postNewReserve}
             editRemainingSeats={editRemainingSeats}
+            username={username}
           />
         )}
       </StyledMain>
