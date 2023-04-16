@@ -13,6 +13,7 @@ export default function BookmarkButton({ onToggleBookmark, isFavorite }) {
 const StyledButton = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 
   position: absolute;
   top: 0.7rem;
