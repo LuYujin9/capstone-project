@@ -46,7 +46,9 @@ export default function RestaurantsListItem({
               priority
             />
           </StyledPicture>
-          <p>{restaurant.cuisine}</p>
+          <p>
+            {restaurant.cuisine} •{restaurant.priceLevel}
+          </p>
           <StyledRating>
             {restaurant.rating}{" "}
             <span role="img" aria-label="Stern">

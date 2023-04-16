@@ -13,8 +13,9 @@ export default function Home({ username, onLogin, onSearchRestaurants }) {
       </Heading>
       <StyledMain>
         <AlertMessage>
-          Geben Sie bitte die "input" und suchen. Wenn Sie alle Restaurants
-          anschauten, bitte "drücken" Sie den Button direkt.
+          Bitten geben Sie hier Ihre Wünsche zur Suche ein. Wenn Sie alle
+          Restaurants ohne eine Vorauswahl anschauen möchten, drücken Sie bitte
+          direkt den Button “Suchen“.
         </AlertMessage>
         <SearchRestaurantsForm onSearchRestaurants={onSearchRestaurants} />
       </StyledMain>
