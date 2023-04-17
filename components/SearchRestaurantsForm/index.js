@@ -1,4 +1,4 @@
-import { StyledButton, StyledForm, StyledLegend } from "../styles";
+import { StyledButton, StyledForm, StyledFormTitle } from "../styles";
 
 export default function SearchRestaurantsForm({
   onMatchRestaurants,
@@ -15,7 +15,9 @@ export default function SearchRestaurantsForm({
       aria-labelledby="formHeader"
       onSubmit={(event) => handleSubmit(event)}
     >
-      <StyledLegend id="formHeader">Suchen verfügbare Plätze</StyledLegend>
+      <StyledFormTitle id="formHeader">
+        Suchen verfügbare Plätze
+      </StyledFormTitle>
       <label htmlFor="restaurantName">Restaurantname:</label>
       <input type="text" name="restaurantName" id="restaurantName"></input>
       <label htmlFor="cuisine">Küche:</label>
@@ -31,7 +33,7 @@ export default function SearchRestaurantsForm({
       <input type="city" name="city" id="city"></input>
       <StyledButton
         type="submit"
-        aria-label="Button um entsprechende Restaurants anzeigen zu lassen"
+        aria-label="Um entsprechende Restaurants anzeigen zu lassen"
       >
         Suchen
       </StyledButton>

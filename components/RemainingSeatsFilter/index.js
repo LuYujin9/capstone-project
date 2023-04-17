@@ -1,4 +1,4 @@
-import { StyledButton, StyledLegend, StyledForm } from "../styles";
+import { StyledButton, StyledFormTitle, StyledForm } from "../styles";
 
 export default function RemainingSeatsFilter({ getRemainingSeats }) {
   function handleSubmit(event) {
@@ -16,7 +16,9 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
 
   return (
     <StyledForm aria-labelledby="formHeader" onSubmit={handleSubmit}>
-      <StyledLegend id="formHeader">Suchen verfügbare Plätze</StyledLegend>
+      <StyledFormTitle id="formHeader">
+        Suchen verfügbare Plätze
+      </StyledFormTitle>
       <label htmlFor="date">Tag:</label>
       <input type="date" name="date" id="date" min={dateNow} required></input>
       <label htmlFor="time">Zeit:</label>
@@ -30,7 +32,7 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
       </select>
       <StyledButton
         type="submit"
-        aria-label="Button um freie Plätze anzeigen zu lassen"
+        aria-label="Um freie Plätze anzeigen zu lassen"
       >
         Suchen
       </StyledButton>

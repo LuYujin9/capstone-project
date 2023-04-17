@@ -1,4 +1,4 @@
-import { StyledButton, StyledForm, StyledLegend } from "../styles";
+import { StyledButton, StyledForm, StyledFormTitle } from "../styles";
 
 export default function ReserveForm({
   availableSeats,
@@ -21,7 +21,9 @@ export default function ReserveForm({
 
   return (
     <StyledForm aria-labelledby="reserveFormHeader" onSubmit={handleSubmit}>
-      <StyledLegend id="reserveFormHeader">Reservieren die Plätze</StyledLegend>
+      <StyledFormTitle id="reserveFormHeader">
+        Reservieren die Plätze
+      </StyledFormTitle>
       <label htmlFor="number_of_guests">Personen:</label>
       <input
         type="number"
@@ -57,7 +59,7 @@ export default function ReserveForm({
         defaultValue={defaultData?.phone}
         required
       ></input>
-      <StyledButton type="submit" aria-label="Button um abzuschicken">
+      <StyledButton type="submit" aria-label="Um abzuschicken">
         Abschicken
       </StyledButton>
     </StyledForm>

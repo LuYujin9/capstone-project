@@ -21,7 +21,7 @@ export default function ThePage({ comment, time }) {
       </StyledParagraph>
       {needExpandBtn && (
         <StyledButton
-          aria-label="Button zum Ausklappen und Einklappen der Kommentare"
+          aria-label="Zum Ausklappen und Einklappen der Kommentare"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? (

@@ -35,15 +35,12 @@ export default function Restaurants({
   }
 
   function handleFilterCondition(condition) {
-    function compareFunction(a, b) {
+    setCurrentFilterCondition(condition.german);
+    const filteredRestaurants = matchedRestaurants.slice().sort((a, b) => {
       if (a[condition.english] > b[condition.english]) return -1;
       if (a[condition.english] < b[condition.english]) return 1;
       return 0;
-    }
-    setCurrentFilterCondition(condition.german);
-    const filteredRestaurants = matchedRestaurants
-      .slice()
-      .sort(compareFunction);
+    });
     setMatchedRestaurants(filteredRestaurants);
     setIsShowFilterConditions(!isShowFilterConditions);
   }
@@ -55,7 +52,7 @@ export default function Restaurants({
       </Heading>
       <StyledMain>
         <FilterButton
-          aria-label="öffen die Wahllist von Filter"
+          aria-label="Öffen die Filterauswahl"
           onClick={handleOpenFilterList}
         >
           <b>Sortieren nach:</b> {currentFilterCondition}

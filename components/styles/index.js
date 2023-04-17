@@ -52,7 +52,7 @@ export const StyledButton = styled.button`
 
 export const AlertMessage = styled.p`
   font-size: 1.2rem;
-  margin: 3rem 2rem;
+  margin: 2rem 2rem;
 `;
 
 export const StyledForm = styled.form`
@@ -68,7 +68,8 @@ export const StyledForm = styled.form`
   border: 2px solid var(--red-vine-color);
 `;
 
-export const StyledLegend = styled.legend`
+export const StyledFormTitle = styled.h3`
+  margin: 0 auto;
   text-align: center;
   font-weight: bold;
   font-size: 1.3rem;

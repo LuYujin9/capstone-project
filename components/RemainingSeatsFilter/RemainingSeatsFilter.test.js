@@ -28,7 +28,7 @@ test("submit the form data when every field is filled out", async () => {
   const select = screen.getByRole("combobox");
   const button = screen.getByRole("button");
   await user.type(input, "2050-05-08");
-  await user.type(select, "11:00");
+  await user.selectOptions(select, ["11:00"]);
   await user.click(button);
   expect(mockGetRemainingSeats).toHaveBeenCalledWith({
     date: "2050-05-08",
