@@ -4,7 +4,7 @@ import CommentCard from "./CommentCard";
 export default function CommentsList({ comments }) {
   return (
     <StyledList role="list">
-      {comments.map((comment) => (
+      {comments?.map((comment) => (
         <StyledListItem key={comment.id}>
           <CommentCard comment={comment.context} time={comment.time} />
         </StyledListItem>
