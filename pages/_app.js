@@ -11,11 +11,9 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   const [username, setUsername] = useState();
-  const [dataForRestaurantsSearch, setDataForRestaurantsSearch] = useState({
-    restaurantName: "",
-    cuisine: "",
-    city: "",
-  });
+  const [restaurantsMatchingTheSearch, setRestaurantsMatchingTheSearch] =
+    useState([]);
+  const [isMatchingRestaurants, setIsMatchingRestaurants] = useState(false);
 
   function handleLogin(event) {
     event.preventDefault();
@@ -25,12 +23,22 @@ export default function App({ Component, pageProps }) {
     event.target.reset();
   }
 
-  function handleSearchRestaurants(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const dataForRestaurantsSearch = Object.fromEntries(formData);
-    setDataForRestaurantsSearch(dataForRestaurantsSearch);
-    router.push("/restaurants");
+  function handleMatchRestaurants(dataForRestaurantsSearch, restaurants) {
+    const { restaurantName, cuisine, city } = dataForRestaurantsSearch;
+    const matchingRestaurants = restaurants
+      .filter(
+        (restaurant) =>
+          restaurant.name.toUpperCase() === restaurantName.toUpperCase() ||
+          restaurantName === ""
+      )
+      .filter((restaurant) => restaurant.cuisine === cuisine || cuisine === "")
+      .filter(
+        (restaurant) =>
+          restaurant.city.toUpperCase() === city.toUpperCase() || city === ""
+      );
+    setRestaurantsMatchingTheSearch(matchingRestaurants);
+    setIsMatchingRestaurants(matchingRestaurants.length !== 0);
+    if (matchingRestaurants.length !== 0) router.push("/restaurants");
   }
 
   async function updateIsFavorite(isFavorite, id) {
@@ -99,8 +107,9 @@ export default function App({ Component, pageProps }) {
           onToggleFavorite={handleToggleFavorite}
           username={username}
           onLogin={handleLogin}
-          onSearchRestaurants={handleSearchRestaurants}
-          dataForRestaurantsSearch={dataForRestaurantsSearch}
+          onMatchRestaurants={handleMatchRestaurants}
+          restaurantsMatchingTheSearch={restaurantsMatchingTheSearch}
+          isMatchingRestaurants={isMatchingRestaurants}
         />
         <Footer />
       </SWRConfig>

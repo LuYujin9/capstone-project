@@ -12,45 +12,23 @@ export default function Restaurants({
   onToggleFavorite,
   username,
   onLogin,
-  dataForRestaurantsSearch,
+  restaurantsMatchingTheSearch,
 }) {
   const [currentFilterCondition, setCurrentFilterCondition] =
     useState("Ohne Auswahl");
   const [isShowFilterConditions, setIsShowFilterConditions] = useState(false);
-  const [matchedRestaurants, setMatchedRestaurants] = useState([]);
-  const [isShowAlertMessage, setIsShowAlertMessage] = useState(false);
+  const [matchedRestaurants, setMatchedRestaurants] = useState(
+    restaurantsMatchingTheSearch
+  );
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
-  const { data: restaurants } = useSWR("/api/restaurants", {
-    fallbackData: [],
-  });
+
   const filterConditions = [
     { german: "Bewertung (höchste zuerst)", english: "rating" },
     { german: "Küche", english: "cuisine" },
     { german: "Preisniveau(teuerste zuerst)", english: "priceLevel" },
   ];
-
-  useEffect(() => {
-    const { restaurantName, cuisine, city } = dataForRestaurantsSearch;
-    const matchedSearchConditionsRestaurants = restaurants
-      .filter(
-        (restaurant) =>
-          restaurant.name.toUpperCase() === restaurantName.toUpperCase() ||
-          restaurantName === ""
-      )
-      .filter((restaurant) => restaurant.cuisine === cuisine || cuisine === "")
-      .filter(
-        (restaurant) =>
-          restaurant.city.toUpperCase() === city.toUpperCase() || city === ""
-      );
-    setMatchedRestaurants(matchedSearchConditionsRestaurants);
-    setTimeout(
-      () =>
-        setIsShowAlertMessage(matchedSearchConditionsRestaurants.length === 0),
-      3000
-    );
-  }, [dataForRestaurantsSearch, restaurants]);
 
   function handleOpenFilterList() {
     setIsShowFilterConditions(!isShowFilterConditions);
@@ -70,7 +48,6 @@ export default function Restaurants({
     setIsShowFilterConditions(!isShowFilterConditions);
   }
 
-  if (!restaurants) return <h2>Loading</h2>;
   return (
     <>
       <Heading username={username} onLogin={onLogin}>
@@ -98,12 +75,6 @@ export default function Restaurants({
             ))}
           </FilterList>
         )}
-        {isShowAlertMessage ? (
-          <AlertMessage>
-            Opps! Kein entsprechendes Restaurant gefunden. Bitte gehen Sie
-            zurück und probieren es noch ein mal.
-          </AlertMessage>
-        ) : null}
         <RestaurantsList
           restaurants={matchedRestaurants}
           onToggleFavorite={onToggleFavorite}
