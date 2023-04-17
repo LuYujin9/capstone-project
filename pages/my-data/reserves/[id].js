@@ -82,7 +82,6 @@ export default function EditReserve({ username, onLogin }) {
       <Heading username={username} onLogin={onLogin}>
         Ändern die Reservierung
       </Heading>
-
       <StyledMain>
         <StyledParagraph>
           Falls Sie die Zeit verändern möchten, bitte stornieren Sie and
@@ -102,7 +101,6 @@ export default function EditReserve({ username, onLogin }) {
           onReserve={editReserve}
           defaultData={reserve}
         />
-
         <MessageModal
           isOpen={isMessageModalOpen}
           onClose={() => setIsMessageModalOpen(false)}

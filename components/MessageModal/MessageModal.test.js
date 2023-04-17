@@ -4,7 +4,6 @@ import userEvent from "@testing-library/user-event";
 
 test("displays MessageModal when value of 'isOpen' is true ", () => {
   render(<MessageModal isOpen={true}>test</MessageModal>);
-  //const button = screen.getByRole("button", { name: /Schließen/i });
   const button = screen.getByRole("button");
   const paragraph = screen.getByText("test");
 

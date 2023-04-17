@@ -13,6 +13,7 @@ export default function Reserves({ username, onLogin }) {
   );
   const reversedReserves = matchedReserves.slice().reverse();
 
+  if (!reserves) return <h2>Loading</h2>;
   return (
     <>
       <Heading username={username} onLogin={onLogin}>

@@ -39,6 +39,7 @@ export const StyledButton = styled.button`
   width: 6rem;
   padding: 0.3rem;
   margin: 1rem;
+  margin-bottom: 0.5rem;
 
   align-self: center;
 
@@ -47,4 +48,29 @@ export const StyledButton = styled.button`
   color: var(--white-color);
   background-color: var(--red-vine-color);
   box-shadow: 2px 2px 5px 1px var(--linen-color);
+`;
+
+export const AlertMessage = styled.p`
+  font-size: 1.2rem;
+  margin: 2rem 2rem;
+`;
+
+export const StyledForm = styled.form`
+  width: 85%;
+  padding: 0.5rem 5%;
+  margin: 0.5rem auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+
+  border-radius: 1rem;
+  border: 2px solid var(--red-vine-color);
+`;
+
+export const StyledFormTitle = styled.h3`
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
 `;

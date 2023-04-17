@@ -9,7 +9,7 @@ export default function MessageModal({ isOpen, onClose, children }) {
         <Background>
           <Container className="modal">
             <StyledButton
-              aria-label="schließen die Nachricht"
+              aria-label="Schließen die Nachricht"
               onClick={onClose}
             >
               <XIcon color={`var(--red-vine-color)`} />

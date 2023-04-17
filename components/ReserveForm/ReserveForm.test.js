@@ -60,7 +60,7 @@ test("submit the form data when 'number_of_guests','name','phone' inputs are fil
   );
 });
 
-test("submit the form data if one of the three required input fields is left empty", async () => {
+test("doesn't submit the form data if one of the three required input fields is left empty", async () => {
   const mockReserve = jest.fn();
   render(<ReserveForm onStoreReserveData={mockReserve} />);
   const user = userEvent.setup();

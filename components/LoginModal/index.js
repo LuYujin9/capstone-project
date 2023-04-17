@@ -16,7 +16,7 @@ export default function LoginModal({
           <Container className="modal">
             {isLogin && (
               <CloseButton
-                aria-label="schließen die Nachricht"
+                aria-label="Schließen die Nachricht"
                 onClick={onClose}
               >
                 <XIcon color={`var(--red-vine-color)`} />
@@ -32,7 +32,7 @@ export default function LoginModal({
             )}
 
             <StyledForm
-              aria-labelledby="Login"
+              aria-label="Login"
               onSubmit={(event) => {
                 onLogin(event);
                 onClose();
@@ -40,7 +40,7 @@ export default function LoginModal({
             >
               <label htmlFor="username">Schreiben Sie hier den Username:</label>
               <input type="text" name="username" id="username" required></input>
-              <StyledButton type="submit" aria-label="Button um abzuschicken">
+              <StyledButton type="submit" aria-label="Um abzuschicken">
                 Abschicken
               </StyledButton>
             </StyledForm>

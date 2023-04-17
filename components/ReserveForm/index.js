@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { StyledButton } from "../styles";
+import { StyledButton, StyledForm, StyledFormTitle } from "../styles";
 
 export default function ReserveForm({
   availableSeats,
@@ -22,7 +21,9 @@ export default function ReserveForm({
 
   return (
     <StyledForm aria-labelledby="reserveFormHeader" onSubmit={handleSubmit}>
-      <StyledLegend id="reserveFormHeader">Reservieren die Plätze</StyledLegend>
+      <StyledFormTitle id="reserveFormHeader">
+        Reservieren die Plätze
+      </StyledFormTitle>
       <label htmlFor="number_of_guests">Personen:</label>
       <input
         type="number"
@@ -58,28 +59,9 @@ export default function ReserveForm({
         defaultValue={defaultData?.phone}
         required
       ></input>
-      <StyledButton type="submit" aria-label="Button um abzuschicken">
+      <StyledButton type="submit" aria-label="Um abzuschicken">
         Abschicken
       </StyledButton>
     </StyledForm>
   );
 }
-
-const StyledForm = styled.form`
-  width: 85%;
-  padding: 0.5rem 5%;
-  margin: auto;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-
-  border-radius: 1rem;
-  border: 2px solid var(--red-vine-color);
-`;
-
-const StyledLegend = styled.legend`
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.3rem;
-`;
