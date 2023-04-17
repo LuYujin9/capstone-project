@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
   const [username, setUsername] = useState();
   const [restaurantsMatchingTheSearch, setRestaurantsMatchingTheSearch] =
     useState([]);
-  const [isMatchingRestaurants, setIsMatchingRestaurants] = useState(false);
+  const [isMatchingRestaurants, setIsMatchingRestaurants] = useState(true);
 
   function handleLogin(event) {
     event.preventDefault();

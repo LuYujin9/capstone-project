@@ -32,8 +32,8 @@ export default function Home({
         />
         {!isMatchingRestaurants && (
           <AlertMessage>
-            Opps! Kein entsprechendes Restaurant gefunden. Bitte gehen Sie
-            zurück und probieren es noch ein mal.
+            Opps! Kein entsprechendes Restaurant gefunden. Bitte probieren Sie
+            es noch ein mal.
           </AlertMessage>
         )}
       </StyledMain>
