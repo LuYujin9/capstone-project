@@ -36,6 +36,7 @@ export default function Reserves({ username, onLogin }) {
 
 const StyledList = styled.ul`
   margin: 0;
+  margin-bottom: 3rem;
   width: 100%;
   min-height: 100vh;
 

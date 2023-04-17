@@ -7,6 +7,7 @@ export const StyledImage = styled(Image)`
 
 export const StyledList = styled.ul`
   margin: 0.8rem auto;
+  margin-bottom: 3rem;
   padding: 0;
 
   display: grid;

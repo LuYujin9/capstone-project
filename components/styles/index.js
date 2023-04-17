@@ -37,6 +37,7 @@ export const StyledLink = styled(Link)`
 
 export const StyledButton = styled.button`
   width: 6rem;
+  height: 1.5rem;
   padding: 0.3rem;
   margin: 1rem;
   margin-bottom: 0.5rem;
