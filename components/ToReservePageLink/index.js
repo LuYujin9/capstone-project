@@ -5,7 +5,7 @@ import { StyledLink } from "../styles";
 export default function ToReservePageLink({ id }) {
   return (
     <ReservierenLink
-      aria-label="Link zur Reservieren-Seite"
+      aria-label="Zur Reservieren-Seite"
       href={`/restaurants/reserve/${id}`}
     >
       Reservieren &nbsp;

@@ -10,20 +10,18 @@ export default function MapPage({ username, onLogin }) {
   const { data: reserves } = useSWR("/api/reserves", {
     fallbackData: [],
   });
-  const dataForMarkers = restaurants.filter((restaurant) =>
+  const dataForMapMarkers = restaurants.filter((restaurant) =>
     reserves.some((reserve) => reserve.restaurantId === restaurant._id)
   );
-
-  /* console.log(restaurants);
-  console.log(reserves); */
 
   return (
     <>
       <Heading isHideBackButton={true} username={username} onLogin={onLogin}>
-        Map
+        Meine Route
       </Heading>
       <StyledMain>
-        <Map dataForMarkers={dataForMarkers} />
+        <p>Hey!😎 Ich habe so viele Restaurants besucht.</p>
+        <Map dataForMapMarkers={dataForMapMarkers} />
       </StyledMain>
     </>
   );

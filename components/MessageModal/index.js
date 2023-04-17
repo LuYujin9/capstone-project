@@ -16,7 +16,7 @@ export default function MessageModal({ isOpen, onClose, children }) {
             </StyledButton>
             <Message>{children}</Message>
             <StyledLink
-              aria-label="Link zur Meine-Reservierungen-Seite"
+              aria-label="Zur Meine-Reservierungen-Seite"
               href="/my-data/reserves"
             >
               Meine Reservierungen &nbsp;
