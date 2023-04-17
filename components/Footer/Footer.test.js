@@ -10,5 +10,5 @@ jest.mock("next/router", () => ({
 test("renders the correct number of links", () => {
   render(<Footer />);
   const navigationLinks = screen.getAllByRole("link");
-  expect(navigationLinks).toHaveLength(2);
+  expect(navigationLinks).toHaveLength(3);
 });
