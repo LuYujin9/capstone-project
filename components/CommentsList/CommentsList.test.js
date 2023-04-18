@@ -3,12 +3,12 @@ import CommentsList from ".";
 
 const testComments = [
   {
-    id: "1",
+    _id: "1",
     context: "sehr Lecker.",
     time: "Tue Jun 08 2023",
   },
   {
-    id: "2",
+    _id: "2",
     context: "This restaurant is very picturesque.",
     time: "Tue Jun 07 2023",
   },

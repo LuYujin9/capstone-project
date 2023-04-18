@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ChevronDownIcon, ChevronUpIcon } from "../../../public/icons";
 
-export default function ThePage({ comment }) {
+export default function CommentCard({ comment }) {
   const commentRef = useRef();
   const [isExpanded, setIsExpanded] = useState(false);
   const [needExpandBtn, setNeedExpandBtn] = useState(false);

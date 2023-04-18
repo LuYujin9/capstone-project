@@ -21,7 +21,7 @@ export default function CommentForm({ restaurant, username, addNewComment }) {
   }
 
   return (
-    <StyledForm aria-label="Login" onSubmit={(event) => handleSubmit(event)}>
+    <StyledForm aria-label="comment" onSubmit={(event) => handleSubmit(event)}>
       <label htmlFor="context">Kommentieren Sie hier:</label>
       <textarea
         rows="3"
