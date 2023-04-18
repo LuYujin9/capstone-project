@@ -5,7 +5,7 @@ export default function CommentsList({ comments }) {
   return (
     <StyledList role="list">
       {comments?.map((comment) => (
-        <StyledListItem key={comment.id}>
+        <StyledListItem key={comment._id}>
           <CommentCard comment={comment} />
         </StyledListItem>
       ))}
@@ -19,5 +19,6 @@ const StyledListItem = styled.li`
 `;
 
 const StyledList = styled.ul`
+  margin-top: 0;
   margin-bottom: 4rem;
 `;

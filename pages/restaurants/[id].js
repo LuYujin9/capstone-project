@@ -6,8 +6,11 @@ import Link from "next/link.js";
 import Heading from "../../components/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink";
 import BookmarkButton from "../../components/BookmarkButton";
+import CommentForm from "../../components/CommentForm";
 import { useRouter } from "next/router";
+import { postNewData } from "../../utils/handleDataUtils";
 import useSWR from "swr";
+import useSWRMutation from "swr/mutation";
 
 export default function Details({ onToggleFavorite, username, onLogin }) {
   const router = useRouter();
@@ -23,17 +26,35 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
   const { data: comments } = useSWR("/api/comments", {
     fallbackData: [],
   });
-  console.log(comments);
-  if (!userInfos || !restaurant || isLoading || error) return <h2>Loading</h2>;
+  const { trigger: triggerComment } = useSWRMutation(
+    "/api/comments",
+    postNewData
+  );
+  if (!userInfos || !restaurant || !comments || isLoading || error)
+    return <h2>Loading</h2>;
 
   const matchingUserInfo = userInfos?.find(
     (info) => info.restaurantId === id && info.username === username
   );
   const isFavorite = matchingUserInfo ? matchingUserInfo.isFavorite : false;
+  const matchingComment = comments
+    .filter((comment) => comment.restaurant_Id === restaurant._id)
+    .reverse();
 
   function handleToggleBookmark() {
     const newIsFavorite = !isFavorite;
     onToggleFavorite(matchingUserInfo, newIsFavorite, restaurant, username);
+  }
+  async function addNewComment(formattedtime, comment, restaurant, username) {
+    const newComment = {
+      username: username,
+      restaurant_Id: restaurant._id,
+      restaurantName: restaurant.name,
+      context: comment.context,
+      time: formattedtime,
+    };
+
+    await triggerComment(newComment);
   }
 
   return (
@@ -59,7 +80,12 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
           <b>Addresse: </b>
           {restaurant.address}
         </StyledParagraph>
-        <CommentsList comments={comments} />
+        <CommentForm
+          restaurant={restaurant}
+          username={username}
+          addNewComment={addNewComment}
+        />
+        <CommentsList comments={matchingComment} />
         <ToReservePageLink id={id} />
       </StyledMain>
     </>

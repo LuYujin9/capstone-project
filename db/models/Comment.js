@@ -6,8 +6,6 @@ const commentSchema = new Schema({
   restaurant_Id: { type: String, required: true },
   restaurantName: { type: String, required: true },
   context: { type: String, required: true },
-  email: String,
-  number_of_guests: { type: Number, required: true },
   time: String,
 });
 const Comment =
