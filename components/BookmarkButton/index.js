@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { HeartIcon } from "../../public/icons";
 
 export default function BookmarkButton({ onToggleBookmark, isFavorite }) {
-  const buttonColor = isFavorite === true ? "var(--red-vine-color)" : "none";
+  const buttonColor = isFavorite === true ? "#E76F51" : "none";
   return (
     <StyledButton
       aria-label="Toggle favorite or not"
@@ -14,11 +14,12 @@ export default function BookmarkButton({ onToggleBookmark, isFavorite }) {
 }
 
 const StyledButton = styled.button`
+  margin: auto 0.2rem;
   border: none;
   background-color: transparent;
   cursor: pointer;
 
   position: absolute;
   top: 0.7rem;
-  right: 1rem;
+  right: 0.4rem;
 `;

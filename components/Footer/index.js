@@ -20,10 +20,11 @@ export default function Footer() {
   );
 }
 const StyledLink = styled(Link)`
-  background-color: var(--rosehip-color);
+  background-color: var(--frame-color);
 `;
 
 const StyledNav = styled.nav`
+  margin: 0 auto;
   height: 3rem;
   width: 100vw;
 
@@ -33,5 +34,14 @@ const StyledNav = styled.nav`
   justify-content: space-around;
   align-items: center;
 
-  background-color: var(--rosehip-color);
+  background-color: var(--frame-color);
+
+  @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+    left: 0;
+    right: 0;
+  }
 `;

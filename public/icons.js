@@ -15,7 +15,10 @@ export const XIcon = ({ size = 24, color = "#000000" }) => (
   </svg>
 );
 
-export const ArrowUpRightIcon = ({ size = 20, color = "#FFFFFF" }) => (
+export const ArrowUpRightIcon = ({
+  size = 20,
+  color = "var(--button-color)",
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -33,7 +36,7 @@ export const ArrowUpRightIcon = ({ size = 20, color = "#FFFFFF" }) => (
 
 export const HeartIcon = ({
   size = 30,
-  color = "var(--red-vine-color)",
+  color = "#E76F51",
   fillColor = "none",
 }) => (
   <svg
@@ -43,7 +46,7 @@ export const HeartIcon = ({
     viewBox="0 0 24 24"
     fill={fillColor}
     stroke={color}
-    strokeWidth="2"
+    strokeWidth="1.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
@@ -67,7 +70,10 @@ export const ChevronDownIcon = ({ size = 24, color = "#f4f6f9" }) => (
   </svg>
 );
 
-export const ChevronLeftIcon = ({ size = 24, color = "#9C4041" }) => (
+export const ChevronLeftIcon = ({
+  size = 24,
+  color = "var(--white-color)",
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -115,10 +121,7 @@ export const ChevronUpIcon = ({ size = 24, color = "#f4f6f9" }) => (
   </svg>
 );
 
-export const HomepageIcon = ({
-  size = 28,
-  color = "var(--red-vine-color)",
-}) => (
+export const HomepageIcon = ({ size = 28, color = "var(--white-color)" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -135,7 +138,7 @@ export const HomepageIcon = ({
   </svg>
 );
 
-export const UserIcon = ({ size = 30, color = "var(--red-vine-color)" }) => (
+export const UserIcon = ({ size = 30, color = "var(--white-color)" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -152,7 +155,7 @@ export const UserIcon = ({ size = 30, color = "var(--red-vine-color)" }) => (
     <circle cx="12" cy="12" r="10" />
   </svg>
 );
-export const LoginIcon = ({ size = 24, color = "#9C4041" }) => (
+export const LoginIcon = ({ size = 24, color = "var(--white-color)" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -185,7 +188,7 @@ export const ChevronsDownIcon = ({ size = 24, color = "white" }) => (
     <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
   </svg>
 );
-export const MapMarker = ({ size = 30, color = "#9C4041" }) => (
+export const MapMarker = ({ size = 30, color = "var(--white-color)" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

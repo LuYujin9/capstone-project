@@ -30,10 +30,7 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
       </p>
       <StyledLink href={`/restaurants/${restaurantId}`}>
         <b>Restaurant: </b>&nbsp;{restaurantName}
-        <ArrowUpRightIcon
-          alt="Pfeil Icon nach oben rechts"
-          color={`var(--red-vine-color)`}
-        />
+        <ArrowUpRightIcon alt="Pfeil Icon nach oben rechts" />
       </StyledLink>
       <p>
         <b>Name: </b>
@@ -71,7 +68,7 @@ const StyleListItem = styled.li`
 
   list-style-type: none;
   background-color: white;
-  box-shadow: 1px 1px 5px 2px var(--antique-color);
+  box-shadow: 1px 1px 3px 3px var(--tag-color);
 `;
 
 const LinkToEdit = styled(Link)`
@@ -85,7 +82,7 @@ const LinkToEdit = styled(Link)`
   border-radius: 15px;
   border: none;
   color: var(--white-color);
-  background-color: var(--red-vine-color);
+  background-color: var(--button-color);
 `;
 
 const StyledLink = styled(Link)`

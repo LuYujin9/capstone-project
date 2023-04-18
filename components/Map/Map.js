@@ -22,7 +22,8 @@ export default function Map({ dataForMapMarkers }) {
 //
 const StyledMapContainer = styled(MapContainer)`
   margin: 0;
-  width: 100%;
-  height: calc(100vh - 8rem);
+  border: 1px solid var(--button-color);
+  width: 90%;
+  height: calc(100vh - 10rem);
   z-index: 0;
 `;

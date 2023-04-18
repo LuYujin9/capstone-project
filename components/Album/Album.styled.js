@@ -19,7 +19,7 @@ export const ToLastPhotoButton = styled.button`
   border: none;
   padding: 0;
   ${({ photoIndex }) => (photoIndex === 0 ? "visibility: hidden" : null)};
-  background-color: white;
+  background-color: var(--background-color);
 `;
 
 export const ToNextPhotoButton = styled.button`
@@ -27,7 +27,7 @@ export const ToNextPhotoButton = styled.button`
   padding: 0;
   ${({ photoIndex, photos }) =>
     photoIndex === photos.length - 1 ? "visibility: hidden" : null};
-  background-color: white;
+  background-color: var(--background-color);
 `;
 
 export const StyledImage = styled(Image)`

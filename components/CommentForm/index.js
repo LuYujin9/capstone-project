@@ -22,7 +22,9 @@ export default function CommentForm({ restaurant, username, addNewComment }) {
 
   return (
     <StyledForm aria-label="comment" onSubmit={(event) => handleSubmit(event)}>
-      <label htmlFor="context">Kommentieren Sie hier:</label>
+      <label htmlFor="context">
+        <b>Kommentieren Sie hier:</b>
+      </label>
       <textarea
         rows="3"
         type="context"
@@ -38,7 +40,7 @@ export default function CommentForm({ restaurant, username, addNewComment }) {
 }
 
 export const StyledForm = styled.form`
-  width: 95%;
+  width: 100%;
   padding: 0.5rem 5%;
   margin: 0;
 

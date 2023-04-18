@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledMain } from "../../components/styles";
+import { StyledMain, StyledLink } from "../../components/styles";
 import CommentsList from "../../components/CommentsList";
 import Album from "../../components/Album";
 import Link from "next/link.js";
@@ -7,6 +7,7 @@ import Heading from "../../components/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink";
 import BookmarkButton from "../../components/BookmarkButton";
 import CommentForm from "../../components/CommentForm";
+import { ArrowUpRightIcon } from "../../public/icons";
 import { useRouter } from "next/router";
 import { postNewData } from "../../utils/handleDataUtils";
 import useSWR from "swr";
@@ -63,9 +64,13 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
         {restaurant.name}
       </Heading>
       <StyledMain>
-        <StyledLink href={`/restaurants/menu/${id}`}>
+        <LinkToMenu href={`/restaurants/menu/${id}`}>
           Zur Speisekarte
-        </StyledLink>
+          <ArrowUpRightIcon
+            alt="Pfeil Icon nach oben rechts"
+            color="var(--button-color)"
+          />
+        </LinkToMenu>
         <BookmarkButton
           onToggleBookmark={handleToggleBookmark}
           isFavorite={isFavorite}
@@ -92,27 +97,15 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
   );
 }
 
-const StyledLink = styled(Link)`
-  width: 60%;
-  padding: 0.3rem;
-  font-size: 1.2rem;
-  margin: 0.8rem 0 0.5rem 0;
-
-  text-align: center;
-
-  color: var(--red-vine-color);
-  text-decoration: none;
-  border: 2px solid var(--red-vine-color);
-  border-radius: 5px;
-
-  &:hover {
-    background-color: var(--antique-color);
-  }
-`;
-
 const StyledParagraph = styled.p`
   padding: 0.3rem 0;
   margin: 0;
   width: 90%;
   text-align: left;
+`;
+const LinkToMenu = styled(StyledLink)`
+  width: 15rem;
+  padding: 0.2rem;
+  font-weight: bold;
+  margin: 0.9rem auto;
 `;

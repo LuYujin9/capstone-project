@@ -85,7 +85,6 @@ const FilterButton = styled.button`
   width: 90%;
   max-width: 30rem;
   margin-top: 1rem;
-  border: 2px solid var(--red-vine-color);
   border-radius: 10px;
   font-size: 0.9rem;
 
@@ -94,7 +93,7 @@ const FilterButton = styled.button`
   justify-content: space-around;
 
   color: white;
-  background-color: var(--red-vine-color);
+  background-color: var(--button-color);
 `;
 
 const FilterList = styled.ul`
@@ -119,9 +118,11 @@ const FilterOption = styled.button`
   margin: 0 auto;
   font-size: 0.9rem;
 
-  background-color: var(--antique-color);
+  background-color: var(--button-color);
+  color: var(--white-color);
 
   &:hover {
-    background-color: var(--rain-storm-color);
+    background-color: var(--white-color);
+    color: var(--bold-color);
   }
 `;

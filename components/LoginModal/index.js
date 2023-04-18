@@ -19,7 +19,7 @@ export default function LoginModal({
                 aria-label="Schließen die Nachricht"
                 onClick={onClose}
               >
-                <XIcon color={`var(--red-vine-color)`} />
+                <XIcon color={`var(--button-color)`} />
               </CloseButton>
             )}
 
@@ -73,7 +73,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: var(--rosehip-color);
+  background-color: var(--background-color);
   border-radius: 15px;
 `;
 
@@ -82,7 +82,7 @@ const Message = styled.p`
   text-align: justify;
   margin-bottom: 2rem;
 
-  background-color: var(--rosehip-color);
+  background-color: var(--background-color);
   z-index: 5;
 `;
 
@@ -95,8 +95,8 @@ const CloseButton = styled.button`
 
   border-radius: 15px;
   border: none;
-  color: var(--red-vine-color);
-  background-color: var(--rosehip-color);
+  color: var(--button-color);
+  background-color: var(--background-color);
 `;
 
 const StyledForm = styled.form`

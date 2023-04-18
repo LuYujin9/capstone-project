@@ -2,14 +2,17 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const StyledMain = styled.main`
-  margin: 4rem auto;
+  margin: 3rem auto;
   padding: 0;
+  min-height: calc(100vh - 6rem);
 
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  background-color: var(--background-color);
 
   @media only screen and (max-width: 799px) {
     width: 100vw;
@@ -22,38 +25,42 @@ export const StyledMain = styled.main`
 `;
 
 export const StyledLink = styled(Link)`
-  padding: 0.3rem 1rem;
+  width: 15rem;
+  padding: 0.1rem 1rem;
+  margin: 0;
 
+  text-align: center;
   display: flex;
+  justify-content: space-around;
 
+  color: var(--button-color);
+  background: var(--background-color);
+  text-decoration: none;
+  border: 2px solid var(--button-color);
   border-radius: 5px;
-  color: white;
-  background-color: var(--red-vine-color);
 
   &:hover {
-    background-color: var(--rain-storm-color);
+    background-color: var(--tag-color);
   }
 `;
 
 export const StyledButton = styled.button`
   width: 6rem;
   height: 1.5rem;
-  padding: 0.3rem;
   margin: 1rem;
   margin-bottom: 0.5rem;
 
   align-self: center;
 
   border-radius: 15px;
-  border: none;
   color: var(--white-color);
-  background-color: var(--red-vine-color);
-  box-shadow: 2px 2px 5px 1px var(--linen-color);
+  background-color: var(--button-color);
+  box-shadow: 2px 2px 5px 1px var(--white-color);
 `;
 
 export const AlertMessage = styled.p`
   font-size: 1.2rem;
-  margin: 2rem 2rem;
+  margin: 1rem 2rem;
 `;
 
 export const StyledForm = styled.form`
@@ -66,7 +73,7 @@ export const StyledForm = styled.form`
   gap: 0.1rem;
 
   border-radius: 1rem;
-  border: 2px solid var(--red-vine-color);
+  border: 2px solid var(--button-color);
 `;
 
 export const StyledFormTitle = styled.h3`

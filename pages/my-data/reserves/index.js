@@ -39,6 +39,4 @@ const StyledList = styled.ul`
   margin-bottom: 3rem;
   width: 100%;
   min-height: 100vh;
-
-  background-color: var(--white-color);
 `;

@@ -48,7 +48,8 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledCard = styled.article`
-  margin: 0.5rem 1.5rem;
+  width: 90%;
+  margin: 0.3rem auto;
   padding: 0.2rem;
 
   display: flex;
@@ -57,7 +58,7 @@ const StyledCard = styled.article`
 
   border-radius: 2px;
   background-color: var(--white-color);
-  box-shadow: 1px 1px 1px 1px var(--linen-color);
+  box-shadow: 1px 1px 2px 1px var(--tag-color);
 `;
 
 const StyledButton = styled.button`
