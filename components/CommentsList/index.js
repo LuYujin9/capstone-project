@@ -6,7 +6,7 @@ export default function CommentsList({ comments }) {
     <StyledList role="list">
       {comments?.map((comment) => (
         <StyledListItem key={comment.id}>
-          <CommentCard comment={comment.context} time={comment.time} />
+          <CommentCard comment={comment} />
         </StyledListItem>
       ))}
     </StyledList>

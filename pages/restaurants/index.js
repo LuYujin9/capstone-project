@@ -15,7 +15,7 @@ export default function Restaurants({
   const [currentFilterCondition, setCurrentFilterCondition] =
     useState("Ohne Auswahl");
   const [isShowFilterConditions, setIsShowFilterConditions] = useState(false);
-  const [matchedRestaurants, setMatchedRestaurants] = useState(
+  const [matchingRestaurants, setMatchingRestaurants] = useState(
     restaurantsMatchingTheSearch
   );
   const { data: userInfos } = useSWR("/api/user-infos", {
@@ -34,12 +34,12 @@ export default function Restaurants({
 
   function handleFilterCondition(condition) {
     setCurrentFilterCondition(condition.german);
-    const filteredRestaurants = matchedRestaurants.slice().sort((a, b) => {
+    const filteredRestaurants = matchingRestaurants.slice().sort((a, b) => {
       if (a[condition.english] > b[condition.english]) return -1;
       if (a[condition.english] < b[condition.english]) return 1;
       return 0;
     });
-    setMatchedRestaurants(filteredRestaurants);
+    setMatchingRestaurants(filteredRestaurants);
     setIsShowFilterConditions(!isShowFilterConditions);
   }
 
@@ -71,7 +71,7 @@ export default function Restaurants({
           </FilterList>
         )}
         <RestaurantsList
-          restaurants={matchedRestaurants}
+          restaurants={matchingRestaurants}
           onToggleFavorite={onToggleFavorite}
           userInfos={userInfos}
           username={username}
