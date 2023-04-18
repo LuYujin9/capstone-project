@@ -6,10 +6,10 @@ export default function Footer() {
   return (
     <footer>
       <StyledNav>
-        <StyledLink href="/" aria-label="Zum Homepage">
+        <StyledLink href="/" aria-label="Zur Homepage">
           <HomepageIcon alt="Homepage Icon" />
         </StyledLink>
-        <StyledLink href="/my-data" aria-label="Zum meine Daten">
+        <StyledLink href="/my-data" aria-label="Zu meine Daten">
           <UserIcon alt="Meschen Figur Icon" />
         </StyledLink>
         <StyledLink href="/map" aria-label="Zum Map">
