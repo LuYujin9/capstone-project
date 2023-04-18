@@ -48,6 +48,14 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
         />
         <Album photos={restaurant.photos} />
         <StyledParagraph>{restaurant.description}</StyledParagraph>
+        <StyledParagraph>
+          <b>Tel: </b>
+          {restaurant.telephoneNumber}
+        </StyledParagraph>
+        <StyledParagraph>
+          <b>Addresse: </b>
+          {restaurant.address}
+        </StyledParagraph>
         <CommentsList comments={comments} />
         <ToReservePageLink id={id} />
       </StyledMain>
@@ -74,7 +82,8 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledParagraph = styled.p`
-  padding: 1rem 0;
-  margin: 0 1.5rem;
-  text-align: justify;
+  padding: 0.3rem 0;
+  margin: 0;
+  width: 90%;
+  text-align: left;
 `;
