@@ -11,7 +11,10 @@ export default function MapPage({ username, onLogin }) {
     fallbackData: [],
   });
   const dataForMapMarkers = restaurants.filter((restaurant) =>
-    reserves.some((reserve) => reserve.restaurantId === restaurant._id)
+    reserves.some(
+      (reserve) =>
+        reserve.restaurantId === restaurant._id && reserve.username === username
+    )
   );
 
   return (
