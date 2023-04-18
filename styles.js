@@ -22,6 +22,7 @@ export default createGlobalStyle`
 
   p {
     margin:5px;
+    color:var(--bold-color);
   }
   
   a{
@@ -30,12 +31,12 @@ export default createGlobalStyle`
   }
 
   :root {
-    --red-vine-color:#9C4041;
-    --rosehip-color:#E5CBC1;
-    --antique-color:#F0E7DA;
-    --rain-storm-color:#46B4B3;
-    --linen-color:#E3E4E0;
     --white-color:#F5F5F5;
+    --background-color:#FAEDCD;
+    --frame-color:#C07d53;
+    --tag-color:#FFDE6D;
+    --button-color:#144E5A;
+    --bold-color:#1C2520;
   }
 }
 `;

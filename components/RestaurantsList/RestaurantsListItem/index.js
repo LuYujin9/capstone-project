@@ -15,14 +15,14 @@ export default function RestaurantsListItem({
   restaurant,
   username,
 }) {
-  const matchedUserInfo = userInfos?.find(
+  const matchingUserInfo = userInfos?.find(
     (info) => info.restaurantId === restaurant._id && info.username === username
   );
-  const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
+  const isFavorite = matchingUserInfo ? matchingUserInfo.isFavorite : false;
 
   function handleToggleBookmark() {
     const newIsFavorite = !isFavorite;
-    onToggleFavorite(matchedUserInfo, newIsFavorite, restaurant, username);
+    onToggleFavorite(matchingUserInfo, newIsFavorite, restaurant, username);
   }
 
   return (

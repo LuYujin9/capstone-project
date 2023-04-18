@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ChevronDownIcon, ChevronUpIcon } from "../../../public/icons";
 
-export default function ThePage({ comment, time }) {
+export default function CommentCard({ comment }) {
   const commentRef = useRef();
   const [isExpanded, setIsExpanded] = useState(false);
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
@@ -12,12 +12,15 @@ export default function ThePage({ comment, time }) {
       commentRef?.current?.scrollHeight > commentRef?.current?.clientHeight
     );
   }, []);
-
+  const { username, time, context } = comment;
   return (
     <StyledCard>
-      <p>{time}</p>
+      <StyledSection>
+        <p>{time}</p>
+        <p>{username}</p>
+      </StyledSection>
       <StyledParagraph ref={commentRef} isExpanded={isExpanded}>
-        {comment}
+        {context}
       </StyledParagraph>
       {needExpandBtn && (
         <StyledButton
@@ -45,7 +48,8 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledCard = styled.article`
-  margin: 0.5rem 1.5rem;
+  width: 90%;
+  margin: 0.3rem auto;
   padding: 0.2rem;
 
   display: flex;
@@ -54,13 +58,17 @@ const StyledCard = styled.article`
 
   border-radius: 2px;
   background-color: var(--white-color);
-  box-shadow: 1px 1px 1px 1px var(--linen-color);
+  box-shadow: 1px 1px 2px 1px var(--tag-color);
 `;
 
 const StyledButton = styled.button`
   border: none;
-
   align-self: end;
-
   background-color: var(--white-color);
+`;
+
+const StyledSection = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;

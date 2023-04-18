@@ -30,6 +30,7 @@ test("submit the form data when every field is filled out", async () => {
   await user.type(input, "2050-05-08");
   await user.selectOptions(select, ["11:00"]);
   await user.click(button);
+
   expect(mockGetRemainingSeats).toHaveBeenCalledWith({
     date: "2050-05-08",
     time: "11:00",

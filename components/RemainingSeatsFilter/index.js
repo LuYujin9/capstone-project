@@ -1,4 +1,5 @@
 import { StyledButton, StyledFormTitle, StyledForm } from "../styles";
+import userEvent from "@testing-library/user-event";
 
 export default function RemainingSeatsFilter({ getRemainingSeats }) {
   function handleSubmit(event) {

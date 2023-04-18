@@ -45,15 +45,15 @@ export default function EditReserve({ username, onLogin }) {
 
   async function editRemainingSeats(reserveData, restaurant, date, time) {
     const reserveInfos = restaurant.reserveInfos;
-    const matchedReserveInfo = reserveInfos.find(
+    const matchingReserveInfo = reserveInfos.find(
       (info) => info.date === date && info.time === time
     );
     const newRemainingSeats =
-      matchedReserveInfo.remainingSeats +
+      matchingReserveInfo.remainingSeats +
       reserve.number_of_guests -
       reserveData.number_of_guests;
     const newReservInfos = reserveInfos.map((info) =>
-      info === matchedReserveInfo
+      info === matchingReserveInfo
         ? { ...info, remainingSeats: newRemainingSeats }
         : info
     );

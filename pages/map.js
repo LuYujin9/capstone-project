@@ -19,7 +19,7 @@ export default function MapPage({ username, onLogin }) {
 
   return (
     <>
-      <Heading isHideBackButton={true} username={username} onLogin={onLogin}>
+      <Heading username={username} onLogin={onLogin}>
         Meine Route
       </Heading>
       <StyledMain>

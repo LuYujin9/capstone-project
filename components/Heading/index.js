@@ -50,21 +50,23 @@ const StyledButton = styled.button`
   border: none;
   width: 3rem;
 
-  background-color: var(--rosehip-color);
+  background-color: var(--frame-color);
   ${({ isHideBackButton }) => (isHideBackButton ? "visibility: hidden" : null)}
 `;
 
 const HeadingLineOne = styled.h1`
   margin: auto;
   width: 70vw;
+  font-size: 1.3rem;
   text-align: center;
+  color: white;
   z-index: -1;
 `;
 
 const StyledHeader = styled.header`
   width: 100vw;
-  height: 4rem;
-  margin: 0;
+  height: 3rem;
+  margin: 0 auto;
 
   text-align: center;
   position: fixed;
@@ -73,6 +75,14 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
 
-  background-color: var(--rosehip-color);
-  color: var(--red-vine-color);
+  background-color: var(--frame-color);
+  color: var(--white-color);
+  @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+    left: 0;
+    right: 0;
+  }
 `;

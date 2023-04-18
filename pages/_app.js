@@ -72,13 +72,13 @@ export default function App({ Component, pageProps }) {
   }
 
   async function handleToggleFavorite(
-    matchedUserInfo,
+    matchingUserInfo,
     newIsFavorite,
     restaurant,
     username
   ) {
-    if (matchedUserInfo) {
-      const id = matchedUserInfo._id;
+    if (matchingUserInfo) {
+      const id = matchingUserInfo._id;
       await updateIsFavorite(newIsFavorite, id);
       mutate("/api/user-infos");
       return;

@@ -45,15 +45,15 @@ export default function Reseve({ username, onLogin }) {
 
   async function editRemainingSeats(reserveData, restaurant, date, time) {
     const reserveInfos = restaurant.reserveInfos;
-    const matchedReserveInfo = reserveInfos.find(
+    const matchingReserveInfo = reserveInfos.find(
       (info) => info.date === date && info.time === time
     );
 
-    if (matchedReserveInfo) {
+    if (matchingReserveInfo) {
       const newRemainingSeats =
-        matchedReserveInfo.remainingSeats - reserveData.number_of_guests;
+        matchingReserveInfo.remainingSeats - reserveData.number_of_guests;
       const newReservInfos = reserveInfos.map((info) =>
-        info === matchedReserveInfo
+        info === matchingReserveInfo
           ? { ...info, remainingSeats: newRemainingSeats }
           : info
       );

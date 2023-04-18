@@ -31,7 +31,7 @@ export const StyledListItem = styled.li`
 
   border-radius: 1rem;
   background-color: var(--white-color);
-  box-shadow: 2px 2px 10px 3px var(--linen-color);
+  box-shadow: 1px 1px 8px 3px var(--frame-color);
 `;
 
 export const StyledName = styled.p`
@@ -47,7 +47,8 @@ export const StyledRating = styled.p`
   text-align: center;
 
   border-radius: 0.5rem;
-  background-color: var(--rosehip-color);
+  background-color: var(--button-color);
+  color: var(--white-color);
 `;
 
 export const StyledPicture = styled.picture`

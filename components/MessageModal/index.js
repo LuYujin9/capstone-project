@@ -12,7 +12,7 @@ export default function MessageModal({ isOpen, onClose, children }) {
               aria-label="Schließen die Nachricht"
               onClick={onClose}
             >
-              <XIcon color={`var(--red-vine-color)`} />
+              <XIcon />
             </StyledButton>
             <Message>{children}</Message>
             <StyledLink
@@ -50,7 +50,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: var(--rosehip-color);
+  background-color: var(--background-color);
   border-radius: 15px;
 `;
 
@@ -60,7 +60,6 @@ const Message = styled.p`
   font-weight: bold;
   margin-bottom: 2rem;
 
-  background-color: var(--rosehip-color);
   z-index: 3;
 `;
 
@@ -74,5 +73,5 @@ const StyledButton = styled.button`
   border-radius: 15px;
   border: none;
   color: var(--red-vine-color);
-  background-color: var(--rosehip-color);
+  background-color: var(--background-color);
 `;

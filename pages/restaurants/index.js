@@ -15,7 +15,7 @@ export default function Restaurants({
   const [currentFilterCondition, setCurrentFilterCondition] =
     useState("Ohne Auswahl");
   const [isShowFilterConditions, setIsShowFilterConditions] = useState(false);
-  const [matchedRestaurants, setMatchedRestaurants] = useState(
+  const [matchingRestaurants, setMatchingRestaurants] = useState(
     restaurantsMatchingTheSearch
   );
   const { data: userInfos } = useSWR("/api/user-infos", {
@@ -34,12 +34,12 @@ export default function Restaurants({
 
   function handleFilterCondition(condition) {
     setCurrentFilterCondition(condition.german);
-    const filteredRestaurants = matchedRestaurants.slice().sort((a, b) => {
+    const filteredRestaurants = matchingRestaurants.slice().sort((a, b) => {
       if (a[condition.english] > b[condition.english]) return -1;
       if (a[condition.english] < b[condition.english]) return 1;
       return 0;
     });
-    setMatchedRestaurants(filteredRestaurants);
+    setMatchingRestaurants(filteredRestaurants);
     setIsShowFilterConditions(!isShowFilterConditions);
   }
 
@@ -71,7 +71,7 @@ export default function Restaurants({
           </FilterList>
         )}
         <RestaurantsList
-          restaurants={matchedRestaurants}
+          restaurants={matchingRestaurants}
           onToggleFavorite={onToggleFavorite}
           userInfos={userInfos}
           username={username}
@@ -85,7 +85,6 @@ const FilterButton = styled.button`
   width: 90%;
   max-width: 30rem;
   margin-top: 1rem;
-  border: 2px solid var(--red-vine-color);
   border-radius: 10px;
   font-size: 0.9rem;
 
@@ -94,7 +93,7 @@ const FilterButton = styled.button`
   justify-content: space-around;
 
   color: white;
-  background-color: var(--red-vine-color);
+  background-color: var(--button-color);
 `;
 
 const FilterList = styled.ul`
@@ -119,9 +118,11 @@ const FilterOption = styled.button`
   margin: 0 auto;
   font-size: 0.9rem;
 
-  background-color: var(--antique-color);
+  background-color: var(--button-color);
+  color: var(--white-color);
 
   &:hover {
-    background-color: var(--rain-storm-color);
+    background-color: var(--white-color);
+    color: var(--bold-color);
   }
 `;

@@ -4,7 +4,7 @@ import Heading from "../../../components/Heading";
 import MenuListItem from "../../../components/MenuListItem";
 import ToReservePageLink from "../../../components/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton";
-import { StyledMain, AlertMessage } from "../../../components/styles";
+import { AlertMessage } from "../../../components/styles";
 import useSWR from "swr";
 
 export default function Menu({ onToggleFavorite, username, onLogin }) {
@@ -20,15 +20,15 @@ export default function Menu({ onToggleFavorite, username, onLogin }) {
   } = useSWR(id ? `/api/restaurants/${id}` : null);
   if (!userInfos || !restaurant || isLoading || error) return <h2>Loading</h2>;
 
-  const matchedUserInfo = userInfos.find(
+  const matchingUserInfo = userInfos.find(
     (info) => info.restaurantId === id && info.username === username
   );
   const foods = restaurant.foods;
-  const isFavorite = matchedUserInfo ? matchedUserInfo.isFavorite : false;
+  const isFavorite = matchingUserInfo ? matchingUserInfo.isFavorite : false;
 
   function handleToggleBookmark() {
     const newIsFavorite = !isFavorite;
-    onToggleFavorite(matchedUserInfo, newIsFavorite, restaurant, username);
+    onToggleFavorite(matchingUserInfo, newIsFavorite, restaurant, username);
   }
   return (
     <>
@@ -57,6 +57,26 @@ export default function Menu({ onToggleFavorite, username, onLogin }) {
     </>
   );
 }
+
+export const StyledMain = styled.main`
+  margin: 3rem auto;
+  padding: 0;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+    left: 0;
+    right: 0;
+  }
+`;
 
 const BackgroundPhoto = styled.div`
   display: flex;
