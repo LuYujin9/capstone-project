@@ -13,14 +13,14 @@ export default function MyData({ username, onLogin }) {
       <StyledMain>
         <StyledSection>
           <StyledLink
-            aria-label="Link zur Favoriten-Seite"
+            aria-label="Zur Favoriten-Seite"
             href="/my-data/favorites"
           >
             Favoriten &nbsp;
             <ArrowUpRightIcon />
           </StyledLink>
           <StyledLink
-            aria-label="Link zur Meine-Reservierungen-Seite"
+            aria-label="Zur Meine-Reservierungen-Seite"
             href="/my-data/reserves"
           >
             Reservierungen &nbsp;

@@ -1,12 +1,10 @@
 import RestaurantsList from "../../components/RestaurantsList";
 import Heading from "../../components/Heading";
 import { StyledMain } from "../../components/styles";
-import { AlertMessage } from "../../components/styles";
 import { ChevronsDownIcon } from "../../public/icons";
 import styled from "styled-components";
 import useSWR from "swr";
 import { useState } from "react";
-import { useEffect } from "react";
 
 export default function Restaurants({
   onToggleFavorite,

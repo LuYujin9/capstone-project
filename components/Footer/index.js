@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { UserIcon, HomepageIcon } from "../../public/icons";
+import { UserIcon, HomepageIcon, MapMarker } from "../../public/icons";
 
 export default function Footer() {
   return (
     <footer>
       <StyledNav>
-        <StyledLink href="/" aria-label="Link zum Homepage">
+        <StyledLink href="/" aria-label="Zur Homepage">
           <HomepageIcon alt="Homepage Icon" />
         </StyledLink>
-        <StyledLink href="/my-data" aria-label="Link zum meine Daten">
+        <StyledLink href="/my-data" aria-label="Zu meine Daten">
           <UserIcon alt="Meschen Figur Icon" />
+        </StyledLink>
+        <StyledLink href="/map" aria-label="Zum Map">
+          <MapMarker alt="Map Marker" />
         </StyledLink>
       </StyledNav>
     </footer>

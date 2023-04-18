@@ -116,7 +116,7 @@ export const ChevronUpIcon = ({ size = 24, color = "#f4f6f9" }) => (
 );
 
 export const HomepageIcon = ({
-  size = 30,
+  size = 28,
   color = "var(--red-vine-color)",
 }) => (
   <svg
@@ -183,5 +183,21 @@ export const ChevronsDownIcon = ({ size = 24, color = "white" }) => (
     strokeLinejoin="round"
   >
     <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+  </svg>
+);
+export const MapMarker = ({ size = 30, color = "#9C4041" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="10" r="3" />
+    <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
   </svg>
 );

@@ -32,7 +32,7 @@ export default function RestaurantsListItem({
         isFavorite={isFavorite}
       />
       <Link
-        aria-label="Link zur individualen Restaurant-Seite "
+        aria-label="Zur individualen Restaurant-Seite "
         href={`/restaurants/${restaurant._id}`}
       >
         <StyledListItem>

@@ -75,9 +75,10 @@ const StyleListItem = styled.li`
 `;
 
 const LinkToEdit = styled(Link)`
-  padding: 0.3rem 1.7rem;
+  padding: 0.25rem 1.7rem;
   margin: 1.2rem;
   font-size: 0.8rem;
+  height: 1.5rem;
 
   align-self: center;
 
