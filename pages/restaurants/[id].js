@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { StyledMain, StyledLink } from "../../components/styles";
 import CommentsList from "../../components/CommentsList";
 import Album from "../../components/Album";
-import Link from "next/link.js";
 import Heading from "../../components/Heading";
 import ToReservePageLink from "../../components/ToReservePageLink";
 import BookmarkButton from "../../components/BookmarkButton";
@@ -24,7 +23,7 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
   const { data: userInfos } = useSWR("/api/user-infos", {
     fallbackData: [],
   });
-  const { data: comments } = useSWR("/api/comments", {
+  const { data: comments, mutate } = useSWR("/api/comments", {
     fallbackData: [],
   });
   const { trigger: triggerComment } = useSWRMutation(
@@ -38,7 +37,7 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
     (info) => info.restaurantId === id && info.username === username
   );
   const isFavorite = matchingUserInfo ? matchingUserInfo.isFavorite : false;
-  const matchingComment = comments
+  const matchingComments = comments
     .filter((comment) => comment.restaurant_Id === restaurant._id)
     .reverse();
 
@@ -90,7 +89,11 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
           username={username}
           addNewComment={addNewComment}
         />
-        <CommentsList comments={matchingComment} />
+        <CommentsList
+          comments={matchingComments}
+          mutateComments={mutate}
+          username={username}
+        />
         <ToReservePageLink id={id} />
       </StyledMain>
     </>

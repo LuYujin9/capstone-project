@@ -39,7 +39,7 @@ export default function CommentForm({ restaurant, username, addNewComment }) {
   );
 }
 
-export const StyledForm = styled.form`
+const StyledForm = styled.form`
   width: 100%;
   padding: 0.5rem 5%;
   margin: 0;

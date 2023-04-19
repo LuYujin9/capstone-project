@@ -1,26 +1,89 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ChevronDownIcon, ChevronUpIcon } from "../../../public/icons";
+import { updateData, deleteData } from "../../../utils/handleDataUtils";
+import useSWRMutation from "swr/mutation";
+import useSWR from "swr";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({
+  id,
+  username,
+  mutateComments,
+  isInMyData,
+}) {
   const commentRef = useRef();
   const [isExpanded, setIsExpanded] = useState(false);
   const [needExpandBtn, setNeedExpandBtn] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const { data: comment, isLoading, error } = useSWR(`/api/comments/${id}`);
+  const { trigger: triggerComment } = useSWRMutation(
+    `/api/comments/${id}`,
+    updateData
+  );
 
   useEffect(() => {
     setNeedExpandBtn(
       commentRef?.current?.scrollHeight > commentRef?.current?.clientHeight
     );
   }, []);
-  const { username, time, context } = comment;
+
+  if (!comment || isLoading || error) return <h2>Loading</h2>;
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const modifiedComment = Object.fromEntries(formData);
+    await triggerComment({ context: modifiedComment.context });
+    setIsEditOpen(false);
+  }
+
+  async function handleDelete() {
+    await deleteData(`/api/comments/${id}`);
+    mutateComments();
+  }
+
+  if (isEditOpen) {
+    return (
+      <>
+        <button onClick={() => setIsEditOpen(false)}>close</button>
+        <StyledForm
+          aria-label="Edit comment"
+          onSubmit={(event) => handleSubmit(event)}
+        >
+          <label htmlFor="context">
+            <b>Ändern Sie den Kommentar hier:</b>
+          </label>
+          <textarea
+            rows="3"
+            type="context"
+            name="context"
+            id="context"
+            defaultValue={comment.context}
+            required
+          ></textarea>
+          <StyledButton type="submit" aria-label="Um abzuschicken">
+            Abschicken
+          </StyledButton>
+        </StyledForm>
+      </>
+    );
+  }
+
   return (
     <StyledCard>
       <StyledSection>
-        <p>{time}</p>
-        <p>{username}</p>
+        <p>{comment.time}</p>
+        <p>{comment.username}</p>
+        <p>{comment.restaurantName}</p>
       </StyledSection>
+      {comment.username === username && (
+        <div>
+          <button onClick={() => setIsEditOpen(!isEditOpen)}>Ändern</button>
+          <button onClick={handleDelete}>delete</button>
+        </div>
+      )}
       <StyledParagraph ref={commentRef} isExpanded={isExpanded}>
-        {context}
+        {comment.context}
       </StyledParagraph>
       {needExpandBtn && (
         <StyledButton
@@ -71,4 +134,14 @@ const StyledSection = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-between;
+`;
+
+const StyledForm = styled.form`
+  width: 100%;
+  padding: 0.5rem 5%;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 `;

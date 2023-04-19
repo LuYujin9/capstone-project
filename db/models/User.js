@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   username: { type: String, required: true },
   restaurantId: { type: String, required: true },
-  name_of_restaurant: { type: String, required: true },
+  restaurantName: { type: String, required: true },
   isFavorite: { type: Boolean, required: true },
   isReserved: { type: Boolean, required: true },
 });
