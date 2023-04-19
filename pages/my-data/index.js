@@ -26,6 +26,13 @@ export default function MyData({ username, onLogin }) {
             Reservierungen &nbsp;
             <ArrowUpRightIcon />
           </StyledLink>
+          <StyledLink
+            aria-label="Zur Meine-Kommentare-Seite"
+            href="/my-data/comments"
+          >
+            Kommentare &nbsp;
+            <ArrowUpRightIcon />
+          </StyledLink>
         </StyledSection>
       </StyledMain>
     </>
