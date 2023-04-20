@@ -14,7 +14,7 @@ export default function BookmarkButton({ onToggleBookmark, isFavorite }) {
 }
 
 const StyledButton = styled.button`
-  margin: auto 0.2rem;
+  margin: auto 3%;
   border: none;
   background-color: transparent;
   cursor: pointer;

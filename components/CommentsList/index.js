@@ -29,6 +29,7 @@ const StyledListItem = styled.li`
 `;
 
 const StyledList = styled.ul`
+  width: 90%;
   margin-top: 0;
   margin-bottom: 4rem;
 `;

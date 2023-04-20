@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { ChevronDownIcon, ChevronUpIcon } from "../../../public/icons";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ArrowUpRightIcon,
+  XIcon,
+} from "../../../public/icons";
 import { updateData, deleteData } from "../../../utils/handleDataUtils";
+import { StyledLink } from "../../styles";
 import useSWRMutation from "swr/mutation";
 import useSWR from "swr";
 
@@ -13,7 +19,7 @@ export default function CommentCard({
 }) {
   const commentRef = useRef();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [needExpandBtn, setNeedExpandBtn] = useState(false);
+  const [needExpandButton, setNeedExpandButton] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const { data: comment, isLoading, error } = useSWR(`/api/comments/${id}`);
   const { trigger: triggerComment } = useSWRMutation(
@@ -22,7 +28,7 @@ export default function CommentCard({
   );
 
   useEffect(() => {
-    setNeedExpandBtn(
+    setNeedExpandButton(
       commentRef?.current?.scrollHeight > commentRef?.current?.clientHeight
     );
   }, []);
@@ -44,49 +50,52 @@ export default function CommentCard({
 
   if (isEditOpen) {
     return (
-      <>
-        <button onClick={() => setIsEditOpen(false)}>close</button>
+      <StyledCard>
         <StyledForm
           aria-label="Edit comment"
           onSubmit={(event) => handleSubmit(event)}
         >
-          <label htmlFor="context">
-            <b>Ändern Sie den Kommentar hier:</b>
-          </label>
+          <label htmlFor="context"></label>
           <textarea
-            rows="3"
+            rows="5"
             type="context"
             name="context"
             id="context"
             defaultValue={comment.context}
+            aria-label="Ändern Kommentar"
             required
           ></textarea>
-          <StyledButton type="submit" aria-label="Um abzuschicken">
-            Abschicken
-          </StyledButton>
+          <SubmitButton> Abschicken</SubmitButton>
         </StyledForm>
-      </>
+      </StyledCard>
     );
   }
 
   return (
     <StyledCard>
+      {comment.username === username && (
+        <ButtonContainer>
+          <StyledButton onClick={() => setIsEditOpen(!isEditOpen)}>
+            Ändern
+          </StyledButton>
+          <StyledButton onClick={handleDelete}>Löschen</StyledButton>
+        </ButtonContainer>
+      )}
       <StyledSection>
         <p>{comment.time}</p>
-        <p>{comment.username}</p>
-        <p>{comment.restaurantName}</p>
+        {!isInMyData && <p>{comment.username}</p>}
       </StyledSection>
-      {comment.username === username && (
-        <div>
-          <button onClick={() => setIsEditOpen(!isEditOpen)}>Ändern</button>
-          <button onClick={handleDelete}>delete</button>
-        </div>
+      {isInMyData && (
+        <StyledLink href={`/restaurants/${comment.restaurant_Id}`}>
+          {comment.restaurantName}
+          <ArrowUpRightIcon alt="Pfeil zu oben rechts" />
+        </StyledLink>
       )}
       <StyledParagraph ref={commentRef} isExpanded={isExpanded}>
         {comment.context}
       </StyledParagraph>
-      {needExpandBtn && (
-        <StyledButton
+      {needExpandButton && (
+        <ExpandButton
           aria-label="Zum Ausklappen und Einklappen der Kommentare"
           onClick={() => setIsExpanded(!isExpanded)}
         >
@@ -95,7 +104,7 @@ export default function CommentCard({
           ) : (
             <ChevronDownIcon alt="Pfeil Icon nach unter" color="black" />
           )}
-        </StyledButton>
+        </ExpandButton>
       )}
     </StyledCard>
   );
@@ -111,8 +120,8 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledCard = styled.article`
-  width: 90%;
-  margin: 0.3rem auto;
+  width: 100%;
+  margin: 1rem auto;
   padding: 0.2rem;
 
   display: flex;
@@ -121,12 +130,55 @@ const StyledCard = styled.article`
 
   border-radius: 2px;
   background-color: var(--white-color);
-  box-shadow: 1px 1px 2px 1px var(--tag-color);
+`;
+
+const ButtonContainer = styled.div`
+  margin: auto;
+  width: 105%;
+  height: 1.5rem;
+  position: relative;
+  bottom: 0.3rem;
+  right: 5px;
+  display: flex;
+  background-color: var(--background-color);
 `;
 
 const StyledButton = styled.button`
+  width: 7rem;
+  height: 1.5rem;
+  margin: auto;
+  border-radius: 20px 20px 0 0;
+  border: none;
+  font-weight: bold;
+  color: var(--button-color);
+  background-color: var(--white-color);
+
+  &:hover {
+    background-color: var(--tag-color);
+  }
+`;
+
+const SubmitButton = styled.button`
+  width: 7rem;
+  height: 1.5rem;
+  margin: auto;
+  border-radius: 10px;
+  border: none;
+  color: var(--white-color);
+  background-color: var(--button-color);
+`;
+
+const ExpandButton = styled.button`
   border: none;
   align-self: end;
+  background-color: var(--white-color);
+`;
+const CloseButton = styled.button`
+  margin: 0;
+  padding: 0 0.5rem;
+  border: none;
+  align-self: end;
+
   background-color: var(--white-color);
 `;
 
@@ -134,6 +186,7 @@ const StyledSection = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  font-size: 1rem;
 `;
 
 const StyledForm = styled.form`
