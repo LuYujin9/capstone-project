@@ -18,7 +18,7 @@ export default function CommentCard({
 }) {
   const commentRef = useRef();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [needExpandButton, setNeedExpandButton] = useState(false);
+  const [needExpandButton, setNeedExpandButton] = useState(true);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const { data: comment, isLoading, error } = useSWR(`/api/comments/${id}`);
   const { trigger: triggerComment } = useSWRMutation(
@@ -30,7 +30,7 @@ export default function CommentCard({
     setNeedExpandButton(
       commentRef?.current?.scrollHeight > commentRef?.current?.clientHeight
     );
-  }, []);
+  }, [comment]);
 
   if (!comment || isLoading || error) return <h2>Loading</h2>;
 
@@ -40,6 +40,7 @@ export default function CommentCard({
     const modifiedComment = Object.fromEntries(formData);
     await triggerComment({ context: modifiedComment.context });
     setIsEditOpen(false);
+    setNeedExpandButton(true);
   }
 
   async function handleDelete() {
