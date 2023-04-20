@@ -4,7 +4,6 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   ArrowUpRightIcon,
-  XIcon,
 } from "../../../public/icons";
 import { updateData, deleteData } from "../../../utils/handleDataUtils";
 import { StyledLink } from "../../styles";
