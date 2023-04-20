@@ -10,7 +10,8 @@ export default function MyData({ username, onLogin }) {
       <Heading username={username} onLogin={onLogin}>
         Meine Daten
       </Heading>
-      <StyledMain>
+      <MainWithOutBackground>
+        <BackgroundPhoto />
         <StyledSection>
           <StyledLink
             aria-label="Zur Favoriten-Seite"
@@ -26,8 +27,15 @@ export default function MyData({ username, onLogin }) {
             Reservierungen &nbsp;
             <ArrowUpRightIcon />
           </StyledLink>
+          <StyledLink
+            aria-label="Zu Meiner Kommentar-Seite"
+            href="/my-data/comments"
+          >
+            Kommentare &nbsp;
+            <ArrowUpRightIcon />
+          </StyledLink>
         </StyledSection>
-      </StyledMain>
+      </MainWithOutBackground>
     </>
   );
 }
@@ -48,4 +56,27 @@ const StyledSection = styled.section`
   @media only screen and (min-width: 800px) {
     width: 640px;
   }
+`;
+
+const MainWithOutBackground = styled(StyledMain)`
+  background-color: none;
+`;
+const BackgroundPhoto = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+
+  background-color: lightgrey;
+  background-image: url(/images/my-data-background.jpeg);
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center top;
+
+  opacity: 0.75;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
 `;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const StyledImage = styled(Image)`
   object-fit: cover;
+  border-radius: 1rem 1rem 0 0;
 `;
 
 export const StyledList = styled.ul`
@@ -24,7 +25,6 @@ export const StyledList = styled.ul`
 
 export const StyledListItem = styled.li`
   margin: 0.5rem 0.5rem;
-  padding: 2.5%;
   width: 95%;
 
   display: block;
@@ -35,15 +35,15 @@ export const StyledListItem = styled.li`
 `;
 
 export const StyledName = styled.p`
-  width: 100%;
-  margin-bottom: 0.6rem;
+  margin: 0.5rem 0 0 1rem;
+
   font-size: 1.2rem;
+  font-weight: bold;
   text-decoration: none;
 `;
 
 export const StyledRating = styled.p`
   width: 4rem;
-
   text-align: center;
 
   border-radius: 0.5rem;
@@ -51,12 +51,19 @@ export const StyledRating = styled.p`
   color: var(--white-color);
 `;
 
-export const StyledPicture = styled.picture`
+export const PhotoContainer = styled.section`
   width: 100%;
+  margin: 0;
   height: 20vh;
 
   position: relative;
   display: block;
+`;
+export const ContextContainer = styled.section`
+  margin: 0 0.8rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const CardContainer = styled.div`

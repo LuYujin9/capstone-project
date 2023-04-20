@@ -87,7 +87,7 @@ export default function App({ Component, pageProps }) {
     const newUserInfo = {
       username: username,
       restaurantId: restaurant._id,
-      name_of_restaurant: restaurant.name,
+      restaurantName: restaurant.name,
       isFavorite: true,
       isReserved: false,
     };

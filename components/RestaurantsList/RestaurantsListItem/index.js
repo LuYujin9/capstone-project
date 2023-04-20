@@ -3,8 +3,9 @@ import {
   StyledListItem,
   StyledName,
   StyledRating,
-  StyledPicture,
+  PhotoContainer,
   CardContainer,
+  ContextContainer,
 } from "../RestaurantsList.styles";
 import Link from "next/link";
 import BookmarkButton from "../../BookmarkButton";
@@ -36,8 +37,7 @@ export default function RestaurantsListItem({
         href={`/restaurants/${restaurant._id}`}
       >
         <StyledListItem>
-          <StyledName>{restaurant.name}</StyledName>
-          <StyledPicture>
+          <PhotoContainer>
             <StyledImage
               alt="Foto vom Restaurant"
               src={restaurant.photos[0]}
@@ -45,16 +45,20 @@ export default function RestaurantsListItem({
               sizes="(min-width: 768px) 100vw"
               priority
             />
-          </StyledPicture>
-          <p>
-            {restaurant.cuisine} •{restaurant.priceLevel}
-          </p>
-          <StyledRating>
-            {restaurant.rating}{" "}
-            <span role="img" aria-label="Stern">
-              ⭐️
-            </span>
-          </StyledRating>
+          </PhotoContainer>
+          <StyledName>{restaurant.name}</StyledName>
+          <ContextContainer>
+            <p>{restaurant.city}</p>
+            <p>
+              {restaurant.cuisine} •{restaurant.priceLevel}
+            </p>
+            <StyledRating>
+              {restaurant.rating}{" "}
+              <span role="img" aria-label="Stern">
+                ⭐️
+              </span>
+            </StyledRating>
+          </ContextContainer>
         </StyledListItem>
       </Link>
     </CardContainer>

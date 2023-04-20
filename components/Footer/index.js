@@ -35,6 +35,7 @@ const StyledNav = styled.nav`
   align-items: center;
 
   background-color: var(--frame-color);
+  z-index: 3;
 
   @media only screen and (max-width: 799px) {
     width: 100vw;

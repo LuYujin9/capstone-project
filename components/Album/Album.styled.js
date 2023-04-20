@@ -10,6 +10,7 @@ export const StyledSection = styled.section`
 export const StyledPicture = styled.picture`
   width: 90%;
   margin: 0.5rem 0;
+  margin-top: 3rem;
   height: 30vh;
   position: relative;
   display: block;
