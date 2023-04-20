@@ -30,9 +30,9 @@ const ReservierenLink = styled(Link)`
 
   border-radius: 30px 30px 0 0;
   color: var(--white-color);
-  background-color: var(--frame-color);
+  background-color: var(--button-color);
 
   &:hover {
-    background-color: var(--button-color);
+    background-color: var(--frame-color);
   }
 `;
