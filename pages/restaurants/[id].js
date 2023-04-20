@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { StyledMain, StyledLink } from "../../components/styles";
+import Link from "next/link";
+import { StyledMain } from "../../components/styles";
 import CommentsList from "../../components/CommentsList";
 import Album from "../../components/Album";
 import Heading from "../../components/Heading";
@@ -64,10 +65,10 @@ export default function Details({ onToggleFavorite, username, onLogin }) {
       </Heading>
       <StyledMain>
         <LinkToMenu href={`/restaurants/menu/${id}`}>
-          Zur Speisekarte
+          Zur Speisekarte{" "}
           <ArrowUpRightIcon
             alt="Pfeil Icon nach oben rechts"
-            color="var(--button-color)"
+            color="var(--white-color)"
           />
         </LinkToMenu>
         <BookmarkButton
@@ -106,9 +107,26 @@ const StyledParagraph = styled.p`
   width: 90%;
   text-align: left;
 `;
-const LinkToMenu = styled(StyledLink)`
+const LinkToMenu = styled(Link)`
+  padding: 0.15rem 0.5rem;
   width: 15rem;
-  padding: 0.2rem;
-  font-weight: bold;
-  margin: 0.9rem auto;
+  margin: 0;
+  font-size: 1rem;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 3rem;
+  right: auto;
+  left: auto;
+  z-index: 3;
+
+  border-radius: 0 0 30px 30px;
+  color: var(--white-color);
+  background-color: var(--button-color);
+
+  &:hover {
+    background-color: var(--frame-color);
+  }
 `;

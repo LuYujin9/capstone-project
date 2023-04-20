@@ -22,4 +22,5 @@ const StyledButton = styled.button`
   position: absolute;
   top: 0.7rem;
   right: 0.4rem;
+  z-index: 2;
 `;

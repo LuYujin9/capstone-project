@@ -6,7 +6,7 @@ import {
   ArrowUpRightIcon,
 } from "../../../public/icons";
 import { updateData, deleteData } from "../../../utils/handleDataUtils";
-import { StyledLink } from "../../styles";
+import Link from "next/link";
 import useSWRMutation from "swr/mutation";
 import useSWR from "swr";
 
@@ -73,24 +73,16 @@ export default function CommentCard({
 
   return (
     <StyledCard>
-      {comment.username === username && (
-        <ButtonContainer>
-          <StyledButton onClick={() => setIsEditOpen(!isEditOpen)}>
-            Ändern
-          </StyledButton>
-          <StyledButton onClick={handleDelete}>Löschen</StyledButton>
-        </ButtonContainer>
-      )}
-      <StyledSection>
-        <p>{comment.time}</p>
-        {!isInMyData && <p>{comment.username}</p>}
-      </StyledSection>
-      {isInMyData && (
-        <StyledLink href={`/restaurants/${comment.restaurant_Id}`}>
-          {comment.restaurantName}
-          <ArrowUpRightIcon alt="Pfeil nach oben rechts" />
-        </StyledLink>
-      )}
+      <TitleContainer>
+        {isInMyData && (
+          <StyledLink href={`/restaurants/${comment.restaurant_Id}`}>
+            {comment.restaurantName}
+            <ArrowUpRightIcon alt="Pfeil nach oben rechts" size={25} />
+          </StyledLink>
+        )}
+        {!isInMyData && <ParagraphForName>{comment.username}</ParagraphForName>}
+        <ParagraphForTime>{comment.time}</ParagraphForTime>
+      </TitleContainer>
       <StyledParagraph ref={commentRef} isExpanded={isExpanded}>
         {comment.context}
       </StyledParagraph>
@@ -100,11 +92,25 @@ export default function CommentCard({
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? (
-            <ChevronUpIcon alt="Pfeil Icon nach oben" color="black" />
+            <ChevronUpIcon
+              alt="Pfeil Icon nach oben"
+              color="var(--button-color)"
+            />
           ) : (
-            <ChevronDownIcon alt="Pfeil Icon nach unten" color="black" />
+            <ChevronDownIcon
+              alt="Pfeil Icon nach unten"
+              color="var(--button-color)"
+            />
           )}
         </ExpandButton>
+      )}
+      {comment.username === username && (
+        <ButtonContainer>
+          <StyledButton onClick={() => setIsEditOpen(!isEditOpen)}>
+            Ändern
+          </StyledButton>
+          <StyledButton onClick={handleDelete}>Löschen</StyledButton>
+        </ButtonContainer>
       )}
     </StyledCard>
   );
@@ -122,39 +128,63 @@ const StyledParagraph = styled.p`
 const StyledCard = styled.article`
   width: 100%;
   margin: 1rem auto;
+  border-radius: 1rem;
   padding: 0.2rem;
 
   display: flex;
   flex-direction: column;
   align-items: start;
 
-  border-radius: 2px;
   background-color: var(--white-color);
 `;
 
+const TitleContainer = styled.section`
+  margin: 0.3rem 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  padding-left: 0.2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  color: var(--button-color);
+`;
+
+const ParagraphForName = styled.p`
+  font-weight: bold;
+  font-size: 1.1rem;
+`;
+
+const ParagraphForTime = styled.p`
+  margin: 0 0.2rem;
+  font-size: 0.8rem;
+`;
+
 const ButtonContainer = styled.div`
-  margin: auto;
+  margin: 0.3rem auto;
   width: 105%;
   height: 1.5rem;
   position: relative;
   bottom: 0.3rem;
   right: 5px;
   display: flex;
-  background-color: var(--background-color);
 `;
 
 const StyledButton = styled.button`
   width: 7rem;
   height: 1.5rem;
   margin: auto;
-  border-radius: 20px 20px 0 0;
+  border-radius: 1rem;
   border: none;
   font-weight: bold;
-  color: var(--button-color);
-  background-color: var(--white-color);
+  background-color: var(--tag-color);
 
   &:hover {
-    background-color: var(--tag-color);
+    background-color: var(--frame-color);
   }
 `;
 
@@ -162,6 +192,7 @@ const SubmitButton = styled.button`
   width: 7rem;
   height: 1.5rem;
   margin: auto;
+  margin-top: 0.5rem;
   border-radius: 10px;
   border: none;
   color: var(--white-color);
@@ -173,27 +204,11 @@ const ExpandButton = styled.button`
   align-self: end;
   background-color: var(--white-color);
 `;
-const CloseButton = styled.button`
-  margin: 0;
-  padding: 0 0.5rem;
-  border: none;
-  align-self: end;
-
-  background-color: var(--white-color);
-`;
-
-const StyledSection = styled.section`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1rem;
-`;
 
 const StyledForm = styled.form`
   width: 100%;
   padding: 0.5rem 5%;
   margin: 0;
-
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
