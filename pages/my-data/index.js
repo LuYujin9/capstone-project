@@ -27,7 +27,7 @@ export default function MyData({ username, onLogin }) {
             <ArrowUpRightIcon />
           </StyledLink>
           <StyledLink
-            aria-label="Zur Meine-Kommentare-Seite"
+            aria-label="Zu Meiner Kommentar-Seite"
             href="/my-data/comments"
           >
             Kommentare &nbsp;

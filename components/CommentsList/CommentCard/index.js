@@ -88,7 +88,7 @@ export default function CommentCard({
       {isInMyData && (
         <StyledLink href={`/restaurants/${comment.restaurant_Id}`}>
           {comment.restaurantName}
-          <ArrowUpRightIcon alt="Pfeil zu oben rechts" />
+          <ArrowUpRightIcon alt="Pfeil nach oben rechts" />
         </StyledLink>
       )}
       <StyledParagraph ref={commentRef} isExpanded={isExpanded}>
@@ -102,7 +102,7 @@ export default function CommentCard({
           {isExpanded ? (
             <ChevronUpIcon alt="Pfeil Icon nach oben" color="black" />
           ) : (
-            <ChevronDownIcon alt="Pfeil Icon nach unter" color="black" />
+            <ChevronDownIcon alt="Pfeil Icon nach unten" color="black" />
           )}
         </ExpandButton>
       )}

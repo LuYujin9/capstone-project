@@ -8,7 +8,7 @@ const testComment = {
   username: "Jane",
   restaurant_Id: "643c4c1554ed2e319028f9b2",
   restaurantName: "Good Friends",
-  context: "Das is the best Restaurant.",
+  context: "This is the best Restaurant.",
   time: "Di., 18. Apr. 2023, 14 Uhr",
 };
 beforeEach(() => {
@@ -24,9 +24,9 @@ beforeEach(() => {
 
 test("render the time and comment", async () => {
   render(<CommentCard id={testComment._id} username="Jane" />);
-  await screen.findByText(/Das is the best Restaurant./i);
+  await screen.findByText(/This is the best Restaurant./i);
 
-  const context = screen.getByText(/Das is the best Restaurant./i);
+  const context = screen.getByText(/This is the best Restaurant./i);
   const time = screen.getByText(/Di., 18. Apr. 2023, 14 Uhr/i);
   const username = screen.getByText(/Jane/i);
 
