@@ -2,16 +2,14 @@ import { render, screen } from "@testing-library/react";
 import RemainingSeatsFilter from ".";
 import userEvent from "@testing-library/user-event";
 
-test("renders one input, six options, one select and a button ", () => {
+test("renders one input, six options and one select", () => {
   render(<RemainingSeatsFilter />);
   const input = screen.getByText(/Tag:/i);
   const select = screen.getByRole("combobox");
   const options = screen.getAllByRole("option");
-  const button = screen.getByRole("button");
   expect(input).toBeInTheDocument();
   expect(select).toBeInTheDocument();
-  expect(options).toHaveLength(6);
-  expect(button).toBeInTheDocument();
+  expect(options).toHaveLength(7);
 });
 
 test("renders a form with the accessible name 'Suchen verfügbare Plätze'", () => {
@@ -20,28 +18,25 @@ test("renders a form with the accessible name 'Suchen verfügbare Plätze'", () 
   expect(form).toBeInTheDocument();
 });
 
-test("submit the form data when every field is filled out", async () => {
+test("calls the call back function when every field is filled out", async () => {
   const mockGetRemainingSeats = jest.fn();
   render(<RemainingSeatsFilter getRemainingSeats={mockGetRemainingSeats} />);
   const user = userEvent.setup();
   const input = screen.getByText(/Tag:/i);
   const select = screen.getByRole("combobox");
-  const button = screen.getByRole("button");
   await user.type(input, "2050-05-08");
   await user.selectOptions(select, ["11:00"]);
-  await user.click(button);
-
   expect(mockGetRemainingSeats).toHaveBeenCalledWith({
     date: "2050-05-08",
     time: "11:00",
   });
 });
 
-test("submit the form data if date input field is left empty", async () => {
+test("doesn't call the call back function when a input field is left empty", async () => {
   const getRemainingSeats = jest.fn();
   render(<RemainingSeatsFilter getRemainingSeats={getRemainingSeats} />);
   const user = userEvent.setup();
-  const button = screen.getByRole("button");
-  await user.click(button);
+  const input = screen.getByText(/Tag:/i);
+  await user.type(input, "2050-05-08");
   expect(getRemainingSeats).not.toHaveBeenCalledWith();
 });

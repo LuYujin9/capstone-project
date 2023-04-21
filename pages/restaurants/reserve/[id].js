@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { StyledMain, AlertMessage } from "../../../components/styles";
+import {
+  MainWithBackground,
+  AlertMessage,
+  BackgroundPhoto,
+} from "../../../components/styles";
 import Heading from "../../../components/Heading";
 import ReserveForm from "../../../components/ReserveForm";
 import RemainingSeatsFilter from "../../../components/RemainingSeatsFilter";
@@ -111,7 +115,8 @@ export default function Reseve({ username, onLogin }) {
       <Heading username={username} onLogin={onLogin}>
         {restaurant.name}
       </Heading>
-      <StyledMain>
+      <MainWithBackground>
+        <BackgroundPhoto />
         <RemainingSeatsFilter
           restaurant={restaurant}
           getRemainingSeats={getRemainingSeats}
@@ -143,7 +148,7 @@ export default function Reseve({ username, onLogin }) {
             username={username}
           />
         )}
-      </StyledMain>
+      </MainWithBackground>
     </>
   );
 }
