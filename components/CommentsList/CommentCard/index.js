@@ -181,6 +181,7 @@ const StyledButton = styled.button`
   border-radius: 1rem;
   border: none;
   font-weight: bold;
+  color: var(--button-color);
   background-color: var(--tag-color);
 
   &:hover {
