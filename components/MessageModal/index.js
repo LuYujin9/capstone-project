@@ -15,7 +15,6 @@ export default function MessageModal({ isOpen, onClose, children }) {
               <XIcon />
             </StyledButton>
             <Message>{children}</Message>
-
             <StyledLink
               aria-label="Zur Meine-Reservierungen-Seite"
               href="/my-data/reserves"
