@@ -1,11 +1,12 @@
-import { StyledButton, StyledFormTitle, StyledForm } from "../styles";
-import userEvent from "@testing-library/user-event";
+import { StyledFormTitle, StyledForm } from "../styles";
+import { useState } from "react";
 
 export default function RemainingSeatsFilter({ getRemainingSeats }) {
-  function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const dataForSearch = Object.fromEntries(formData);
+  const [values, setValues] = useState();
+  function handleChange(event) {
+    const value = event.target.value;
+    const dataForSearch = { ...values, [event.target.name]: value };
+    setValues(dataForSearch);
     getRemainingSeats(dataForSearch);
   }
 
@@ -16,7 +17,7 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
   const dateNow = `${year}-${month}-${date}`;
 
   return (
-    <StyledForm aria-labelledby="formHeader" onSubmit={handleSubmit}>
+    <StyledForm aria-labelledby="formHeader" onChange={handleChange}>
       <StyledFormTitle id="formHeader">
         Suchen verfügbare Plätze
       </StyledFormTitle>
@@ -24,6 +25,7 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
       <input type="date" name="date" id="date" min={dateNow} required></input>
       <label htmlFor="time">Zeit:</label>
       <select name="time" id="time" required>
+        <option value="">-- wahlen einen Zeitraum --</option>
         <option value="11:00">11:00</option>
         <option value="12:00">12:00</option>
         <option value="13:00">13:00</option>
@@ -31,12 +33,6 @@ export default function RemainingSeatsFilter({ getRemainingSeats }) {
         <option value="19:00">19:00</option>
         <option value="20:00">20:00</option>
       </select>
-      <StyledButton
-        type="submit"
-        aria-label="Um freie Plätze anzeigen zu lassen"
-      >
-        Suchen
-      </StyledButton>
     </StyledForm>
   );
 }

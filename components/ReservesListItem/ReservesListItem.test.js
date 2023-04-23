@@ -11,6 +11,15 @@ const testReserve = {
   phone: "123456789",
   email: "aefaefa@gmail.com",
 };
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      push: jest.fn(),
+      asPath: "/",
+      isReady: true,
+    };
+  },
+}));
 
 test("renders the date, time, number of guests,restaurantName, name of guest and phone of guest", () => {
   render(<ReservesListItem reserve={testReserve} />);

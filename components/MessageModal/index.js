@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledLink } from "../../components/styles";
+import Link from "next/link";
 import { XIcon, ArrowUpRightIcon } from "../../public/icons";
 
 export default function MessageModal({ isOpen, onClose, children }) {
@@ -58,8 +58,7 @@ const Message = styled.p`
   padding: 0.2rem;
   text-align: justify;
   font-weight: bold;
-  margin-bottom: 2rem;
-
+  margin-bottom: 1rem;
   z-index: 3;
 `;
 
@@ -74,4 +73,23 @@ const StyledButton = styled.button`
   border: none;
   color: var(--red-vine-color);
   background-color: var(--background-color);
+`;
+
+const StyledLink = styled(Link)`
+  width: 80%;
+  padding: 0.1rem 1rem;
+  margin: 0 auto;
+
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
+  color: var(--button-color);
+  text-decoration: none;
+  border: 2px solid var(--button-color);
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--tag-color);
+  }
 `;

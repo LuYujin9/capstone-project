@@ -46,7 +46,7 @@ export const HeartIcon = ({
     viewBox="0 0 24 24"
     fill={fillColor}
     stroke={color}
-    strokeWidth="1.5"
+    strokeWidth="2.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >

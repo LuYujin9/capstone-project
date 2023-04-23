@@ -3,6 +3,7 @@ import { StyledButton } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
 import { deleteData } from "../../utils/handleDataUtils";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export default function ReservesListItem({ reserve, mutateReserves }) {
   const {
@@ -16,6 +17,7 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
     phone,
     email,
   } = reserve;
+  const router = useRouter();
 
   async function handleDeleteReserve(id) {
     await deleteData(`/api/reserves/${id}`);
@@ -38,12 +40,12 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
       </p>
       <p>{email}</p>
       <ButtonContainer>
-        <LinkToEdit
-          href={`/my-data/reserves/${_id}`}
+        <StyledButton
+          onClick={() => router.push(`/my-data/reserves/${_id}`)}
           aria-label="Zur Änderung der Reservierung"
         >
           Ändern
-        </LinkToEdit>
+        </StyledButton>
         <StyledButton
           aria-label="Reservierung stornieren"
           onClick={() => handleDeleteReserve(_id)}
@@ -71,23 +73,13 @@ const StyleListItem = styled.li`
   box-shadow: 1px 1px 3px 3px var(--tag-color);
 `;
 
-const LinkToEdit = styled(Link)`
-  height: 1.5rem;
-  padding: 0.25rem 1.7rem;
-  margin: 1.2rem;
-  border: none;
-  font-size: 0.8rem;
-
-  align-self: center;
-
-  border-radius: 15px;
-  color: var(--white-color);
-  background-color: var(--button-color);
-`;
-
 const ButtonContainer = styled.section`
+  width: 100%;
+  height: 1.8rem;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: space-evenly;
 `;
 
 const StyledLink = styled(Link)`

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 
 export const StyledMain = styled.main`
   margin: 3rem auto;
@@ -24,29 +23,10 @@ export const StyledMain = styled.main`
   }
 `;
 
-export const StyledLink = styled(Link)`
-  width: 15rem;
-  padding: 0.1rem 1rem;
-  margin: 0;
-
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-
-  color: var(--button-color);
-  background: var(--background-color);
-  text-decoration: none;
-  border: 2px solid var(--button-color);
-  border-radius: 5px;
-
-  &:hover {
-    background-color: var(--tag-color);
-  }
-`;
-
 export const StyledButton = styled.button`
   width: 6rem;
   height: 1.5rem;
+  margin-top: 0.3rem;
 
   align-self: center;
 
@@ -63,7 +43,7 @@ export const AlertMessage = styled.p`
 
 export const StyledForm = styled.form`
   width: 85%;
-  padding: 0.5rem 5%;
+  padding: 1rem 5%;
   margin: 0.5rem auto;
 
   display: flex;
@@ -79,4 +59,53 @@ export const StyledFormTitle = styled.h3`
   text-align: center;
   font-weight: bold;
   font-size: 1.3rem;
+`;
+
+export const BackgroundPhoto = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+
+  background-color: lightgrey;
+  background-image: url(/images/background.jpg);
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center top;
+
+  opacity: 0.7;
+  margin: auto;
+  min-height: 100vh;
+  z-index: -1;
+  @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+    left: 0;
+    right: 0;
+  }
+`;
+
+export const MainWithBackground = styled.main`
+  margin: 3rem auto;
+  padding: 0;
+  min-height: calc(100vh - 6rem);
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+    left: 0;
+    right: 0;
+  }
 `;

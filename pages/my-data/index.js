@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Heading from "../../components/Heading";
-import { StyledMain } from "../../components/styles";
-import { StyledLink } from "../../components/styles";
 import { ArrowUpRightIcon } from "../../public/icons";
+import { MainWithBackground, BackgroundPhoto } from "../../components/styles";
+import Link from "next/link";
 
 export default function MyData({ username, onLogin }) {
   return (
@@ -10,7 +10,7 @@ export default function MyData({ username, onLogin }) {
       <Heading username={username} onLogin={onLogin}>
         Meine Daten
       </Heading>
-      <MainWithOutBackground>
+      <MainWithBackground>
         <BackgroundPhoto />
         <StyledSection>
           <StyledLink
@@ -35,10 +35,31 @@ export default function MyData({ username, onLogin }) {
             <ArrowUpRightIcon />
           </StyledLink>
         </StyledSection>
-      </MainWithOutBackground>
+      </MainWithBackground>
     </>
   );
 }
+
+const StyledMain = styled.main`
+  margin: 3rem auto;
+  padding: 0;
+  min-height: calc(100vh - 6rem);
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+    left: 0;
+    right: 0;
+  }
+`;
 
 const StyledSection = styled.section`
   margin: 5rem auto;
@@ -58,25 +79,21 @@ const StyledSection = styled.section`
   }
 `;
 
-const MainWithOutBackground = styled(StyledMain)`
-  background-color: none;
-`;
-const BackgroundPhoto = styled.div`
+const StyledLink = styled(Link)`
+  width: 15rem;
+  padding: 0.1rem 1rem;
+  margin: 0;
+
+  text-align: center;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
 
-  position: fixed;
-  top: 0;
+  color: var(--button-color);
+  text-decoration: none;
+  border: 2px solid var(--button-color);
+  border-radius: 5px;
 
-  background-color: lightgrey;
-  background-image: url(/images/my-data-background.jpeg);
-  background-repeat: repeat;
-  background-size: cover;
-  background-position: center top;
-
-  opacity: 0.75;
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: -1;
+  &:hover {
+    background-color: var(--tag-color);
+  }
 `;

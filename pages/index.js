@@ -1,7 +1,11 @@
 import { Inter } from "next/font/google";
 import Heading from "../components/Heading";
 import SearchRestaurantsForm from "../components/SearchRestaurantsForm";
-import { StyledMain, AlertMessage } from "../components/styles";
+import {
+  MainWithBackground,
+  AlertMessage,
+  BackgroundPhoto,
+} from "../components/styles";
 import useSWR from "swr";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,11 +24,12 @@ export default function Home({
       <Heading isHideBackButton={true} username={username} onLogin={onLogin}>
         Lecker Map
       </Heading>
-      <StyledMain>
+      <MainWithBackground>
+        <BackgroundPhoto />
         <AlertMessage>
-          Bitten geben Sie hier Ihre Wünsche zur Suche ein. Wenn Sie alle
-          Restaurants ohne eine Vorauswahl anschauen möchten, drücken Sie bitte
-          direkt den Button “Suchen“.
+          Bitten geben Sie hier Ihre Wünsche zur Suche ein.
+          {<br />}Wenn Sie alle Restaurants ohne eine Vorauswahl anschauen
+          möchten, drücken Sie bitte direkt den Button “Suchen“.
         </AlertMessage>
         <SearchRestaurantsForm
           onMatchRestaurants={onMatchRestaurants}
@@ -36,7 +41,7 @@ export default function Home({
             es noch ein mal.
           </AlertMessage>
         )}
-      </StyledMain>
+      </MainWithBackground>
     </>
   );
 }
