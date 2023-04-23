@@ -107,7 +107,7 @@ export default function Reseve({ username, onLogin }) {
       return <h2> Es gibt einen Fehler, bitten versuchen Sie später.</h2>;
     }
 
-    setRemainingSeats(undefined);
+    setRemainingSeats(remainingSeats - number_of_guests);
   }
 
   return (
