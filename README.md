@@ -31,3 +31,8 @@ Lecker Map is a full stack App for restaurant browsing and reserving. It's my ca
 
 - Is also offers a special feature that can <b> display the restaurants </b> users have visited on the map, allowing users to record their food journey.
 
+## Copyright Statement
+<b> Image credits: </b> John Doe，Annie Spratt， Adrien Olichon， Bundo Kim， Carolina Marinelli， Cloris Ying， Cera， Chris Liverani ， Chesley McCarty，engin akyurt， Farhad Ibrahimzade， Jason Leung， Jen P.， Jennifer Schmidt， Kelsey Curtis， Luca Bravo，Mae Mu， Volkan Vardar ， Victoria Shes， Rumman Amin，Sandra Seitamaa， Sebastian Coman Photography， Serge Esteve， Syed Ahmad， Simon Karemann， Siyuan ， Toa Heftiba， Tobias Tullius， Zakaria Zayane auf Unsplash;
+Image credits: John Doe，Annie Spratt， Adrien Olichon， Bundo Kim， Carolina Marinelli， Cloris Ying， Cera， Chris Liverani ， Chesley McCarty，engin akyurt， Farhad Ibrahimzade， Jason Leung， Jen P.， Jennifer Schmidt， Kelsey Curtis， Luca Bravo，Mae Mu， Volkan Vardar ， Victoria Shes， Rumman Amin，Sandra Seitamaa， Sebastian Coman Photography， Serge Esteve， Syed Ahmad， Simon Karemann， Siyuan ， Toa Heftiba， Tobias Tullius
+
+
