@@ -49,7 +49,7 @@ export default function ReserveForm({
         id="email"
         defaultValue={defaultData?.email}
       ></input>
-      <label htmlFor="phone">Telefonummber:</label>
+      <label htmlFor="phone">Telefonummer:</label>
       <input
         maxLength="11"
         minLength="6"
