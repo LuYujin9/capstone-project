@@ -2,6 +2,11 @@
 
 Lecker Map is a full stack App for restaurant browsing and reserving. It's my capstone project from the neue fische boot camp.
 
+## Photos
+![1](https://user-images.githubusercontent.com/123362292/233953601-7d9ce6cf-b3af-4bc8-ac75-68ae11cb2bf4.png)
+![2](https://user-images.githubusercontent.com/123362292/233953615-e0e908ea-b914-40d6-858a-eb3624d43bfa.png)
+
+
 ## Tech Stack
 - React
 - Next.js
@@ -25,6 +30,3 @@ Lecker Map is a full stack App for restaurant browsing and reserving. It's my ca
 
 - Is also offers a special feature that can <b> display the restaurants </b> users have visited on the map, allowing users to record their food journey.
 
-## Photos
-![1](https://user-images.githubusercontent.com/123362292/233953601-7d9ce6cf-b3af-4bc8-ac75-68ae11cb2bf4.png)
-![2](https://user-images.githubusercontent.com/123362292/233953615-e0e908ea-b914-40d6-858a-eb3624d43bfa.png)
