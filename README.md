@@ -3,15 +3,15 @@
 Lecker Map is a full stack App for restaurant browsing and booking. It's my capstone project from the neue fische boot camp.
 
 ## Tech Stack
-React
-Next.js
-React Testing Library
-Styled Components
-Node.js
-MongoDB Atlas
-Mongoose
-React Leaflet
-useSWR
+- React
+- Next.js
+- React Testing Library
+- Styled Components
+- Node.js
+- MongoDB Atlas
+- Mongoose
+- React Leaflet
+- useSWR
 
 ## description
 
