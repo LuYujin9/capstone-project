@@ -19,7 +19,7 @@ Lecker Map is a full stack App for restaurant browsing and reserving. It's my ca
 - React Leaflet
 - useSWR
 
-## description
+## Description
 
 - Lecker Map allows user to <b> search and browse restaurant </b> information, including rating, location, phone number and menu.
 
