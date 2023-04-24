@@ -1,4 +1,4 @@
-# Capstone Project - Lecker-Map App
+# Capstone Project - Lecker Map App
 
 Lecker Map is a full stack App for restaurant browsing and reserving. It's my capstone project from the neue fische boot camp.
 
