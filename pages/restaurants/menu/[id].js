@@ -96,6 +96,14 @@ const BackgroundPhoto = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   z-index: -1;
+    @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+    left: 0;
+    right: 0;
+  }
 `;
 
 const StyledSection = styled.section`
