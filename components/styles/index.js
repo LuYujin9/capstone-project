@@ -84,8 +84,6 @@ export const BackgroundPhoto = styled.div`
   }
   @media only screen and (min-width: 800px) {
     width: 640px;
-    left: 0;
-    right: 0;
   }
 `;
 
