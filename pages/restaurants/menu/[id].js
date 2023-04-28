@@ -4,7 +4,7 @@ import Heading from "../../../components/Heading";
 import MenuListItem from "../../../components/MenuListItem";
 import ToReservePageLink from "../../../components/ToReservePageLink";
 import BookmarkButton from "../../../components/BookmarkButton";
-import { AlertMessage } from "../../../components/styles";
+import { AlertMessage, MainWithBackground } from "../../../components/styles";
 import useSWR from "swr";
 
 export default function Menu({ onToggleFavorite, username, onLogin }) {
@@ -35,7 +35,7 @@ export default function Menu({ onToggleFavorite, username, onLogin }) {
       <Heading username={username} onLogin={onLogin}>
         {restaurant.name}
       </Heading>
-      <StyledMain>
+      <MainWithBackground>
         <BackgroundPhoto />
         <StyledSection>
           <BookmarkButton
@@ -53,7 +53,7 @@ export default function Menu({ onToggleFavorite, username, onLogin }) {
           </StyledList>
         </StyledSection>
         <ToReservePageLink id={id} />
-      </StyledMain>
+      </MainWithBackground>
     </>
   );
 }
@@ -92,10 +92,17 @@ const BackgroundPhoto = styled.div`
   background-size: cover;
   background-position: center top;
 
-  opacity: 0.75;
-  min-width: 100vw;
+  opacity: 0.7;
+  margin: auto;
   min-height: 100vh;
   z-index: -1;
+
+  @media only screen and (max-width: 799px) {
+    width: 100vw;
+  }
+  @media only screen and (min-width: 800px) {
+    width: 640px;
+  }
 `;
 
 const StyledSection = styled.section`
