@@ -213,4 +213,9 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
+
+  @media only screen and (min-width: 650px) {
+    width: 36.5em;
+    margin: auto;
+  }
 `;

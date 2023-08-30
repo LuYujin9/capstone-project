@@ -30,7 +30,7 @@ export default function MessageModal({ isOpen, onClose, children }) {
 }
 
 const Background = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 
   position: absolute;

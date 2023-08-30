@@ -116,4 +116,10 @@ const StyledParagraph = styled.p`
   width: 82%;
   margin: 2rem;
   line-height: 25px;
+
+  @media only screen and (min-width: 650px) {
+    width: 33em;
+    margin: auto;
+    margin-bottom: 0;
+  }
 `;

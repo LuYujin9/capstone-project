@@ -14,9 +14,14 @@ export const StyledPicture = styled.picture`
   height: 30vh;
   position: relative;
   display: block;
+
+  @media only screen and (min-width: 769px) {
+    height: 50vh;
+  }
 `;
 
 export const ToLastPhotoButton = styled.button`
+  width: 5%;
   border: none;
   padding: 0;
   ${({ photoIndex }) => (photoIndex === 0 ? "visibility: hidden" : null)};
@@ -24,6 +29,7 @@ export const ToLastPhotoButton = styled.button`
 `;
 
 export const ToNextPhotoButton = styled.button`
+  width: 5%;
   border: none;
   padding: 0;
   ${({ photoIndex, photos }) =>

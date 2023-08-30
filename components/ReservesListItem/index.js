@@ -59,6 +59,7 @@ export default function ReservesListItem({ reserve, mutateReserves }) {
 
 const StyleListItem = styled.li`
   width: 90%;
+  max-height: 12em;
   padding: 0.5rem 0.5rem;
   margin: 0.4rem auto;
   border-radius: 10px;

@@ -10,6 +10,8 @@ export default createGlobalStyle`
   body {
     margin: 0 auto;
     font-family: system-ui;
+  background-color: var(--background-color);
+
   }
   
   h1 {
