@@ -32,4 +32,8 @@ const StyledList = styled.ul`
   width: 90%;
   margin-top: 0;
   margin-bottom: 4rem;
+
+  @media only screen and (min-width: 650px) {
+    width: 36.5em;
+  }
 `;

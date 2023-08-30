@@ -12,13 +12,18 @@ export const StyledList = styled.ul`
   padding: 0;
 
   display: grid;
+  width: 95%;
+  gird: 80vw;
 
-  @media only screen and (max-width: 799px) {
-    width: 95%;
-    gird: 80vw;
-  }
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 650px) {
     grid-template-columns: 1fr 1fr;
+    grid-gap: 0.7em;
+    padding: 1em;
+    width: 100%;
+  }
+  @media only screen and (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
     width: 100%;
   }
 `;

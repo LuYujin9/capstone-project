@@ -38,5 +38,15 @@ const StyledList = styled.ul`
   margin: 0;
   margin-bottom: 3rem;
   width: 100%;
-  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media only screen and (min-width: 650px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+  }
+  @media only screen and (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+  }
 `;

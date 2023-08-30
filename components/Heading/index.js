@@ -48,7 +48,7 @@ export default function Heading({
 
 const StyledButton = styled.button`
   border: none;
-  width: 3rem;
+  width: 4rem;
 
   background-color: var(--frame-color);
   ${({ isHideBackButton }) => (isHideBackButton ? "visibility: hidden" : null)}
@@ -77,12 +77,4 @@ const StyledHeader = styled.header`
 
   background-color: var(--frame-color);
   color: var(--white-color);
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-    left: 0;
-    right: 0;
-  }
 `;

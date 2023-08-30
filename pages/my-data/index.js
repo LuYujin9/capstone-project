@@ -41,6 +41,7 @@ export default function MyData({ username, onLogin }) {
 }
 
 const StyledMain = styled.main`
+width: 100vw;
   margin: 3rem auto;
   padding: 0;
   min-height: calc(100vh - 6rem);
@@ -50,18 +51,12 @@ const StyledMain = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  }
 
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-    left: 0;
-    right: 0;
-  }
 `;
 
 const StyledSection = styled.section`
+  width: 100%;
   margin: 5rem auto;
   padding: 0;
 
@@ -70,13 +65,6 @@ const StyledSection = styled.section`
   align-items: center;
   gap: 2rem;
   justify-content: center;
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-  }
 `;
 
 const StyledLink = styled(Link)`

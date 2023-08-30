@@ -4,6 +4,7 @@ export const StyledMain = styled.main`
   margin: 3rem auto;
   padding: 0;
   min-height: calc(100vh - 6rem);
+  width: 100vw;
 
   position: absolute;
   display: flex;
@@ -11,15 +12,6 @@ export const StyledMain = styled.main`
   align-items: center;
   justify-content: center;
 
-  background-color: var(--background-color);
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-    left: 0;
-    right: 0;
   }
 `;
 
@@ -37,8 +29,15 @@ export const StyledButton = styled.button`
 `;
 
 export const AlertMessage = styled.p`
+  width: 82%;
   font-size: 1.2rem;
   margin: 1rem 2rem;
+
+  @media only screen and (min-width: 650px) {
+    width: 33em;
+    margin: auto;
+    margin-bottom: 2em;
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -52,6 +51,12 @@ export const StyledForm = styled.form`
 
   border-radius: 1rem;
   border: 2px solid var(--button-color);
+
+  @media only screen and (min-width: 650px) {
+    width: 36.5em;
+    margin: auto;
+    margin-top: 2em;
+  }
 `;
 
 export const StyledFormTitle = styled.h3`
@@ -62,6 +67,7 @@ export const StyledFormTitle = styled.h3`
 `;
 
 export const BackgroundPhoto = styled.div`
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,31 +85,17 @@ export const BackgroundPhoto = styled.div`
   margin: auto;
   min-height: 100vh;
   z-index: -1;
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-  }
 `;
 
 export const MainWithBackground = styled.main`
+  width: 100vw;
+  min-height: calc(100vh - 6rem);
   margin: 3rem auto;
   padding: 0;
-  min-height: calc(100vh - 6rem);
 
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-    left: 0;
-    right: 0;
-  }
 `;

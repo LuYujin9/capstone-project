@@ -59,6 +59,7 @@ export default function Menu({ onToggleFavorite, username, onLogin }) {
 }
 
 export const StyledMain = styled.main`
+  width: 100vw;
   margin: 3rem auto;
   padding: 0;
 
@@ -67,18 +68,10 @@ export const StyledMain = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-    left: 0;
-    right: 0;
-  }
 `;
 
 const BackgroundPhoto = styled.div`
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,19 +89,12 @@ const BackgroundPhoto = styled.div`
   margin: auto;
   min-height: 100vh;
   z-index: -1;
-
-  @media only screen and (max-width: 799px) {
-    width: 100vw;
-  }
-  @media only screen and (min-width: 800px) {
-    width: 640px;
-  }
 `;
 
 const StyledSection = styled.section`
   width: 94%;
+  min-height: 100vh;
   position: relative;
-  margin: auto;
 `;
 
 const StyledList = styled.ul`
